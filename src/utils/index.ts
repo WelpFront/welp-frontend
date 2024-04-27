@@ -1,7 +1,7 @@
-import { openingHoursType } from "interfaces";
+import { OpeningHoursType } from "interfaces";
 
 export const getOpenedHourHandler = (
-	openingHours: Array<openingHoursType>,
+	openingHours: Array<OpeningHoursType>,
 	open: boolean
 ) => {
 	const date = new Date();
