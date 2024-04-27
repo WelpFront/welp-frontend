@@ -14,7 +14,7 @@ const Chip = ({
 		<div
 			className={`${
 				background ?? "bg-white border-gray-200 border py-2 px-4"
-			} px-2 rounded-full min-w-16 flex items-center justify-center`}>
+			} px-2 rounded-full min-w-16 flex gap-1 items-center justify-center`}>
 			<h2
 				className={`${
 					background ? "text-white" : "text-black"

@@ -1,46 +1,70 @@
 import { Chip } from "atoms";
 import Image from "next/image";
+import { getOpenedHourHandler } from "utils";
 
-const BusinessHeader = () => {
+const BusinessHeader = ({ business }: any) => {
+	const {
+		name,
+		cover_image,
+		description,
+		reviews_stats,
+		categories,
+		is_opened,
+		opening_hours,
+	} = business.data;
+
 	return (
 		<div className="flex gap-2 bg-gray-100 p-3 my-4">
 			<Image
 				className="rounded-md object-cover"
-				src={"/zacks.png"}
+				src={cover_image}
 				height={100}
 				width={150}
 				alt="business"
 			/>
 			<div className="w-full flex-1 flex flex-col gap-4">
 				<div className="flex justify-between ">
-					<h1 className="text-black font-extrabold">زاكس</h1>
+					<h1 className="text-black font-extrabold">{name}</h1>
 
-					<Chip
-						text={"4.8"}
-						icon="/star.png"
-						background="bg-secondary"
-					/>
+					{!!reviews_stats.rating_score && (
+						<Chip
+							text={reviews_stats.rating_score}
+							icon="/star.png"
+							background="bg-secondary"
+						/>
+					)}
 				</div>
 				<div>
-					<p className="text-gray-600 text-sm">
-						يقدم زاكس مجموعه كبيره من السندوتشات الرائعه و فرايد
-						تشيكن . وهو منتج مصري ١٠٠ ٪
-					</p>
+					<p className="text-gray-600 text-sm">{description}</p>
 				</div>
 
 				<div className="flex flex-wrap gap-1">
-					<Chip text="test" />
-					<Chip text="test" />
-					<Chip text="test" />
-					<Chip text="test" />
-					<Chip text="test" />
+					{categories.map((category: any) => (
+						<Chip
+							key={category.id}
+							text={category.name}
+							icon={category.icon}
+						/>
+					))}
 				</div>
 
-				<div className="flex  gap-1 text-sm">
-					<p className="text-success">مفتوح الأن</p>
-
-					<p className="text-black"> يغلق عند الساعة 12ص</p>
-				</div>
+				{is_opened ? (
+					<div className="flex  gap-1 text-xs md:text-md">
+						<p className="text-success font-bold">مفتوح الأن</p>
+						<p className="text-black">
+							يغلق عند الساعة&nbsp;
+							{getOpenedHourHandler(opening_hours, false)}
+						</p>
+					</div>
+				) : (
+					<div className="flex  gap-1 text-xs md:text-md">
+						<p className="text-red-500 font-bold">مغلق</p>
+						<p className="text-black">
+							يفتح عند الساعة&nbsp;
+							{getOpenedHourHandler(opening_hours, true)}
+						</p>
+					</div>
+				)}
 
 				<div></div>
 			</div>
