@@ -1,3 +1,3 @@
-import type { OpeningHoursType } from "./businesses";
+import type { OpeningHoursType, ProductTypes } from "./businesses";
 
-export { OpeningHoursType };
+export { OpeningHoursType, ProductTypes };

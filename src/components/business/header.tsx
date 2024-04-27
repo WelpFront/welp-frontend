@@ -11,7 +11,7 @@ const BusinessHeader = ({ business }: any) => {
 		categories,
 		is_opened,
 		opening_hours,
-	} = business.data;
+	} = business;
 
 	return (
 		<div className="flex gap-2 bg-gray-100 p-3 my-4">

@@ -6,7 +6,9 @@ export async function GET(request: Request, context: any) {
 	const { params } = context;
 
 	try {
-		const { data } = await axiosBase.get(`/businesses/${params.slug}`);
+		const { data } = await axiosBase.get(
+			`/businesses/${params.slug}/products-types`
+		);
 
 		return Response.json({
 			status: 200,

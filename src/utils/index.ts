@@ -8,13 +8,18 @@ export const getOpenedHourHandler = (
 
 	const fromOrTo = open ? "time_from" : "time_to";
 
-	const time = openingHours
-		.find((item) => item.day == date.getDay())
-		?.[fromOrTo].split(":")[0];
+	const openingHourItem = openingHours.find(
+		(item) => item.day == date.getDay()
+	);
 
-	if (time?.charAt(0) === "0") {
-		return `${time.substring(1)} ص`;
-	} else {
-		return `${time} م`;
+	if (!openingHourItem) {
+		return "Unknown";
 	}
+
+	const time = openingHourItem[fromOrTo].split(":")[0];
+	const formattedTime = parseInt(time, 10) % 12 || 12; // Convert to 12-hour format
+
+	const period = parseInt(time, 10) < 12 ? "AM" : "PM";
+
+	return `${formattedTime} ${period}`;
 };

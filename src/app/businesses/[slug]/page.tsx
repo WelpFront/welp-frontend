@@ -5,7 +5,7 @@ import { getBusiness } from "services";
 export async function generateMetadata({ params }: any): Promise<Metadata> {
 	const { slug } = params;
 
-	const { data } = await getBusiness(slug);
+	const data = await getBusiness(slug);
 
 	return {
 		title: data.name,
@@ -28,7 +28,7 @@ const page = async ({ params }: any) => {
 		<div>
 			<OpenApp />
 			<BusinessHeader business={business} />
-			<Menu />
+			<Menu id={business.id} />
 		</div>
 	);
 };

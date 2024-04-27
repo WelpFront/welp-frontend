@@ -4,3 +4,8 @@ export interface OpeningHoursType {
 	time_to: string;
 	status: number;
 }
+
+export interface ProductTypes {
+	id: number;
+	name: string;
+}
