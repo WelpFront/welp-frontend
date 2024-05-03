@@ -1,3 +1,7 @@
-import { getBusiness, getBusinessProductTypes } from "./businesses";
+import {
+	getBusiness,
+	getBusinessProductTypes,
+	getBusinessProducts,
+} from "./businesses";
 
-export { getBusiness, getBusinessProductTypes };
+export { getBusiness, getBusinessProductTypes, getBusinessProducts };

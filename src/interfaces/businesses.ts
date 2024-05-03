@@ -5,7 +5,16 @@ export interface OpeningHoursType {
 	status: number;
 }
 
-export interface ProductTypes {
+export interface ProductTypesType {
 	id: number;
 	name: string;
+}
+
+export interface ProductType {
+	description: string;
+	id: number;
+	image: string;
+	name: string;
+	price_after_discount: number;
+	price_before_discount: number;
 }

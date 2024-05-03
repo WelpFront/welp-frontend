@@ -8,6 +8,7 @@ const nextConfig = {
           pathname: '/media/**'
         }]
       },
+      reactStrictMode: false,
 };
 
 export default nextConfig;

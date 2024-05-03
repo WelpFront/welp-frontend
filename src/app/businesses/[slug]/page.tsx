@@ -28,7 +28,7 @@ const page = async ({ params }: any) => {
 		<div>
 			<OpenApp />
 			<BusinessHeader business={business} />
-			<Menu id={business.id} />
+			<Menu slug={business.id} />
 		</div>
 	);
 };

@@ -1,6 +1,7 @@
 import Chip from "./chip";
 import ItemCard from "./item-card";
+import ProductsLoader from "./loaders/skeleton/products";
+import TagsLoader from "./loaders/skeleton/tags";
 import Modal from "./modal";
-import TagsLoader from "./skeleton/tags";
 
-export { Chip, ItemCard, Modal, TagsLoader };
+export { Chip, ItemCard, Modal, TagsLoader, ProductsLoader };

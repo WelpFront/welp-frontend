@@ -4,23 +4,16 @@ import React from "react";
 const Chip = ({
 	text,
 	icon,
-	background,
+	className,
 }: {
 	text: string;
 	icon?: string;
-	background?: string;
+	className?: string;
 }) => {
 	return (
 		<div
-			className={`${
-				background ?? "bg-white border-gray-200 border py-2 px-4"
-			} px-2 rounded-full min-w-16 flex gap-1 items-center justify-center`}>
-			<h2
-				className={`${
-					background ? "text-white" : "text-black"
-				} text-md`}>
-				{text}
-			</h2>
+			className={`rounded-full min-w-16 flex gap-1 items-center justify-center ${className}`}>
+			<h2 className="text-md">{text}</h2>
 			{icon && (
 				<Image
 					width={10}

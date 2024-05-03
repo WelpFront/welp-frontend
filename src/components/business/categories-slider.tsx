@@ -1,16 +1,18 @@
 "use client";
 
 import { Chip, TagsLoader } from "atoms";
-import { ProductTypes } from "interfaces";
+import { ProductTypesType } from "interfaces";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { getBusinessProductTypes } from "services";
 
-const CategoriesSlider = ({ id }: { id: number }) => {
+const CategoriesSlider = ({ slug }: { slug: number }) => {
 	const [loading, setLoading] = useState(true);
 
-	const [data, setData] = useState<Array<ProductTypes>>([]);
+	const [active, setActive] = useState<number | null>(null);
+
+	const [data, setData] = useState<Array<ProductTypesType>>([]);
 
 	const router = useRouter();
 
@@ -19,7 +21,7 @@ const CategoriesSlider = ({ id }: { id: number }) => {
 	const searchParams = useSearchParams();
 
 	const createQueryString = useCallback(
-		(name: string, value: string) => {
+		(name: string, value: any) => {
 			const params = new URLSearchParams(searchParams.toString());
 			params.set(name, value);
 
@@ -28,29 +30,52 @@ const CategoriesSlider = ({ id }: { id: number }) => {
 		[searchParams]
 	);
 
+	const chipClickHandler = (id: number) => {
+		setActive(id);
+		router.push(pathname + "?" + createQueryString("type", id));
+	};
+
 	useEffect(() => {
-		if (id) {
+		if (slug) {
 			setLoading(true);
-			getBusinessProductTypes(id)
+			getBusinessProductTypes(slug)
 				.then((res) => {
 					setData(res);
-					router.push(
-						pathname + "?" + createQueryString("type", res[0]?.id)
-					);
+
+					if (res.length > 0) {
+						setActive(res[0]?.id);
+						router.push(
+							pathname +
+								"?" +
+								createQueryString("type", res[0]?.id)
+						);
+					}
 				})
 				.finally(() => {
 					setLoading(false);
 				});
 		}
-	}, [id]);
+
+		return () => router.replace(`/businesses/${slug}`, undefined);
+	}, [slug]);
 
 	return (
 		<div className="flex gap-4 overflow-auto py-2 no-scrollbar">
 			{loading && <TagsLoader />}
-			{data.map((item: ProductTypes) => (
-				<div key={item.id} className="shrink-0">
-					<Chip text={item.name} />
-				</div>
+			{data?.map((item: ProductTypesType) => (
+				<button
+					onClick={() => chipClickHandler(item.id)}
+					key={item.id}
+					className="shrink-0 cursor-pointer">
+					<Chip
+						className={`${
+							active === item.id
+								? "bg-secondary  text-white"
+								: "bg-white"
+						} border-gray-200 border py-2 px-4`}
+						text={item.name}
+					/>
+				</button>
 			))}
 		</div>
 	);

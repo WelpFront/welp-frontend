@@ -30,7 +30,7 @@ const BusinessHeader = ({ business }: any) => {
 						<Chip
 							text={reviews_stats.rating_score}
 							icon="/star.png"
-							background="bg-secondary"
+							className="bg-secondary text-white"
 						/>
 					)}
 				</div>
@@ -44,6 +44,7 @@ const BusinessHeader = ({ business }: any) => {
 							key={category.id}
 							text={category.name}
 							icon={category.icon}
+							className="bg-white border-gray-200 border py-2 px-4"
 						/>
 					))}
 				</div>
@@ -65,8 +66,6 @@ const BusinessHeader = ({ business }: any) => {
 						</p>
 					</div>
 				)}
-
-				<div></div>
 			</div>
 		</div>
 	);

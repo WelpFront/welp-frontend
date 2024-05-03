@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 export const getBusiness = async (slug: string) => {
 	const response = await fetch(
 		`${process.env.NEXT_PUBLIC_CLIENT_URL}/businesses/${slug}`
@@ -9,11 +11,32 @@ export const getBusiness = async (slug: string) => {
 };
 
 export const getBusinessProductTypes = async (id: number) => {
-	const response = await fetch(
-		`${process.env.NEXT_PUBLIC_CLIENT_URL}/businesses/${id}/product-types`
-	);
+	try {
+		const response = await fetch(
+			`${process.env.NEXT_PUBLIC_CLIENT_URL}/businesses/${id}/product-types`
+		);
 
-	const { data } = await response.json();
+		const { data } = await response.json();
 
-	return data;
+		return data;
+	} catch (error: any) {
+		toast.error(error.message);
+	}
+};
+
+export const getBusinessProducts = async (businessId: number, type: number) => {
+	try {
+		let url = `${process.env.NEXT_PUBLIC_CLIENT_URL}/businesses/${businessId}/products`;
+
+		if (type) {
+			url += `?product_type=${type}`;
+		}
+		const response = await fetch(url);
+
+		const { data } = await response.json();
+
+		return data;
+	} catch (error: any) {
+		toast.error(error.message);
+	}
 };

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Kufi_Arabic } from "next/font/google";
+import ClientProviders from "providers/client-providers";
 import "styles/globals.css";
 
 const kufi = Noto_Kufi_Arabic({ subsets: ["arabic"] });
@@ -22,7 +23,7 @@ export default function RootLayout({
 	return (
 		<html lang="ar" dir="rtl">
 			<body className={kufi.className}>
-				<div>{children}</div>
+				<ClientProviders>{children}</ClientProviders>
 			</body>
 		</html>
 	);
