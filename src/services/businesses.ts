@@ -24,13 +24,26 @@ export const getBusinessProductTypes = async (id: number) => {
 	}
 };
 
-export const getBusinessProducts = async (businessId: number, type: number) => {
+export const getBusinessProducts = async (
+	businessId: string | string[],
+	type: string | null,
+	page: number
+) => {
 	try {
 		let url = `${process.env.NEXT_PUBLIC_CLIENT_URL}/businesses/${businessId}/products`;
 
 		if (type) {
 			url += `?product_type=${type}`;
 		}
+
+		if (page) {
+			if (type) {
+				url += `&page=${page}`;
+			} else {
+				url += `?page=${page}`;
+			}
+		}
+
 		const response = await fetch(url);
 
 		const { data } = await response.json();

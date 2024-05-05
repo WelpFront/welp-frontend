@@ -1,47 +1,46 @@
 "use client";
 
-import { ItemCard, ProductsLoader } from "atoms";
-import { useSearchParams, useParams } from "next/navigation";
-import { useState, useEffect, useMemo } from "react";
-import { getBusinessProducts } from "services";
+import { CircularLoader, ItemCard, ProductsLoader } from "atoms";
+import { useGetLastElement, useProductsList } from "hooks";
+import { useMemo } from "react";
 
 const ProductsList = () => {
-	const [data, setData] = useState({});
+	const { data, hasMore, loading, pagesLoading, setPage } = useProductsList();
 
-	const [loading, setLoading] = useState(true);
-
-	const { slug } = useParams();
-
-	const searchParams = useSearchParams();
-
-	const type = searchParams.get("type");
+	const { lastElement } = useGetLastElement(pagesLoading, hasMore, () =>
+		setPage((prev) => prev + 1)
+	);
 
 	const loaders = useMemo(() => {
 		const loaders = [];
 		for (let i = 0; i < 4; i++) {
-			loaders.push(<ProductsLoader key={i} />); // Add ProductsLoader component to the array
+			loaders.push(<ProductsLoader key={i} />);
 		}
 		return loaders;
 	}, []);
-
-	useEffect(() => {
-		setLoading(true);
-		getBusinessProducts(slug, type)
-			.then((res) => {
-				setData(res);
-			})
-			.finally(() => {
-				setLoading(false);
-			});
-	}, [type]);
 
 	return (
 		<>
 			{loading
 				? loaders
-				: data?.results.map((item) => (
-						<ItemCard key={item.id} item={item} />
-				  ))}
+				: data?.results.map((item, index) => {
+						return (
+							<div
+								ref={
+									data?.results?.length === index + 1
+										? lastElement
+										: null
+								}
+								key={item.id}>
+								<ItemCard item={item} />
+							</div>
+						);
+				  })}
+			{pagesLoading && (
+				<div className="w-full flex items-center justify-center">
+					<CircularLoader />
+				</div>
+			)}
 
 			{!loading && data?.results.length === 0 && (
 				<div className="text-secondary h-44 flex items-end justify-center">

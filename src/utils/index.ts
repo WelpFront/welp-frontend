@@ -1,15 +1,19 @@
 import { OpeningHoursType } from "interfaces";
 
+const getISODay = function () {
+	return ((new Date().getDay() + 6) % 7) + 1;
+};
+
 export const getOpenedHourHandler = (
 	openingHours: Array<OpeningHoursType>,
 	open: boolean
 ) => {
-	const date = new Date();
+	const date = getISODay();
 
 	const fromOrTo = open ? "time_from" : "time_to";
 
 	const openingHourItem = openingHours.find(
-		(item) => item.day == date.getDay()
+		(item) => item.day == getISODay()
 	);
 
 	if (!openingHourItem) {

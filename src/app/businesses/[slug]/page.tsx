@@ -2,6 +2,7 @@ import { BusinessHeader, Menu, OpenApp } from "components";
 import { Metadata } from "next";
 import { getBusiness } from "services";
 
+// export async function generateStaticParams() {}
 export async function generateMetadata({ params }: any): Promise<Metadata> {
 	const { slug } = params;
 
