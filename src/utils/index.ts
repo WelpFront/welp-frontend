@@ -23,7 +23,7 @@ export const getOpenedHourHandler = (
 	const time = openingHourItem[fromOrTo].split(":")[0];
 	const formattedTime = parseInt(time, 10) % 12 || 12; // Convert to 12-hour format
 
-	const period = parseInt(time, 10) < 12 ? "AM" : "PM";
+	const period = parseInt(time, 10) < 12 ? "ص" : "م";
 
 	return `${formattedTime} ${period}`;
 };
