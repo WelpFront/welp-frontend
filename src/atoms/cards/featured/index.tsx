@@ -23,7 +23,7 @@ const FeaturedCard = ({ item }: { item: BusinessType }) => {
 				height={150}
 				className="object-cover w-full h-48"
 			/>
-			<div className="flex justify-between items-center px-3">
+			<div className="flex justify-between items-center px-2">
 				<h1 className="text-sm font-bold ">{item.name}</h1>
 				{item.is_opened ? (
 					<div className="flex  gap-1 text-xs md:text-md">
