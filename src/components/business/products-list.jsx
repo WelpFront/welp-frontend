@@ -20,7 +20,7 @@ const ProductsList = () => {
 	}, []);
 
 	return (
-		<>
+		<div className=" overflow-auto" style={{ height: "52vh" }}>
 			{loading
 				? loaders
 				: data?.results.map((item, index) => {
@@ -47,7 +47,7 @@ const ProductsList = () => {
 					لا يوجد منتجات
 				</div>
 			)}
-		</>
+		</div>
 	);
 };
 

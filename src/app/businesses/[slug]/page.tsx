@@ -11,12 +11,16 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
 	return {
 		title: data.name,
 		description: data.description,
+		keywords: ["مطعم", "مينيو", "ويلب", ...data.name.split(" ")],
 		openGraph: {
 			images: [
 				{
 					url: data.cover_image,
 				},
 			],
+		},
+		twitter: {
+			card: "summary_large_image",
 		},
 	};
 }

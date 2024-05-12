@@ -1,5 +1,15 @@
 import { toast } from "react-toastify";
 
+export const getFeaturedBusinesses = async () => {
+	const response = await fetch(
+		`${process.env.NEXT_PUBLIC_CLIENT_URL}/businesses?is_featured=true`
+	);
+
+	const { data } = await response.json();
+
+	return data;
+};
+
 export const getBusiness = async (slug: string) => {
 	const response = await fetch(
 		`${process.env.NEXT_PUBLIC_CLIENT_URL}/businesses/${slug}`

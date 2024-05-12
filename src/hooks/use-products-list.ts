@@ -31,7 +31,10 @@ const useProductsList = () => {
 			.then((res) => {
 				setData((prev: any) => ({
 					...prev,
-					results: [...prev?.results, ...res?.results],
+					results:
+						pg === 1
+							? res.results
+							: [...prev?.results, ...res?.results],
 					count: res?.count,
 					next: res?.next,
 					previous: res?.previous,
@@ -60,6 +63,7 @@ const useProductsList = () => {
 		setData(initialState);
 		setLoading(true);
 		setPage(1);
+
 		if (slug && type) {
 			fetchProductsHandler(1);
 		}

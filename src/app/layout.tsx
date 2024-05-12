@@ -1,3 +1,4 @@
+import { Navbar } from "components";
 import type { Metadata } from "next";
 import { Noto_Kufi_Arabic } from "next/font/google";
 import ClientProviders from "providers/client-providers";
@@ -23,6 +24,7 @@ export default function RootLayout({
 	return (
 		<html lang="ar" dir="rtl">
 			<body className={kufi.className}>
+				<Navbar />
 				<ClientProviders>{children}</ClientProviders>
 			</body>
 		</html>
