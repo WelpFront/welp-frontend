@@ -7,3 +7,11 @@
 * {
 	scroll-behavior: smooth;
 }
+
+.header {
+	background: url("/header.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: top;
+	height: 90vh;
+}

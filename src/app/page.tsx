@@ -1,10 +1,27 @@
-import Image from "next/image";
+import {
+	Categories,
+	DownloadApp,
+	Featured,
+	Header,
+	Footer,
+	Cities,
+} from "components";
+import { getCategoriesList, getFeaturedBusinesses } from "services";
 
-const Home = () => {
+const Home = async () => {
+	const categories = await getCategoriesList();
+
+	const featuredBusinesses = await getFeaturedBusinesses();
+
 	return (
-		<div className="h-screen w-screen flex items-center justify-center">
-			<Image src="/logo.png" width={80} height={80} alt="logo" />
-		</div>
+		<>
+			<Header />
+			<Categories categories={categories} />
+			<Featured featuredBusinesses={featuredBusinesses} />
+			<Cities />
+			<DownloadApp />
+			<Footer />
+		</>
 	);
 };
 
