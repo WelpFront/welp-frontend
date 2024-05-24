@@ -6,7 +6,7 @@ import { SlLocationPin } from "react-icons/sl";
 
 const FeaturedCard = ({ item }: { item: BusinessType }) => {
 	const ratingHandler = (rate?: number) => {
-		if (rate === undefined) {
+		if (rate === undefined || rate === 0) {
 			return <IoIosStarOutline />;
 		} else if (rate > 0 && rate < 1) {
 			return <IoIosStarHalf className="text-yellow-500" />;
@@ -15,7 +15,7 @@ const FeaturedCard = ({ item }: { item: BusinessType }) => {
 		}
 	};
 	return (
-		<div className="bg-white shadow-md rounded-md w-4/5 h-80 overflow-hidden">
+		<div className="bg-white shadow-md rounded-md w-full h-80 cursor-pointer overflow-hidden hover:scale-95 duration-200">
 			<Image
 				alt={item.name}
 				src={item.cover_image}
@@ -24,7 +24,9 @@ const FeaturedCard = ({ item }: { item: BusinessType }) => {
 				className="object-cover w-full h-48"
 			/>
 			<div className="flex justify-between items-center px-2">
-				<h1 className="text-sm font-bold ">{item.name}</h1>
+				<h1 className="text-sm font-bold w-48 overflow-hidden text-ellipsis whitespace-nowrap text-animation">
+					{item.name}
+				</h1>
 				{item.is_opened ? (
 					<div className="flex  gap-1 text-xs md:text-md">
 						<p className="text-success font-bold">مفتوح </p>

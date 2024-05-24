@@ -1,20 +1,18 @@
 "use client";
 
 import { CustomSwiper } from "atoms";
-import { url } from "inspector";
-import React from "react";
 import { SwiperSlide } from "swiper/react";
 
 const Cities = () => {
 	const breakpoints = {
 		200: {
-			slidesPerView: 1,
-		},
-		700: {
 			slidesPerView: 2,
 		},
-		1000: {
+		700: {
 			slidesPerView: 3,
+		},
+		1000: {
+			slidesPerView: 4,
 		},
 	};
 
@@ -26,21 +24,22 @@ const Cities = () => {
 	];
 
 	return (
-		<div className="bg-gray-200 py-4">
+		<div className="bg-gray-200 py-4 my-4">
 			<div>
 				<h1 className="text-center text-black text-3xl font-bold">
 					Cities
 				</h1>
 
 				<CustomSwiper
+					className="citiesSwiper"
 					breakPoints={breakpoints as any}
 					slidesPerView={4}>
 					{cities.map((item, index) => (
 						<SwiperSlide className="py-2" key={index}>
 							<div
 								className={`${
-									index % 2 !== 0 ? "h-80" : "h-48"
-								} flex items-start justify-center w-full rounded-3xl border border-yellow-500 border-solid text-xl font-semibold text-white
+									index % 2 !== 0 ? "h-96" : "h-72"
+								} w-11/12 flex items-start justify-center  rounded-3xl border border-yellow-500 border-solid text-xl font-semibold text-white
                                 `}
 								style={{
 									background: ` url(${item.img})`,

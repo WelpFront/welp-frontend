@@ -5,15 +5,17 @@ import { ReactNode } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation } from "swiper/modules";
+import { Navigation, FreeMode } from "swiper/modules";
 import { Swiper, useSwiper } from "swiper/react";
 
 const CustomSwiper = ({
 	slidesPerView = 3,
 	children,
 	breakPoints,
+	className,
 }: {
 	slidesPerView: number;
+	className: string;
 	children: ReactNode;
 	breakPoints: Array<{}>;
 }) => {
@@ -24,10 +26,11 @@ const CustomSwiper = ({
 			<div className="container flex flex-col justify-center px-5 py-2 rounded-md min-h-96 ">
 				<div className="relative z-0">
 					<Swiper
-						modules={[Navigation]}
+						modules={[Navigation, FreeMode]}
+						freeMode={true}
 						navigation={{
-							nextEl: ".arrow-right",
-							prevEl: ".arrow-left",
+							nextEl: `#${className}-right`,
+							prevEl: `#${className}-left`,
 						}}
 						slidesPerView={slidesPerView}
 						spaceBetween={30}
@@ -35,12 +38,13 @@ const CustomSwiper = ({
 						pagination={{
 							clickable: true,
 						}}
-						className="mySwiper">
+						data-id={className}>
 						{children}
 					</Swiper>
 
 					<div className="flex items-center justify-center gap-2 mt-6">
 						<button
+							id={`${className}-left`}
 							className={`${
 								swiper && swiper.isEnd && "cursor-not-allowed"
 							} bg-black text-white rounded-full flex items-center justify-center p-1 arrow-left`}
@@ -48,6 +52,7 @@ const CustomSwiper = ({
 							<IoIosArrowForward className="w-5 h-5" />
 						</button>
 						<button
+							id={`${className}-right`}
 							className={`${
 								swiper &&
 								swiper.isBeginning &&

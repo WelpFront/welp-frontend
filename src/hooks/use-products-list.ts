@@ -1,5 +1,5 @@
 import { useParams, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { getBusinessProducts } from "services";
 
 const useProductsList = () => {
@@ -14,7 +14,7 @@ const useProductsList = () => {
 
 	const [data, setData] = useState(initialState);
 
-	const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState(false);
 
 	const [pagesLoading, setPagesLoading] = useState(false);
 
@@ -26,27 +26,33 @@ const useProductsList = () => {
 
 	const type = searchParams.get("type");
 
-	const fetchProductsHandler = (pg: number) => {
-		getBusinessProducts(slug, type, pg)
-			.then((res) => {
-				setData((prev: any) => ({
-					...prev,
-					results:
-						pg === 1
-							? res.results
-							: [...prev?.results, ...res?.results],
-					count: res?.count,
-					next: res?.next,
-					previous: res?.previous,
-				}));
-				if (res.next) setHasMore(true);
-				else setHasMore(false);
-			})
-			.finally(() => {
-				setLoading(false);
-				setPagesLoading(false);
-			});
-	};
+	const fetchProductsHandler = useCallback(
+		(pg: number) => {
+			getBusinessProducts(slug, type, pg)
+				.then((res) => {
+					setData((prev: any) => ({
+						...prev,
+						results:
+							pg === 1
+								? res?.results
+								: [...prev?.results, ...res?.results],
+						count: res?.count,
+						next: res?.next,
+						previous: res?.previous,
+					}));
+					if (res.next) setHasMore(true);
+					else setHasMore(false);
+				})
+				.catch((error) => {
+					console.log(error);
+				})
+				.finally(() => {
+					setLoading(false);
+					setPagesLoading(false);
+				});
+		},
+		[slug, type]
+	);
 
 	useEffect(() => {
 		if (data.results.length === 0) {
@@ -61,7 +67,9 @@ const useProductsList = () => {
 
 	useEffect(() => {
 		setData(initialState);
+
 		setLoading(true);
+
 		setPage(1);
 
 		if (slug && type) {

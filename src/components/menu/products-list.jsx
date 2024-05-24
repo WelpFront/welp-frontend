@@ -19,6 +19,7 @@ const ProductsList = () => {
 		return loaders;
 	}, []);
 
+	console.log(loading);
 	return (
 		<div className=" overflow-auto" style={{ height: "52vh" }}>
 			{loading

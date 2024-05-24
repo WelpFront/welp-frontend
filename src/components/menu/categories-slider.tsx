@@ -29,6 +29,8 @@ const CategoriesSlider = ({ slug }: { slug: number }) => {
 		router.push(pathname + "?" + createQueryString("type", id));
 	};
 
+	console.log(active);
+
 	return (
 		<div className="flex gap-4 overflow-auto py-2 no-scrollbar">
 			{loading && loaders}

@@ -13,12 +13,21 @@ const config: Config = {
 			colors: {
 				secondary: "#FF0000",
 				success: "#00e979",
+				gray: {
+					50: "#f7f6f6",
+					100: "#DAD9D9",
+				},
 				orange: {
 					100: "#FFF7E2",
+					200: "#FFEEC0",
 				},
 			},
 			height: {
 				"128": "50vh",
+				"129": "80vh",
+			},
+			borderWidth: {
+				"1": "1px",
 			},
 		},
 	},

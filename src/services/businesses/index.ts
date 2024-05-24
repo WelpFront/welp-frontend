@@ -1,34 +1,29 @@
+import axios from "axios";
 import { toast } from "react-toastify";
 
 export const getFeaturedBusinesses = async () => {
-	const response = await fetch(
+	const { data: response } = await axios.get(
 		`${process.env.NEXT_PUBLIC_CLIENT_URL}/businesses?is_featured=true`
 	);
 
-	const { data } = await response.json();
-
-	return data;
+	return response.data;
 };
 
 export const getBusiness = async (slug: string) => {
-	const response = await fetch(
+	const { data } = await axios.get(
 		`${process.env.NEXT_PUBLIC_CLIENT_URL}/businesses/${slug}`
 	);
 
-	const { data } = await response.json();
-
-	return data;
+	return data.data;
 };
 
 export const getBusinessProductTypes = async (id: number) => {
 	try {
-		const response = await fetch(
+		const { data } = await axios.get(
 			`${process.env.NEXT_PUBLIC_CLIENT_URL}/businesses/${id}/product-types`
 		);
 
-		const { data } = await response.json();
-
-		return data;
+		return data.data;
 	} catch (error: any) {
 		toast.error(error.message);
 	}
@@ -54,11 +49,9 @@ export const getBusinessProducts = async (
 			}
 		}
 
-		const response = await fetch(url);
+		const { data } = await axios.get(url);
 
-		const { data } = await response.json();
-
-		return data;
+		return data.data;
 	} catch (error: any) {
 		toast.error(error.message);
 	}

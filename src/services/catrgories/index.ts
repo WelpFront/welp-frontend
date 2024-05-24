@@ -1,9 +1,9 @@
+import axios from "axios";
+
 export const getCategoriesList = async () => {
-	const response = await fetch(
+	const { data: response } = await axios.get(
 		`${process.env.NEXT_PUBLIC_CLIENT_URL}/categories`
 	);
 
-	const { data } = await response.json();
-
-	return data;
+	return response.data;
 };

@@ -3,10 +3,8 @@ import React from "react";
 
 const DownloadApp = () => {
 	return (
-		<div className="flex px-10 flex-col md:flex-row md:px-28 bg-white min-h-screen ">
-			<div
-				dir="ltr"
-				className="flex flex-col order-2 flex-1  justify-center">
+		<div className="flex px-10 flex-col md:flex-row md:px-28 bg-orange-200 min-h-96 gap-4  py-10 md:py-0  my-4 ">
+			<div className="flex flex-col  flex-1  justify-center order-2 md:order-1">
 				<h1 className="text-4xl font-bold my-2">Download The app</h1>
 				<p className="font-semibold my-2">
 					Available on Google play and App store
@@ -45,12 +43,20 @@ const DownloadApp = () => {
 					</button>
 				</div>
 			</div>
-			<div className="order-1 flex-1 flex align-center">
+			<div className=" flex-1 flex justify-center md:justify-normal align-center relative overflow-hidden order-1 md:order-2 ">
 				<Image
 					src="/iphone.svg"
-					width={200}
-					height={200}
+					width={150}
+					height={150}
 					alt="iphone"
+					className="hidden md:block absolute left-8 -bottom-32"
+				/>
+				<Image
+					src="/iphone.svg"
+					width={150}
+					height={150}
+					alt="iphone"
+					className="md:absolute right-8 -top-32"
 				/>
 			</div>
 		</div>

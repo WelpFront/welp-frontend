@@ -20,7 +20,6 @@ const Navbar = () => {
 
 	return (
 		<nav
-			dir="ltr"
 			className={`${
 				opened ? "text-black md:text-white bg-white" : "text-white"
 			} shadow-none lg:bg-transparent absolute w-full`}>
@@ -34,28 +33,33 @@ const Navbar = () => {
 						className="h-20 w-20 md:w-40 md:h-40"
 					/>
 				</Link>
-				<div className="rounded-full h-10 md:h-12 w-full md:w-3/4  justify-between shadow-md  bg-white flex text-gray-600 gap-2 items-center px-3 overflow-hidden">
-					<div className="flex items-center h-full gap-2 border-r-2 border-solid border-gray-200">
+				<div className="rounded-full h-10 md:h-12 w-full md:w-3/4  relative  justify-between shadow-md  bg-white flex text-gray-600 gap-1  items-center overflow-hidden">
+					<div className="flex items-center h-full gap-2 border-l-2 border-solid ps-3 border-gray-200 ">
 						<FaSearch className="text-gray-400" />
 
 						<input
 							type="text"
 							placeholder="Ex:Food,Hospitals,Services....."
-							className="text-gray-800  text-xs md:text-sm bg-transparent h-full w-full md:w-64  outline-none"
+							className="text-gray-800  text-xs md:text-sm  h-full w-full   outline-none"
 						/>
 					</div>
-					<div className="flex items-center h-full gap-2 ">
-						<FaLocationArrow className="text-gray-400 " />
+					<div className="flex items-center h-full gap-2 justify-start">
+						<Image
+							width={20}
+							height={20}
+							src={"/navigation.svg"}
+							alt="navigation"
+						/>
 
 						<input
 							type="text"
 							placeholder="Where...."
-							className="text-gray-800 text-xs md:text-sm bg-transparent h-full w-full  md:w-28 outline-none"
+							className="text-gray-800 text-xs md:text-sm  h-full w-full   outline-none"
 						/>
 					</div>
-					<div className="hidden items-center h-full gap-2 md:flex">
-						<button className="bg-yellow-400 text-white rounded-full py-1 px-3 flex-1">
-							Search
+					<div className="hidden items-center h-full gap-2 md:flex ">
+						<button className="bg-secondary text-white  h-full py-1 px-5 flex-1 start-0 relative">
+							<FaSearch className="text-white" />
 						</button>
 					</div>
 				</div>

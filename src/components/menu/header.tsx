@@ -14,7 +14,7 @@ const BusinessHeader = ({ business }: any) => {
 	} = business;
 
 	return (
-		<div className="flex gap-2 bg-gray-100 p-3 my-4">
+		<div className="flex gap-2 bg-gray-50 p-3 my-4">
 			<Image
 				className="rounded-md object-cover"
 				src={cover_image}

@@ -12,7 +12,6 @@ export async function GET(request: Request, context: any) {
 			params: { is_featured: true },
 		});
 
-		console.log({ ...parsedUrl.query }, data);
 
 		return Response.json({
 			status: 200,

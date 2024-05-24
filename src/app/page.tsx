@@ -1,14 +1,7 @@
-import {
-	Categories,
-	DownloadApp,
-	Featured,
-	Header,
-	Footer,
-	Cities,
-} from "components";
+import { Categories, DownloadApp, Featured, Header, Cities } from "components";
 import { getCategoriesList, getFeaturedBusinesses } from "services";
 
-const Home = async () => {
+const HomePage = async () => {
 	const categories = await getCategoriesList();
 
 	const featuredBusinesses = await getFeaturedBusinesses();
@@ -20,9 +13,8 @@ const Home = async () => {
 			<Featured featuredBusinesses={featuredBusinesses} />
 			<Cities />
 			<DownloadApp />
-			<Footer />
 		</>
 	);
 };
 
-export default Home;
+export default HomePage;

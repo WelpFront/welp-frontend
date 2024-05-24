@@ -5,15 +5,14 @@ const Categories = ({ categories }: { categories: Array<CategoryType> }) => {
 	const filteredCategories = [
 		categories[0],
 		categories[1],
-		categories[3],
+		categories[10],
 		categories[7],
 		categories[8],
-		categories[9],
 	];
 
 	return (
 		<div className="w-full flex justify-center">
-			<div className="bg-orange-100 min-h-28  no-scrollbar w-3/4 md:w-1/2 rounded-full relative -top-12 flex items-center justify-start px-3 gap-2 overflow-auto ">
+			<div className="grid grid-cols-3 my-3 md:bg-orange-100 min-h-28  no-scrollbar w-3/4 md:w-1/2 rounded-full md:relative md:-top-12 md:flex items-center justify-around px-4 gap-4 md:overflow-auto ">
 				{filteredCategories.map(
 					({ children }: { children: Array<CategoryChildType> }) => (
 						<CategoriesItem
@@ -23,6 +22,7 @@ const Categories = ({ categories }: { categories: Array<CategoryType> }) => {
 						/>
 					)
 				)}
+				<CategoriesItem text={"More"} icon={"/dots.png"} />
 			</div>
 		</div>
 	);

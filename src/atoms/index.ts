@@ -5,6 +5,7 @@ import Chip from "./chip/index";
 import CircularLoader from "./loaders/circular";
 import ProductsLoader from "./loaders/skeleton/products";
 import TagsLoader from "./loaders/skeleton/tags";
+import CustomMap from "./map";
 import Modal from "./modal/index";
 import CustomSwiper from "./slider";
 
@@ -16,6 +17,7 @@ export {
 	TagsLoader,
 	ProductsLoader,
 	CircularLoader,
+	CustomMap,
 	CategoriesItem,
 	FeaturedCard,
 };

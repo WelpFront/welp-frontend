@@ -9,17 +9,22 @@ const useCategoriesList = (slug: number) => {
 
 	const [data, setData] = useState<Array<ProductTypesType>>([]);
 
-	const [active, setActive] = useState<number | null>(null);
-
 	const router = useRouter();
 
 	const pathname = usePathname();
 
 	const searchParams = useSearchParams();
 
+	const type = searchParams.get("type");
+
+	const [active, setActive] = useState<number | null>(
+		type ? parseInt(type) : null
+	);
+
 	const createQueryString = useCallback(
 		(name: string, value: any) => {
 			const params = new URLSearchParams(searchParams.toString());
+
 			params.set(name, value);
 
 			return params.toString();
@@ -28,17 +33,15 @@ const useCategoriesList = (slug: number) => {
 	);
 
 	useEffect(() => {
-		let isMounted = true; // To track if the component is still mounted
-
 		if (slug) {
 			setLoading(true);
 			getBusinessProductTypes(slug)
 				.then((res) => {
-					if (isMounted) {
-						setData(res);
+					setData(res);
 
-						if (res.length > 0) {
-							setActive(res[0]?.id);
+					if (res.length > 0) {
+						setActive(type || res[0]?.id);
+						if (!type) {
 							router.push(
 								pathname +
 									"?" +
@@ -48,21 +51,13 @@ const useCategoriesList = (slug: number) => {
 					}
 				})
 				.finally(() => {
-					if (isMounted) {
-						setLoading(false);
-					}
+					setLoading(false);
 				});
 		}
-
-		return () => {
-			// Cleanup function to run when the component unmounts or when the dependency 'slug' changes
-			isMounted = false; // Set isMounted to false to prevent state updates on unmounted components
-			router.replace(`/businesses/${slug}`, undefined);
-		};
 	}, [slug, router]);
 
 	return {
-		active,
+		active: active && parseInt(`${active}`),
 		setActive,
 		data,
 		loading,
