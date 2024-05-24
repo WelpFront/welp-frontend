@@ -1,12 +1,13 @@
 import axios from "axios";
+import { axiosServerBase } from "config";
 import { toast } from "react-toastify";
 
 export const getFeaturedBusinesses = async () => {
-	const { data: response } = await axios.get(
-		`${process.env.NEXT_PUBLIC_CLIENT_URL}/businesses?is_featured=true`
-	);
+	const { data } = await axiosServerBase.get(`/businesses`, {
+		params: { is_featured: true },
+	});
 
-	return response.data;
+	return data.results;
 };
 
 export const getBusiness = async (slug: string) => {

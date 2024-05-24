@@ -1,4 +1,4 @@
-import { axiosBase } from "config";
+import { axiosServerBase } from "config";
 
 export const dynamic = "force-dynamic"; // defaults to auto
 
@@ -6,7 +6,7 @@ export async function GET(request: Request, context: any) {
 	const { params } = context;
 
 	try {
-		const { data } = await axiosBase.get(
+		const { data } = await axiosServerBase.get(
 			`/businesses/${params.slug}/products-types`
 		);
 

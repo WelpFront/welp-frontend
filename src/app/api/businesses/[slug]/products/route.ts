@@ -1,4 +1,4 @@
-import { axiosBase } from "config";
+import { axiosServerBase } from "config";
 import * as url from "url";
 
 export const dynamic = "force-dynamic"; // defaults to auto
@@ -25,7 +25,7 @@ export async function GET(request: Request, context: any) {
 			}
 		}
 
-		const { data } = await axiosBase.get(url);
+		const { data } = await axiosServerBase.get(url);
 
 		return Response.json({
 			status: 200,

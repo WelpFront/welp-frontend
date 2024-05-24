@@ -1,9 +1,13 @@
-import axios from "axios";
+import { axiosServerBase } from "config";
 
 export const getCategoriesList = async () => {
-	const { data: response } = await axios.get(
-		`${process.env.NEXT_PUBLIC_CLIENT_URL}/categories`
-	);
+	try {
+		const { data: response } = await axiosServerBase.get(
+			"/utilities/categories"
+		);
 
-	return response.data;
+		return response.data;
+	} catch (error) {
+		return Response.json({ error });
+	}
 };

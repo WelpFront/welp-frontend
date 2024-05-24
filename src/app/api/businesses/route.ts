@@ -1,4 +1,4 @@
-import { axiosBase } from "config";
+import { axiosServerBase } from "config";
 import * as url from "url";
 
 export const dynamic = "force-dynamic"; // defaults to auto
@@ -8,10 +8,9 @@ export async function GET(request: Request, context: any) {
 
 	const { is_featured } = parsedUrl.query;
 	try {
-		const { data } = await axiosBase.get(`/businesses`, {
+		const { data } = await axiosServerBase.get(`/businesses`, {
 			params: { is_featured: true },
 		});
-
 
 		return Response.json({
 			status: 200,

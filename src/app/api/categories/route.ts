@@ -1,10 +1,10 @@
-import { axiosBase } from "config";
+import { axiosServerBase } from "config";
 
 export const dynamic = "force-dynamic"; // defaults to auto
 
 export async function GET(request: Request, context: any) {
 	try {
-		const { data } = await axiosBase.get("/utilities/categories");
+		const { data } = await axiosServerBase.get("/utilities/categories");
 
 		return Response.json({
 			status: 200,
