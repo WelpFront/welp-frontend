@@ -2,7 +2,13 @@ import { ProgressBar } from "atoms";
 import { ReviewsStats } from "interfaces";
 import { IoIosStar } from "react-icons/io";
 
-const Rating = ({ ratingStats }: { ratingStats: ReviewsStats }) => {
+const Rating = ({
+	ratingStats,
+	translation,
+}: {
+	ratingStats: ReviewsStats;
+	translation: any;
+}) => {
 	const {
 		rating_1_count,
 		rating_2_count,
@@ -24,7 +30,7 @@ const Rating = ({ ratingStats }: { ratingStats: ReviewsStats }) => {
 
 	return (
 		<div>
-			<h3 className="text-xl">Rating</h3>
+			<h3 className="text-xl">{translation.rating}</h3>
 
 			<div className=" p-3 w-full rounded-xl overflow-hidden border-1 border-solid border-gray-100 flex flex-col items-start justify-center">
 				<div className="flex w-full items-center justify-center gap-5">
@@ -33,7 +39,7 @@ const Rating = ({ ratingStats }: { ratingStats: ReviewsStats }) => {
 							{rating_score?.toFixed(2)}
 						</h3>
 						<h4 className="text-md flex  items-center justify-center gap-1">
-							({reviews_count})<h5>Reviews</h5>
+							({reviews_count})<h5>{translation.review}</h5>
 						</h4>
 					</div>
 

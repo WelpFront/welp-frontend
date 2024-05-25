@@ -1,5 +1,5 @@
 import { CustomMap } from "atoms";
-import Link from "next/link";
+import { Link } from "navigation";
 import React from "react";
 import { FaPhoneVolume } from "react-icons/fa6";
 import { RiGlobalFill } from "react-icons/ri";
@@ -14,6 +14,7 @@ const BusinessLocation = ({
 	phone,
 	location,
 	website,
+	translation,
 }: {
 	lng: number;
 	lat: number;
@@ -22,10 +23,11 @@ const BusinessLocation = ({
 	phone: string;
 	location: string;
 	website: string;
+	translation: any;
 }) => {
 	return (
 		<div className="">
-			<h3 className="text-xl">Location & Contact Info</h3>
+			<h3 className="text-xl">{translation.locationAndContact}</h3>
 			<div className="rounded-xl overflow-hidden border-1 border-solid border-gray-100 text-gray-500 ">
 				<CustomMap lng={lng} lat={lat} name={name} />
 				{location && (
@@ -64,7 +66,7 @@ const BusinessLocation = ({
 								href={website}
 								target="_blank"
 								className="underline">
-								الموقع
+								{translation.site}
 							</Link>
 						</div>
 					</>

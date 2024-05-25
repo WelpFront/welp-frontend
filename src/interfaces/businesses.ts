@@ -1,3 +1,5 @@
+import { UserType } from "./users";
+
 export interface OpeningHoursType {
 	day: number;
 	time_from: string;
@@ -54,4 +56,10 @@ export interface BusinessType {
 	media: Array<{}>;
 	categories: Array<{}>;
 	reviews_stats?: ReviewsStats;
+}
+
+export interface MediaType {
+	id: number;
+	file: string;
+	uploaded_by: UserType | null;
 }

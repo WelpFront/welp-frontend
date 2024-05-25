@@ -1,3 +1,4 @@
+import { months } from "data";
 import { OpeningHoursType } from "interfaces";
 
 const getISODay = function () {
@@ -27,3 +28,22 @@ export const getOpenedHourHandler = (
 
 	return `${formattedTime} ${period}`;
 };
+
+export function formatDate(dateStr: string): string {
+	const dateObj = new Date(dateStr);
+
+	const month = months[dateObj.getMonth()];
+	const day = dateObj.getDate();
+	const year = dateObj.getFullYear();
+	let hours = dateObj.getHours();
+	const minutes = dateObj.getMinutes();
+	const period = hours >= 12 ? "pm" : "am";
+
+	hours = hours % 12 || 12;
+
+	const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+
+	const formattedDate = `${month} ${day}, ${year} ${hours}:${formattedMinutes} ${period}`;
+
+	return formattedDate;
+}

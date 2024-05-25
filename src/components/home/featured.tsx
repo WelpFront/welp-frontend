@@ -2,14 +2,16 @@
 
 import { FeaturedCard, CustomSwiper } from "atoms";
 import { BusinessType } from "interfaces";
-import Link from "next/link";
+import { Link } from "navigation";
 import React from "react";
 import { SwiperSlide } from "swiper/react";
 
 const Featured = ({
 	featuredBusinesses,
+	translation,
 }: {
 	featuredBusinesses: Array<BusinessType>;
+	translation: any;
 }) => {
 	const breakpoints = {
 		200: {
@@ -26,7 +28,7 @@ const Featured = ({
 	return (
 		<div>
 			<h1 className="text-center text-black text-3xl font-bold">
-				Featured Restaurants
+				{translation.featuredBusinesses}
 			</h1>
 
 			<CustomSwiper
@@ -35,7 +37,7 @@ const Featured = ({
 				className="featuredSwiper">
 				{featuredBusinesses.map((item, index) => (
 					<SwiperSlide className="py-2" key={index}>
-						<Link href={`/businesses/${item.id}`}>
+						<Link href={`/biz/businesses/${item.id}`}>
 							<FeaturedCard item={item} />
 						</Link>
 					</SwiperSlide>

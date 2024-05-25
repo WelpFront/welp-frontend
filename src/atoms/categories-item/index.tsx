@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 
 const CategoriesItem = ({ text, icon }: { text: string; icon: string }) => {
 	return (

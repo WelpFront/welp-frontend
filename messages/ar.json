@@ -1,0 +1,48 @@
+{
+	"navbar": {
+		"home": "الصفحة الرئيسية",
+		"forBusinesses": "للأعمال التجارية",
+		"blog": "المدونة",
+		"addPlace": "إضافة مكان"
+	},
+	"footer": {
+		"importantLinks": "روابط هامة",
+		"bestPlatform": "منصة التقييمات الأفضل",
+		"contactUs": "تواصل معنا",
+		"address": "العنوان",
+		"phone": "الهاتف",
+		"email": "البريد الإلكتروني",
+		"copyRights": " حقوق النشر @ 2024",
+		"welpCo": " مؤسسة ويلب"
+	},
+	"home": {
+		"bestPlatform": "منصة التقييمات الأفضل",
+		"more": "المزيد",
+		"featuredBusinesses": "الأماكن المميزة",
+		"cities": "المدن",
+		"cairo": "القاهرة",
+		"alex": "الاسكندرية",
+		"hurghada": "الغردقة",
+		"giza": "الجيزة",
+		"sainai": "سيناء",
+		"download": "حمل التطبيق",
+		"available": " متاح على  Google Play و App Store",
+		"downloadItOn": "حمله عبر",
+		"getItOn": "احصل عليه عبر"
+	},
+	"business": {
+		"about": "الوصف",
+		"locationAndContact": "العنوان و طرق التواصل",
+		"noDescription": "لا يوجد وصف",
+		"noReviews": "لا يوجد تقييمات",
+		"reviews": "التقييمات",
+		"rating": "التقييم",
+		"menu": "المينيو",
+		"site": "الموقع",
+		"isOpened": "مفتوح",
+		"isClosed": "مغلق",
+		"review": "تقييم",
+		"seeAll": "عرض الكل",
+		"media": "الوسائط"
+	}
+}

@@ -1,12 +1,13 @@
 "use client";
 
+import { Link } from "navigation";
 import Image from "next/image";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { FaSearch, FaLocationArrow } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa6";
 
-const Navbar = () => {
+const Navbar = ({ translation }: { translation: any }) => {
 	const [opened, setOpened] = useState<boolean>(false);
 
 	const pathname = usePathname();
@@ -23,7 +24,7 @@ const Navbar = () => {
 			className={`${
 				opened ? "text-black  bg-white" : "text-white"
 			} shadow-none lg:bg-transparent absolute w-full`}>
-			<div className="flex items-center gap-5 md:gap-20 justify-between h-16 px-2 lg:h-32 md:px-10">
+			<div className="flex items-center gap-2 md:gap-12 justify-between h-16 px-2 lg:h-32 md:px-10">
 				<Link href={"/"}>
 					<Image
 						src="/logo.svg"
@@ -63,16 +64,19 @@ const Navbar = () => {
 						</button>
 					</div>
 				</div>
-				<div className="items-center justify-between hidden gap-10 lg:flex ">
+				<div className="items-center justify-between hidden gap-7 lg:flex  ">
 					<Link
-						className={`flex items-center justify-center gap-2 text-lg
+						className={`flex items-center justify-center gap-2 text-md whitespace-nowrap
 						${isActive("/") ? "text-yellow-400" : "hover:text-yellow-400"}`}
+						style={{
+							fontWeight: isActive("/") ? "bold" : undefined,
+						}}
 						href={"/"}>
-						Home
+						{translation.home}
 					</Link>
 
 					<Link
-						className={`flex items-center justify-center gap-2 text-lg ${
+						className={`flex items-center justify-center gap-2 whitespace-nowrap text-md ${
 							!isActive("/services", true) &&
 							"hover:text-yellow-400"
 						}`}
@@ -86,11 +90,11 @@ const Navbar = () => {
 								: undefined,
 						}}
 						href={"/#services"}>
-						services
+						{translation.forBusinesses}
 					</Link>
 
 					<Link
-						className={`flex items-center justify-center gap-2 text-lg ${
+						className={`  whitespace-nowrap text-md ${
 							!isActive("/about") && "hover:text-yellow-400"
 						}`}
 						style={{
@@ -100,10 +104,10 @@ const Navbar = () => {
 							fontWeight: isActive("/about") ? "bold" : undefined,
 						}}
 						href={"/about"}>
-						about
+						{translation.blog}
 					</Link>
 					<Link
-						className={`flex items-center justify-center gap-2 text-lg ${
+						className={`flex items-center justify-center gap-2 whitespace-nowrap bg-secondary p-2 rounded-full text-md ${
 							!isActive("/contact") && "hover:text-yellow-400"
 						}`}
 						style={{
@@ -115,7 +119,8 @@ const Navbar = () => {
 								: undefined,
 						}}
 						href={"/contact"}>
-						contact
+						<FaPlus />
+						{translation.addPlace}
 					</Link>
 				</div>
 

@@ -3,7 +3,7 @@
 import { CustomSwiper } from "atoms";
 import { SwiperSlide } from "swiper/react";
 
-const Cities = () => {
+const Cities = ({ translation }: { translation: any }) => {
 	const breakpoints = {
 		200: {
 			slidesPerView: 2,
@@ -17,18 +17,18 @@ const Cities = () => {
 	};
 
 	const cities = [
-		{ name: "Cairo", img: "/cairo.jpg" },
-		{ name: "Giza", img: "/giza.jpg" },
-		{ name: "Hurghada", img: "/hurghada.jpg" },
-		{ name: "Alexandria", img: "/alex.jpg" },
-		{ name: "Sainai", img: "/sainai.jpg" },
+		{ name: translation.cairo, img: "/cairo.jpg" },
+		{ name: translation.alex, img: "/giza.jpg" },
+		{ name: translation.hurghada, img: "/hurghada.jpg" },
+		{ name: translation.giza, img: "/alex.jpg" },
+		{ name: translation.sainai, img: "/sainai.jpg" },
 	];
 
 	return (
 		<div className="bg-gray-200 py-4 ">
 			<div>
 				<h1 className="text-center text-black text-3xl font-bold">
-					Cities
+					{translation.cities}
 				</h1>
 
 				<CustomSwiper

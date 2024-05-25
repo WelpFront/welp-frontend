@@ -4,10 +4,12 @@ import {
 	BusinessOpen,
 	BusinessReviews,
 	BusinessesHeader,
+	MediaSector,
 	MenuSector,
 	Rating,
 } from "components";
 import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { getBusiness } from "services";
 
 export async function generateMetadata({ params }: any): Promise<Metadata> {
@@ -34,7 +36,10 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
 const BusinessPage = async ({ params }: { params: { slug: string } }) => {
 	const { slug } = params;
 
+	const businessT = await getTranslations("business");
+
 	const {
+		id,
 		name,
 		city_name,
 		business_type,
@@ -47,6 +52,8 @@ const BusinessPage = async ({ params }: { params: { slug: string } }) => {
 		longitude,
 		is_opened,
 		reviews_stats,
+		products,
+		media,
 	} = await getBusiness(slug);
 
 	return (
@@ -58,14 +65,43 @@ const BusinessPage = async ({ params }: { params: { slug: string } }) => {
 			/>
 
 			<div className="grid grid-cols-12 gap-4 px-4 md:px-12 my-6">
-				<div className="col-span-12 md:col-span-8 ">
-					<AboutBusiness about={description} />
+				<div className="col-span-12 md:col-span-8 order-2 md:order-1 ">
+					<AboutBusiness
+						translation={{
+							about: businessT("about"),
+							noDescription: businessT("noDescription"),
+						}}
+						about={description}
+					/>
 
-					<BusinessReviews />
+					<BusinessReviews
+						businessSlug={id.toString()}
+						translation={{
+							noReviews: businessT("noReviews"),
+							reviews: businessT("reviews"),
+						}}
+					/>
 
-					<MenuSector />
+					{products?.length > 0 && (
+						<MenuSector
+							products={products}
+							slug={id}
+							translation={{
+								menu: businessT("menu"),
+								seeAll: businessT("seeAll"),
+							}}
+						/>
+					)}
+					{media?.length > 0 && (
+						<MediaSector
+							media={media}
+							translation={{
+								media: businessT("media"),
+							}}
+						/>
+					)}
 				</div>
-				<div className="col-span-12 md:col-span-4 ">
+				<div className="col-span-12 md:col-span-4  order-1 md:order-2">
 					<BusinessLocation
 						name={name}
 						lng={parseInt(longitude) || 31.224291}
@@ -74,11 +110,27 @@ const BusinessPage = async ({ params }: { params: { slug: string } }) => {
 						phone={phone_number}
 						location={location_name}
 						website={website}
+						translation={{
+							locationAndContact: businessT("locationAndContact"),
+							site: businessT("site"),
+						}}
 					/>
 
-					<BusinessOpen isOpened={is_opened} />
+					<BusinessOpen
+						isOpened={is_opened}
+						translation={{
+							isOpened: businessT("isOpened"),
+							isClosed: businessT("isClosed"),
+						}}
+					/>
 
-					<Rating ratingStats={reviews_stats} />
+					<Rating
+						translation={{
+							rating: businessT("rating"),
+							review: businessT("review"),
+						}}
+						ratingStats={reviews_stats}
+					/>
 				</div>
 			</div>
 		</div>
