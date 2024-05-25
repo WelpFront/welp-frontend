@@ -45,14 +45,14 @@ const DownloadApp = () => {
 			</div>
 			<div className=" flex-1 flex justify-center md:justify-normal align-center relative overflow-hidden order-1 md:order-2 ">
 				<Image
-					src="/iphone.svg"
+					src="/iPhone.svg"
 					width={150}
 					height={150}
-					alt="iphone"
+					alt="iPhone"
 					className="hidden md:block absolute left-8 -bottom-32"
 				/>
 				<Image
-					src="/iphone.svg"
+					src="/iPhone.svg"
 					width={150}
 					height={150}
 					alt="iphone"
