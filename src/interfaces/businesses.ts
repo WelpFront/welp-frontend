@@ -19,13 +19,14 @@ export interface ProductType {
 	price_before_discount: number;
 }
 
-interface ReviewsStats {
-	rating_1_count?: number;
-	rating_2_count?: number;
-	rating_3_count?: number;
-	rating_4_count?: number;
-	rating_5_count?: number;
-	reviews_count?: number;
+export interface ReviewsStats {
+	rating_1_count: number;
+	rating_2_count: number;
+	rating_3_count: number;
+	rating_4_count: number;
+	rating_5_count: number;
+	reviews_count: number;
+	rating_score: number;
 }
 
 export interface BusinessType {

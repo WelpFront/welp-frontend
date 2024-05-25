@@ -17,14 +17,15 @@ const Cities = () => {
 	};
 
 	const cities = [
-		{ name: "Cairo", img: "/zacks.png" },
-		{ name: "Giza", img: "/zacks.png" },
-		{ name: "Hurghada", img: "/zacks.png" },
-		{ name: "Alex", img: "/zacks.png" },
+		{ name: "Cairo", img: "/cairo.jpg" },
+		{ name: "Giza", img: "/giza.jpg" },
+		{ name: "Hurghada", img: "/hurghada.jpg" },
+		{ name: "Alexandria", img: "/alex.jpg" },
+		{ name: "Sainai", img: "/sainai.jpg" },
 	];
 
 	return (
-		<div className="bg-gray-200 py-4 my-4">
+		<div className="bg-gray-200 py-4 ">
 			<div>
 				<h1 className="text-center text-black text-3xl font-bold">
 					Cities
@@ -44,7 +45,8 @@ const Cities = () => {
 								style={{
 									background: ` url(${item.img})`,
 									backgroundRepeat: "no-repeat",
-									backgroundSize: "cover",
+									backgroundSize: "100% 100%",
+									backgroundPosition: "center",
 								}}>
 								{item.name}
 							</div>

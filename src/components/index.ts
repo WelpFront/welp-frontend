@@ -1,6 +1,9 @@
 import AboutBusiness from "./businesses/about";
 import BusinessesHeader from "./businesses/header";
 import BusinessLocation from "./businesses/location";
+import MenuSector from "./businesses/menu-sector";
+import BusinessOpen from "./businesses/open";
+import Rating from "./businesses/rating";
 import BusinessReviews from "./businesses/reviews";
 import BoostBusiness from "./home/boost-business";
 import Categories from "./home/categories";
@@ -17,10 +20,12 @@ import Footer from "./shared/footer";
 import Navbar from "./shared/navbar";
 
 export {
+	MenuSector,
 	AboutBusiness,
 	BoostBusiness,
 	Categories,
 	BusinessReviews,
+	BusinessOpen,
 	Footer,
 	Header,
 	BusinessesHeader,
@@ -29,6 +34,7 @@ export {
 	OpenApp,
 	Menu,
 	CategoriesSlider,
+	Rating,
 	ProductsList,
 	Navbar,
 	DownloadApp,

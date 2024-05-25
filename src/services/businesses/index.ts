@@ -11,11 +11,13 @@ export const getFeaturedBusinesses = async () => {
 };
 
 export const getBusiness = async (slug: string) => {
-	const { data } = await axios.get(
+	const { data: response } = await axios.get(
 		`${process.env.NEXT_PUBLIC_CLIENT_URL}/businesses/${slug}`
 	);
 
-	return data.data;
+	console.log(response.data);
+
+	return response.data;
 };
 
 export const getBusinessProductTypes = async (id: number) => {

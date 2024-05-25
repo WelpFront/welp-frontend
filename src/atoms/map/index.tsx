@@ -14,8 +14,6 @@ const CustomMap = ({
 }) => {
 	const mapRef = useRef<HTMLDivElement>(null);
 
-	console.log(lat, lng, name);
-
 	const initMap = async () => {
 		const loader = new Loader({
 			apiKey: process.env.NEXT_PUBLIC_MAPS_API_KEY as string,

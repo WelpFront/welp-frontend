@@ -5,14 +5,22 @@ import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from "react-icons/io";
 import { SlLocationPin } from "react-icons/sl";
 
 const FeaturedCard = ({ item }: { item: BusinessType }) => {
-	const ratingHandler = (rate?: number) => {
-		if (rate === undefined || rate === 0) {
-			return <IoIosStarOutline />;
-		} else if (rate > 0 && rate < 1) {
-			return <IoIosStarHalf className="text-yellow-500" />;
-		} else {
-			return <IoIosStar className="text-yellow-500" />;
+	const ratingHandler = (rate: number) => {
+		const stars = [];
+
+		for (let i = 1; i <= 5; i++) {
+			if (rate >= i) {
+				stars.push(<IoIosStar className="text-yellow-500" key={i} />);
+			} else if (rate >= i - 0.5) {
+				stars.push(
+					<IoIosStarHalf className="text-yellow-500" key={i} />
+				);
+			} else {
+				stars.push(<IoIosStarOutline key={i} />);
+			}
 		}
+
+		return stars;
 	};
 	return (
 		<div className="bg-white shadow-md rounded-md w-full h-80 cursor-pointer overflow-hidden hover:scale-95 duration-200">
@@ -38,11 +46,7 @@ const FeaturedCard = ({ item }: { item: BusinessType }) => {
 				)}
 			</div>
 			<div className="flex items-center flex-wrap gap-2 px-3 py-1">
-				{ratingHandler(item.reviews_stats?.rating_1_count)}
-				{ratingHandler(item.reviews_stats?.rating_2_count)}
-				{ratingHandler(item.reviews_stats?.rating_3_count)}
-				{ratingHandler(item.reviews_stats?.rating_4_count)}
-				{ratingHandler(item.reviews_stats?.rating_5_count)}(
+				{ratingHandler(item.reviews_stats?.rating_score || 0)}(
 				{item.reviews_stats?.reviews_count})
 			</div>
 			<div className="flex flex-wrap gap-2 px-3 py-1">

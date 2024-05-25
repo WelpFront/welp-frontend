@@ -21,7 +21,7 @@ const Navbar = () => {
 	return (
 		<nav
 			className={`${
-				opened ? "text-black md:text-white bg-white" : "text-white"
+				opened ? "text-black  bg-white" : "text-white"
 			} shadow-none lg:bg-transparent absolute w-full`}>
 			<div className="flex items-center gap-5 md:gap-20 justify-between h-16 px-2 lg:h-32 md:px-10">
 				<Link href={"/"}>

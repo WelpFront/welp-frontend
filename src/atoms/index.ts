@@ -3,6 +3,7 @@ import ItemCard from "./cards/item-card/index";
 import CategoriesItem from "./categories-item";
 import Chip from "./chip/index";
 import CircularLoader from "./loaders/circular";
+import ProgressBar from "./loaders/progress-bar";
 import ProductsLoader from "./loaders/skeleton/products";
 import TagsLoader from "./loaders/skeleton/tags";
 import CustomMap from "./map";
@@ -20,4 +21,5 @@ export {
 	CustomMap,
 	CategoriesItem,
 	FeaturedCard,
+	ProgressBar,
 };
