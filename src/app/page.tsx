@@ -1,20 +1,7 @@
-import { Categories, DownloadApp, Featured, Header, Cities } from "components";
-import { getCategoriesList, getFeaturedBusinesses } from "services";
+import { redirect } from "next/navigation";
 
-const HomePage = async () => {
-	const categories = await getCategoriesList();
-
-	const featuredBusinesses = await getFeaturedBusinesses();
-
-	return (
-		<>
-			<Header />
-			<Categories categories={categories} />
-			<Featured featuredBusinesses={featuredBusinesses} />
-			<Cities />
-			<DownloadApp />
-		</>
-	);
+const RootPage = () => {
+	redirect("/ar");
 };
 
-export default HomePage;
+export default RootPage;

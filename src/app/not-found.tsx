@@ -1,5 +1,4 @@
-import { Link } from "navigation";
-import React from "react";
+import Link from "next/link";
 
 const NotFound = () => {
 	return (
@@ -12,8 +11,8 @@ const NotFound = () => {
 						alignItems: "center",
 						justifyContent: "center",
 						height: "100vh",
-						background: "#fff",
-						color: " #17181c",
+						background: "#17181c",
+						color: "#fff",
 						fontFamily: " 'Poppins', sans-serif",
 					}}>
 					<p style={{ fontSize: 40 }}> 404 | Not Found </p>
@@ -35,7 +34,3 @@ const NotFound = () => {
 };
 
 export default NotFound;
-
-NotFound.getLayout = function PageLayout(page: any) {
-	return <div>{page}</div>;
-};

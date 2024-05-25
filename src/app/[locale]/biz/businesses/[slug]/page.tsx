@@ -9,10 +9,13 @@ import {
 	Rating,
 } from "components";
 import { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
+import { unstable_setRequestLocale, getTranslations } from "next-intl/server";
 import { getBusiness } from "services";
 
 export async function generateMetadata({ params }: any): Promise<Metadata> {
+	unstable_setRequestLocale(params.locale);
+
 	const { slug } = params;
 
 	const data = await getBusiness(slug);
@@ -33,10 +36,12 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
 		},
 	};
 }
-const BusinessPage = async ({ params }: { params: { slug: string } }) => {
+const BusinessPage = async ({ params }: { params: any }) => {
+	unstable_setRequestLocale(params.locale);
+
 	const { slug } = params;
 
-	const businessT = await getTranslations("business");
+	const businessT = useTranslations("business");
 
 	const {
 		id,
@@ -138,3 +143,9 @@ const BusinessPage = async ({ params }: { params: { slug: string } }) => {
 };
 
 export default BusinessPage;
+
+const locales = ["en", "ar"];
+
+export function generateStaticParams() {
+	return locales.map((locale) => ({ locale }));
+}

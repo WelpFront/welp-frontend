@@ -1,6 +1,7 @@
 import { Footer, Navbar } from "components";
 import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
+import { unstable_setRequestLocale } from "next-intl/server";
 import { Noto_Kufi_Arabic } from "next/font/google";
 import ClientProviders from "providers/client-providers";
 import "styles/globals.css";
@@ -19,11 +20,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
 	children,
+	params,
 }: Readonly<{
 	children: React.ReactNode;
+	params: any;
 }>) {
+	unstable_setRequestLocale(params.locale);
+
 	const navbarT = useTranslations("navbar");
+
 	const footerT = useTranslations("footer");
+
 	return (
 		<html lang="ar" dir="rtl">
 			<body className={kufi.className}>
@@ -51,4 +58,10 @@ export default function RootLayout({
 			</body>
 		</html>
 	);
+}
+
+const locales = ["en", "ar"];
+
+export function generateStaticParams() {
+	return locales.map((locale) => ({ locale }));
 }
