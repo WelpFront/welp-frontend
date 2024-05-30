@@ -1,12 +1,11 @@
 import { Categories, DownloadApp, Featured, Header, Cities } from "components";
-import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale, getTranslations } from "next-intl/server";
 import { getCategoriesList, getFeaturedBusinesses } from "services";
 
 const HomePage = async ({ params }: { params: any }) => {
 	unstable_setRequestLocale(params.locale);
 
-	const homeT = useTranslations("home");
+	const homeT = await getTranslations("home");
 
 	const categories = await getCategoriesList();
 
@@ -48,3 +47,9 @@ const HomePage = async ({ params }: { params: any }) => {
 };
 
 export default HomePage;
+
+const locales = ["en", "ar"];
+
+export function generateStaticParams() {
+	return locales.map((locale) => ({ locale }));
+}

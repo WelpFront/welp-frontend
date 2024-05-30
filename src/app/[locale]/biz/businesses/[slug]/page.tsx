@@ -9,7 +9,6 @@ import {
 	Rating,
 } from "components";
 import { Metadata } from "next";
-import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale, getTranslations } from "next-intl/server";
 import { getBusiness } from "services";
 
@@ -41,7 +40,7 @@ const BusinessPage = async ({ params }: { params: any }) => {
 
 	const { slug } = params;
 
-	const businessT = useTranslations("business");
+	const businessT = await getTranslations("business");
 
 	const {
 		id,
@@ -143,9 +142,3 @@ const BusinessPage = async ({ params }: { params: any }) => {
 };
 
 export default BusinessPage;
-
-const locales = ["en", "ar"];
-
-export function generateStaticParams() {
-	return locales.map((locale) => ({ locale }));
-}
