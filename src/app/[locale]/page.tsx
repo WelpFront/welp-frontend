@@ -4,12 +4,11 @@ import { getCategoriesList, getFeaturedBusinesses } from "services";
 
 const HomePage = async ({ params }: { params: any }) => {
 	unstable_setRequestLocale(params.locale);
-
-	const homeT = await getTranslations("home");
-
 	const categories = await getCategoriesList();
 
 	const featuredBusinesses = await getFeaturedBusinesses();
+
+	const homeT = await getTranslations("home");
 
 	return (
 		<>
