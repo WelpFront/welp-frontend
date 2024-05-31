@@ -24,14 +24,33 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
 		},
 	};
 }
-const MenuPage = async ({ params }: any) => {
+
+export function getInitialProps({ ctx }: { ctx: any }) {
+	let isMobileView = (
+		ctx.req ? ctx.req.headers["user-agent"] : navigator.userAgent
+	).match(
+		/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
+	);
+
+	//Returning the isMobileView as a prop to the component for further use.
+	return {
+		isMobileView: Boolean(isMobileView),
+	};
+}
+const MenuPage = async ({
+	params,
+	isMobileDevice,
+}: {
+	params: any;
+	isMobileDevice: boolean;
+}) => {
 	const { slug } = params;
 
 	const business = await getBusiness(slug);
 
 	return (
 		<div>
-			<OpenApp />
+			{isMobileDevice && <OpenApp />}
 			<BusinessHeader business={business} />
 			<Menu slug={business.id} />
 		</div>
