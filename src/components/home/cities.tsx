@@ -18,9 +18,9 @@ const Cities = ({ translation }: { translation: any }) => {
 
 	const cities = [
 		{ name: translation.cairo, img: "/cairo.jpg" },
-		{ name: translation.alex, img: "/giza.jpg" },
+		{ name: translation.giza, img: "/giza.jpg" },
 		{ name: translation.hurghada, img: "/hurghada.jpg" },
-		{ name: translation.giza, img: "/alex.jpg" },
+		{ name: translation.alex, img: "/alex.jpg" },
 		{ name: translation.sainai, img: "/sainai.jpg" },
 	];
 

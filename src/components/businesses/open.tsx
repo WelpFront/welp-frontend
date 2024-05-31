@@ -22,7 +22,7 @@ const BusinessOpen = ({
 					<div className="bg-red-500 text-white rounded-md p-1">
 						<IoLockClosed />
 					</div>
-					{translation.isCloseded}
+					{translation.isClosed}
 				</div>
 			)}
 		</div>

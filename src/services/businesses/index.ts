@@ -15,8 +15,6 @@ export const getBusiness = async (slug: string) => {
 		`${process.env.NEXT_PUBLIC_CLIENT_URL}/businesses/${slug}`
 	);
 
-	console.log(response.data);
-
 	return response.data;
 };
 

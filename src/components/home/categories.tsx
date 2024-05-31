@@ -11,9 +11,9 @@ const Categories = ({
 	const filteredCategories = [
 		categories[0],
 		categories[1],
-		categories[10],
-		categories[7],
-		categories[8],
+		categories[2],
+		categories[3],
+		categories[4],
 	];
 
 	return (

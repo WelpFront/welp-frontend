@@ -19,6 +19,7 @@ const HomePage = async ({ params }: { params: any }) => {
 				translation={{ more: homeT("more") }}
 			/>
 			<Featured
+				locale={params.locale}
 				featuredBusinesses={featuredBusinesses}
 				translation={{
 					featuredBusinesses: homeT("featuredBusinesses"),

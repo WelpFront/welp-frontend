@@ -30,7 +30,7 @@ const Rating = ({
 
 	return (
 		<div>
-			<h3 className="text-xl">{translation.rating}</h3>
+			<h3 className="text-xl my-1">{translation.rating}</h3>
 
 			<div className=" p-3 w-full rounded-xl overflow-hidden border-1 border-solid border-gray-100 flex flex-col items-start justify-center">
 				<div className="flex w-full items-center justify-center gap-5">

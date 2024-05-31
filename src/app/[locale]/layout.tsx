@@ -40,6 +40,8 @@ export default function RootLayout({
 						forBusinesses: navbarT("forBusinesses"),
 						blog: navbarT("blog"),
 						addPlace: navbarT("addPlace"),
+						ex: navbarT("ex"),
+						where: navbarT("where"),
 					}}
 				/>
 				<ClientProviders>{children}</ClientProviders>

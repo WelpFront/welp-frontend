@@ -5,9 +5,11 @@ import MenuSectorCard from "./cards/menu-sector-card";
 import ReviewCard from "./cards/review-card";
 import CategoriesItem from "./categories-item";
 import Chip from "./chip/index";
+import SearchInput from "./inputs/search-input";
 import CircularLoader from "./loaders/circular";
 import ProgressBar from "./loaders/progress-bar";
 import ProductsLoader from "./loaders/skeleton/products";
+import ReviewsLoader from "./loaders/skeleton/reviews";
 import TagsLoader from "./loaders/skeleton/tags";
 import CustomMap from "./map";
 import Modal from "./modal/index";
@@ -19,7 +21,9 @@ export {
 	Chip,
 	ItemCard,
 	MenuSectorCard,
+	SearchInput,
 	Modal,
+	ReviewsLoader,
 	ReviewCard,
 	TagsLoader,
 	ProductsLoader,

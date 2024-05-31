@@ -9,9 +9,11 @@ import { SwiperSlide } from "swiper/react";
 const Featured = ({
 	featuredBusinesses,
 	translation,
+	locale,
 }: {
 	featuredBusinesses: Array<BusinessType>;
 	translation: any;
+	locale: string;
 }) => {
 	const breakpoints = {
 		200: {
@@ -38,7 +40,7 @@ const Featured = ({
 				{featuredBusinesses.map((item, index) => (
 					<SwiperSlide className="py-2" key={index}>
 						<Link href={`/biz/businesses/${item.id}`}>
-							<FeaturedCard item={item} />
+							<FeaturedCard item={item} locale={locale} />
 						</Link>
 					</SwiperSlide>
 				))}

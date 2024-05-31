@@ -9,7 +9,7 @@ const AboutBusiness = ({
 }) => {
 	return (
 		<div className="text-start">
-			<h3 className="text-xl">{translation.about}</h3>
+			<h3 className="text-xl my-1">{translation.about}</h3>
 			<div
 				className={`border-1 border-solid border-gray-100 p-3 rounded-xl text-justify  ${
 					about.length === 0 &&

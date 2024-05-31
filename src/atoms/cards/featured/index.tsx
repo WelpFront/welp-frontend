@@ -4,7 +4,13 @@ import Image from "next/image";
 import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from "react-icons/io";
 import { SlLocationPin } from "react-icons/sl";
 
-const FeaturedCard = ({ item }: { item: BusinessType }) => {
+const FeaturedCard = ({
+	item,
+	locale = "ar",
+}: {
+	item: BusinessType;
+	locale: string;
+}) => {
 	const ratingHandler = (rate: number) => {
 		const stars = [];
 
@@ -13,7 +19,12 @@ const FeaturedCard = ({ item }: { item: BusinessType }) => {
 				stars.push(<IoIosStar className="text-yellow-500" key={i} />);
 			} else if (rate >= i - 0.5) {
 				stars.push(
-					<IoIosStarHalf className="text-yellow-500" key={i} />
+					<IoIosStarHalf
+						className={`text-yellow-500 ${
+							locale === "ar" && "rotate-[215deg] "
+						}`}
+						key={i}
+					/>
 				);
 			} else {
 				stars.push(<IoIosStarOutline key={i} />);
@@ -22,6 +33,7 @@ const FeaturedCard = ({ item }: { item: BusinessType }) => {
 
 		return stars;
 	};
+
 	return (
 		<div className="bg-white shadow-md rounded-md w-full h-80 cursor-pointer overflow-hidden hover:scale-95 duration-200">
 			<Image

@@ -13,9 +13,9 @@ const MenuSector = ({
 }) => {
 	return (
 		<div>
-			<h3 className="text-xl">{translation.menu}</h3>
+			<h3 className="text-xl my-1">{translation.menu}</h3>
 			<div className=" p-3 w-full rounded-xl overflow-hidden border-1 border-solid border-gray-100">
-				<div className="grid grid-cols-3 gap-3">
+				<div className="grid grid-cols-1 md:grid-cols-3 gap-3">
 					{products.map((item) => (
 						<MenuSectorCard key={item.id} item={item} />
 					))}

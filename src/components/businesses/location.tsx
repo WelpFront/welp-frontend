@@ -27,7 +27,7 @@ const BusinessLocation = ({
 }) => {
 	return (
 		<div className="">
-			<h3 className="text-xl">{translation.locationAndContact}</h3>
+			<h3 className="text-xl my-1">{translation.locationAndContact}</h3>
 			<div className="rounded-xl overflow-hidden border-1 border-solid border-gray-100 text-gray-500 ">
 				<CustomMap lng={lng} lat={lat} name={name} />
 				{location && (
