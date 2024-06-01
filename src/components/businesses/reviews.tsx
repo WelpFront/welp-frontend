@@ -2,6 +2,7 @@
 
 import { ReviewCard, ReviewsLoader } from "atoms";
 import { useBusinessReviewsList } from "hooks";
+import { useMemo } from "react";
 
 const BusinessReviews = ({
 	translation,
@@ -12,12 +13,20 @@ const BusinessReviews = ({
 }) => {
 	const { loading, reviews, count } = useBusinessReviewsList(businessSlug);
 
+	const loaders = useMemo(() => {
+		const loaders = [];
+		for (let i = 0; i < 4; i++) {
+			loaders.push(<ReviewsLoader key={i} />); // Add ProductsLoader component to the array
+		}
+		return loaders;
+	}, []);
+
 	return (
 		<div className="my-10">
 			<h3 className="text-xl my-1">{translation.reviews}</h3>
 
 			{loading ? (
-				<ReviewsLoader />
+				<>{loaders}</>
 			) : (
 				<div
 					className={`flex flex-col  border-1 border-solid border-gray-100 p-3 rounded-xl text-xs md:text-md

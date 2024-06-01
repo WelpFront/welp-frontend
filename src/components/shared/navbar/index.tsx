@@ -1,9 +1,12 @@
 "use client";
 
 import { SearchInput } from "atoms";
+import { getCookie, setCookie } from "cookies-next";
+// @ts-ignore
+import * as lookup from "coordinate_to_country";
 import { Link, usePathname } from "navigation";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa6";
 
 const Navbar = ({ translation }: { translation: any }) => {
@@ -22,6 +25,31 @@ const Navbar = ({ translation }: { translation: any }) => {
 	const toggleOpenedHandler = () => {
 		setOpened((prev) => !prev);
 	};
+
+	useEffect(() => {
+		if (navigator.geolocation && !getCookie("location")) {
+			navigator.geolocation.getCurrentPosition(
+				successFunction,
+				errorFunction
+			);
+		}
+	}, []);
+
+	function successFunction(position: any) {
+		const { coords } = position;
+
+		const country = lookup(coords.longitude, coords.latitude, true);
+
+		setCookie("location", {
+			country: country[0],
+			long: coords.longitude,
+			lat: coords.latitude,
+		});
+	}
+
+	function errorFunction() {
+		console.log("Unable to retrieve your location.");
+	}
 
 	return (
 		<div

@@ -26,8 +26,6 @@ const Rating = ({
 		return 0;
 	};
 
-	console.log(getPercentage(rating_5_count));
-
 	return (
 		<div>
 			<h3 className="text-xl my-1">{translation.rating}</h3>

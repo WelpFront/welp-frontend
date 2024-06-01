@@ -32,33 +32,31 @@ export default function RootLayout({
 	const footerT = useTranslations("footer");
 
 	return (
-		<html lang="ar" dir="rtl">
-			<body className={kufi.className}>
-				<Navbar
-					translation={{
-						home: navbarT("home"),
-						forBusinesses: navbarT("forBusinesses"),
-						blog: navbarT("blog"),
-						addPlace: navbarT("addPlace"),
-						ex: navbarT("ex"),
-						where: navbarT("where"),
-					}}
-				/>
-				<ClientProviders>{children}</ClientProviders>
-				<Footer
-					translation={{
-						importantLinks: footerT("importantLinks"),
-						bestPlatform: footerT("bestPlatform"),
-						contactUs: footerT("contactUs"),
-						address: footerT("address"),
-						phone: footerT("phone"),
-						email: footerT("email"),
-						copyRights: footerT("copyRights"),
-						welpCo: footerT("welpCo"),
-					}}
-				/>
-			</body>
-		</html>
+		<section className={kufi.className}>
+			<Navbar
+				translation={{
+					home: navbarT("home"),
+					forBusinesses: navbarT("forBusinesses"),
+					blog: navbarT("blog"),
+					addPlace: navbarT("addPlace"),
+					ex: navbarT("ex"),
+					where: navbarT("where"),
+				}}
+			/>
+			<ClientProviders>{children}</ClientProviders>
+			<Footer
+				translation={{
+					importantLinks: footerT("importantLinks"),
+					bestPlatform: footerT("bestPlatform"),
+					contactUs: footerT("contactUs"),
+					address: footerT("address"),
+					phone: footerT("phone"),
+					email: footerT("email"),
+					copyRights: footerT("copyRights"),
+					welpCo: footerT("welpCo"),
+				}}
+			/>
+		</section>
 	);
 }
 

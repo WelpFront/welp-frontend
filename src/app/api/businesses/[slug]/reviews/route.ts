@@ -18,8 +18,6 @@ export async function GET(request: Request, context: any) {
 		}
 		const { data: response } = await axiosServerBase.get(url);
 
-		console.log(response, "res");
-
 		return Response.json({
 			status: 200,
 			message: "success",

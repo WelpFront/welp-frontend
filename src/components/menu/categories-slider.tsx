@@ -19,7 +19,7 @@ const CategoriesSlider = ({ slug }: { slug: number }) => {
 	const loaders = useMemo(() => {
 		const loaders = [];
 		for (let i = 0; i < 4; i++) {
-			loaders.push(<TagsLoader key={i} />); // Add ProductsLoader component to the array
+			loaders.push(<TagsLoader key={i} />);
 		}
 		return loaders;
 	}, []);

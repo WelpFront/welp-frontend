@@ -11,6 +11,8 @@
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.16.6",
     "axios": "^1.6.8",
+    "cookies-next": "^4.2.1",
+    "coordinate_to_country": "^1.1.0",
     "next": "14.2.3",
     "next-intl": "^3.14.1",
     "next-nprogress-bar": "^2.3.12",

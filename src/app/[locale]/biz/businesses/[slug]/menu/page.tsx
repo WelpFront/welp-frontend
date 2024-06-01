@@ -1,5 +1,6 @@
 import { BusinessHeader, Menu, OpenApp } from "components";
 import { Metadata } from "next";
+import { headers } from "next/headers";
 import { ReactNode } from "react";
 import { getBusiness } from "services";
 
@@ -25,32 +26,22 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
 	};
 }
 
-export function getInitialProps({ ctx }: { ctx: any }) {
-	let isMobileView = (
-		ctx.req ? ctx.req.headers["user-agent"] : navigator.userAgent
-	).match(
-		/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
+const MenuPage = async ({ params }: { params: any }) => {
+	const headersList = headers();
+
+	const userAgent = headersList.get("user-agent");
+
+	const isMobile = new RegExp("Mobile|Android|iP(ad|od|hone)").test(
+		userAgent || ""
 	);
 
-	//Returning the isMobileView as a prop to the component for further use.
-	return {
-		isMobileView: Boolean(isMobileView),
-	};
-}
-const MenuPage = async ({
-	params,
-	isMobileDevice,
-}: {
-	params: any;
-	isMobileDevice: boolean;
-}) => {
 	const { slug } = params;
 
 	const business = await getBusiness(slug);
 
 	return (
 		<div>
-			{isMobileDevice && <OpenApp />}
+			{isMobile && <OpenApp />}
 			<BusinessHeader business={business} />
 			<Menu slug={business.id} />
 		</div>
