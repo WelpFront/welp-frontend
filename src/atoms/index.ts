@@ -13,6 +13,7 @@ import ReviewsLoader from "./loaders/skeleton/reviews";
 import TagsLoader from "./loaders/skeleton/tags";
 import CustomMap from "./map";
 import Modal from "./modal/index";
+import CustomPagination from "./pagination";
 import CustomSwiper from "./slider";
 
 export {
@@ -24,6 +25,7 @@ export {
 	SearchInput,
 	Modal,
 	ReviewsLoader,
+	CustomPagination,
 	ReviewCard,
 	TagsLoader,
 	ProductsLoader,

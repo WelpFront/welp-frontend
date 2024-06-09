@@ -1,6 +1,8 @@
-import { CustomMap } from "atoms";
+"use client";
+
 import { Link } from "navigation";
-import React from "react";
+import dynamic from "next/dynamic";
+import React, { useMemo } from "react";
 import { FaPhoneVolume } from "react-icons/fa6";
 import { RiGlobalFill } from "react-icons/ri";
 import { SiWhatsapp } from "react-icons/si";
@@ -25,11 +27,21 @@ const BusinessLocation = ({
 	website: string;
 	translation: any;
 }) => {
+	const CustomMap = useMemo(
+		() =>
+			dynamic(() => import("atoms/map"), {
+				loading: () => <p>A map is loading</p>,
+				ssr: false,
+			}),
+		[]
+	);
 	return (
-		<div className="">
+		<div>
 			<h3 className="text-xl my-1">{translation.locationAndContact}</h3>
-			<div className="rounded-xl overflow-hidden border-1 border-solid border-gray-100 text-gray-500 ">
-				<CustomMap lng={lng} lat={lat} name={name} />
+			<div className="rounded-3xl overflow-hidden border-1 border-solid border-gray-100 text-gray-500 ">
+				<div className="w-full h-[40vh]">
+					<CustomMap lng={lng} lat={lat} name={name} />
+				</div>
 				{location && (
 					<>
 						<hr />

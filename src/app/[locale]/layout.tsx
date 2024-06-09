@@ -32,7 +32,7 @@ export default function RootLayout({
 	const footerT = useTranslations("footer");
 
 	return (
-		<section className={kufi.className}>
+		<div className={kufi.className}>
 			<Navbar
 				translation={{
 					home: navbarT("home"),
@@ -54,9 +54,17 @@ export default function RootLayout({
 					email: footerT("email"),
 					copyRights: footerT("copyRights"),
 					welpCo: footerT("welpCo"),
+					getItOn: footerT("getItOn"),
+					downloadItOn: footerT("downloadItOn"),
+					download: footerT("download"),
+					usa: footerT("usa"),
+					losAngles: footerT("losAngles"),
+					egypt: footerT("egypt"),
+					cairo: footerT("cairo"),
+					offices: footerT("offices"),
 				}}
 			/>
-		</section>
+		</div>
 	);
 }
 

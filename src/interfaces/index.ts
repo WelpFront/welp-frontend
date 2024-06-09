@@ -5,6 +5,7 @@ import type {
 	BusinessType,
 	ReviewsStats,
 	MediaType,
+	FacilitiesType,
 } from "./businesses";
 import type { CategoryType, CategoryChildType } from "./categories";
 import type { ReviewType } from "./reviews";
@@ -19,6 +20,7 @@ export {
 	CategoryChildType,
 	UserType,
 	BusinessType,
+	FacilitiesType,
 	ReviewType,
 	MediaType,
 };

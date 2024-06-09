@@ -1,4 +1,3 @@
-import { Footer, Navbar } from "components";
 import type { Metadata } from "next";
 import { Noto_Kufi_Arabic } from "next/font/google";
 import ClientProviders from "providers/client-providers";

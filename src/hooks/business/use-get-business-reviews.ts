@@ -6,7 +6,7 @@ import { getBusinessReviews } from "services";
 const useBusinessReviewsList = (businessSlug: string) => {
 	const [reviews, setReviews] = useState<Array<ReviewType>>([]);
 	const [page, setPage] = useState<number>(1);
-	const [loading, setLoading] = useState<boolean>(false);
+	const [loading, setLoading] = useState<boolean>(true);
 	const [count, setCount] = useState<number>(0);
 
 	const fetchReviewsHandler = async () => {
@@ -33,6 +33,7 @@ const useBusinessReviewsList = (businessSlug: string) => {
 		reviews,
 		count,
 		loading,
+		page,
 	};
 };
 

@@ -2,20 +2,26 @@
 
 import { Chip, TagsLoader } from "atoms";
 import { useCategoriesList } from "hooks";
-import { ProductTypesType } from "interfaces";
+import { CategoryType, ProductTypesType } from "interfaces";
 import { useMemo } from "react";
 
-const CategoriesSlider = ({ slug }: { slug: number }) => {
-	const {
-		active,
-		data,
-		loading,
-		pathname,
-		router,
-		setActive,
-		createQueryString,
-	} = useCategoriesList(slug);
-
+const CategoriesSlider = ({
+	active,
+	data,
+	loading,
+	pathname,
+	router,
+	setActive,
+	createQueryString,
+}: {
+	active: number | null;
+	data: Array<CategoryType>;
+	loading: boolean;
+	pathname: string;
+	router: any;
+	setActive: (state: number) => void;
+	createQueryString: Function;
+}) => {
 	const loaders = useMemo(() => {
 		const loaders = [];
 		for (let i = 0; i < 4; i++) {

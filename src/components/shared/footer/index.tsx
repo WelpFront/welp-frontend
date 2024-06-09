@@ -5,8 +5,8 @@ import React from "react";
 const Footer = ({ translation }: { translation: any }) => {
 	return (
 		<div className="flex flex-col gap-4">
-			<div className="flex flex-col md:flex-row bg-white rounded-t-3xl shadow-inner py-2 items-center md:items-start justify-start  md:justify-around gap-5 md:gap-2">
-				<div className="flex flex-col gap-2 items-center justify-center">
+			<div className="flex flex-col md:flex-row bg-white rounded-t-3xl shadow-inner py-2 px-10 items-center md:items-start justify-start  md:justify-around gap-5 md:gap-14">
+				<div className="flex flex-col gap-2 w-full items-center justify-center">
 					<Image
 						src="/logo.svg"
 						width={100}
@@ -36,23 +36,39 @@ const Footer = ({ translation }: { translation: any }) => {
 						/>
 					</div>
 				</div>
-				<div className="flex flex-col items-start justify-start gap-2 ">
+				<div className="flex w-full flex-col items-start justify-start gap-2 md:ps-10">
 					<h1 className="text-lg"> {translation.importantLinks}</h1>
-					<ol className="text-gray-500 list-disc ms-5">
+					<ol className="text-gray-500 list-disc ms-5 flex flex-col gap-3 text-sm">
 						<li>Home</li>
-						<li>Home</li>
-						<li>Home</li>
-						<li>Home</li>
+						<li>For Business</li>
+						<li>Blog</li>
+						<li>About Us</li>
+						<li>Terms & Conditions</li>
+						<li>Privacy of policy</li>
 					</ol>
 				</div>
-				<div className="flex flex-col items-start justify-start gap-2 ">
+				<div className="flex flex-col w-full items-start justify-start gap-2 text-sm ">
+					<h1 className="text-lg">{translation.offices}</h1>
+					<div className=" flex flex-col items-start justify-center text-gray-500">
+						<p className="flex gap-1 text-sm">
+							{translation.usa}:
+							<span className="text-xs">
+								{" "}
+								{translation.losAngles}
+							</span>
+						</p>
+						<p className="flex gap-1 my-2 text-sm">
+							{translation.egypt}:<span>{translation.cairo}</span>
+						</p>
+					</div>
 					<h1 className="text-lg">{translation.contactUs}</h1>
 					<div className=" flex flex-col items-start justify-center text-gray-500">
 						<p className="flex gap-1">
 							{translation.address}: California
 						</p>
 						<p className="flex gap-1">
-							{translation.phone}: +1 (949) 993-8566
+							{translation.phone}:{" "}
+							<span dir="ltr"> +1 (949) 993-8566</span>
 						</p>
 						<p className="flex gap-1">
 							{translation.email} :{" "}
@@ -64,6 +80,41 @@ const Footer = ({ translation }: { translation: any }) => {
 							</Link>
 						</p>
 					</div>
+				</div>
+				<div className="flex flex-col w-full items-start justify-start gap-2 ">
+					<h1 className="text-lg"> {translation.download}</h1>
+					<button className="bg-black p-3 text-white rounded-md flex text-sm items-center gap-1 min-w-40">
+						<Image
+							src={"/google-play.svg"}
+							width={30}
+							height={30}
+							alt="google"
+						/>
+						<div className="flex flex-col items-start">
+							<p className="text-xs font-light tracking-tighter">
+								{translation.getItOn}
+							</p>
+							<p className="text-sm md:text-md tracking-widest">
+								Google Play
+							</p>
+						</div>
+					</button>
+					<button className="bg-black p-3 text-white rounded-md flex text-sm items-center gap-1 min-w-40">
+						<Image
+							src={"/apple.svg"}
+							width={30}
+							height={30}
+							alt="apple"
+						/>
+						<div className="flex flex-col items-start">
+							<p className="text-xs font-light tracking-tighter">
+								{translation.downloadItOn}
+							</p>
+							<p className="text-sm md:text-md tracking-widest">
+								App Store{" "}
+							</p>
+						</div>
+					</button>
 				</div>
 			</div>
 

@@ -1,9 +1,13 @@
+"use client";
+
 import { Chip } from "atoms";
+import { Link } from "navigation";
 import Image from "next/image";
 import { getOpenedHourHandler } from "utils";
 
 const BusinessHeader = ({ business }: any) => {
 	const {
+		slug,
 		name,
 		cover_image,
 		description,
@@ -16,7 +20,7 @@ const BusinessHeader = ({ business }: any) => {
 	return (
 		<div className="flex gap-2 bg-gray-50 p-3 my-4">
 			<Image
-				className="rounded-md object-cover"
+				className="rounded-md object-cover w-32 h-36"
 				src={cover_image}
 				height={100}
 				width={150}
@@ -24,7 +28,11 @@ const BusinessHeader = ({ business }: any) => {
 			/>
 			<div className="w-full flex-1 flex flex-col gap-4">
 				<div className="flex justify-between ">
-					<h1 className="text-black font-extrabold">{name}</h1>
+					<Link
+						href={`/biz/businesses/${slug}`}
+						className="text-black font-extrabold">
+						{name}
+					</Link>
 
 					{!!reviews_stats.rating_score && (
 						<Chip

@@ -1,52 +1,53 @@
 "use client";
 
-import { Loader } from "@googlemaps/js-api-loader";
-import { useEffect, useRef } from "react";
+import { Icon, LatLngExpression } from "leaflet";
+import "leaflet/dist/leaflet.css";
+import { useEffect, useState } from "react";
+import { MapContainer, Marker, TileLayer, Popup } from "react-leaflet";
 
-const CustomMap = ({
-	lng,
-	lat,
-	name,
-}: {
+interface CustomMapProps {
 	lng: number;
 	lat: number;
 	name: string;
-}) => {
-	const mapRef = useRef<HTMLDivElement>(null);
+}
 
-	const initMap = async () => {
-		const loader = new Loader({
-			apiKey: process.env.NEXT_PUBLIC_MAPS_API_KEY as string,
-		});
+const CustomMap: React.FC<CustomMapProps> = ({ lng, lat, name }) => {
+	const position: LatLngExpression = [lat, lng];
 
-		const { Map } = await loader.importLibrary("maps");
+	const [domLoaded, setDomLoaded] = useState(false);
 
-		const { Marker } = (await loader.importLibrary(
-			"marker"
-		)) as google.maps.MarkerLibrary;
-
-		const position = {
-			lat,
-			lng,
-		};
-
-		const mapOptions: google.maps.MapOptions = {
-			center: position,
-			zoom: 17,
-			mapId: name,
-		};
-
-		const map = new Map(mapRef.current as HTMLDivElement, mapOptions);
-
-		const makrer = new Marker({
-			map,
-			position,
-		});
-	};
 	useEffect(() => {
-		initMap();
+		setDomLoaded(true);
 	}, []);
-	return <div className="w-full h-48" ref={mapRef} />;
+
+	if (!domLoaded) return null;
+	return (
+		<>
+			{domLoaded && (
+				<MapContainer
+					className="w-full h-full"
+					center={position}
+					zoom={20}
+					scrollWheelZoom={true}>
+					<TileLayer
+						attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+						url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+					/>
+					<Marker
+						position={position}
+						icon={
+							new Icon({
+								iconUrl: "/location.webp",
+								iconSize: [25, 25],
+								iconAnchor: [12, 41],
+							})
+						}>
+						<Popup>{name}</Popup>
+					</Marker>
+				</MapContainer>
+			)}
+		</>
+	);
 };
 
 export default CustomMap;

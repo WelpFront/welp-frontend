@@ -1,13 +1,12 @@
-import { ProductTypesType } from "interfaces";
-import { usePathname, useSearchParams } from "next/navigation";
-import { useRouter } from "next/navigation";
+import { CategoryType } from "interfaces";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { getBusinessProductTypes } from "services";
 
 const useCategoriesList = (slug: number) => {
 	const [loading, setLoading] = useState(true);
 
-	const [data, setData] = useState<Array<ProductTypesType>>([]);
+	const [data, setData] = useState<Array<CategoryType>>([]);
 
 	const router = useRouter();
 

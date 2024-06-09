@@ -1,16 +1,20 @@
 "use client";
 
 import { CircularLoader, ItemCard, ProductsLoader } from "atoms";
-import { useGetLastElement, useProductsList } from "hooks";
+import { ProductType } from "interfaces";
 import { useMemo } from "react";
 
-const ProductsList = () => {
-	const { data, hasMore, loading, pagesLoading, setPage } = useProductsList();
-
-	const { lastElement } = useGetLastElement(pagesLoading, hasMore, () =>
-		setPage((prev) => prev + 1)
-	);
-
+const ProductsList = ({
+	data,
+	loading,
+	pagesLoading,
+	lastElement,
+}: {
+	data: any;
+	loading: boolean;
+	pagesLoading: boolean;
+	lastElement: any;
+}) => {
 	const loaders = useMemo(() => {
 		const loaders = [];
 		for (let i = 0; i < 4; i++) {
@@ -20,10 +24,10 @@ const ProductsList = () => {
 	}, []);
 
 	return (
-		<div className=" overflow-auto" style={{ height: "52vh" }}>
+		<div className=" overflow-auto h-screen">
 			{loading
 				? loaders
-				: data?.results.map((item, index) => {
+				: data?.results.map((item: ProductType, index: number) => {
 						return (
 							<div
 								ref={

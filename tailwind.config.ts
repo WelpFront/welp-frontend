@@ -21,6 +21,9 @@ const config: Config = {
 					100: "#FFF7E2",
 					200: "#FFEEC0",
 				},
+				yellow: {
+					main: "#F3B301",
+				},
 			},
 			height: {
 				"128": "50vh",

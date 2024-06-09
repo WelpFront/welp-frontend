@@ -17,7 +17,7 @@ const ItemCard = ({ item }: { item: ProductType }) => {
 
 	return (
 		<>
-			<Modal data={data}>
+			<Modal className={"w-full max-w-sm"} data={data}>
 				<Image
 					src={item.image}
 					className=" rounded-md object-cover h-auto w-auto"

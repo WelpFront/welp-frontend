@@ -6,7 +6,15 @@ interface Data {
 	isOpened: boolean;
 }
 
-const Modal = ({ data, children }: { data: Data; children: ReactNode }) => {
+const Modal = ({
+	data,
+	children,
+	className,
+}: {
+	data: Data;
+	children: ReactNode;
+	className?: string;
+}) => {
 	const { setIsOpened, isOpened } = data;
 
 	const handleClose = () => setIsOpened(false);
@@ -19,7 +27,7 @@ const Modal = ({ data, children }: { data: Data; children: ReactNode }) => {
 					<div className="flex items-center justify-center min-h-screen px-4 pt-4">
 						<div
 							onClick={(e) => e.stopPropagation()}
-							className="w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-md relative">
+							className={` overflow-hidden bg-white rounded-lg shadow-md relative ${className}`}>
 							<div className="top-2  cursor-pointer text-3xl mt-2 w-full flex items-end justify-end px-4">
 								<button
 									className="left-10"
@@ -32,7 +40,7 @@ const Modal = ({ data, children }: { data: Data; children: ReactNode }) => {
 									/>
 								</button>
 							</div>
-							<div className="flex flex-col px-4 py-2 text-black">
+							<div className="flex flex-col px-4 py-2 text-black h-full w-full">
 								{children}
 							</div>
 						</div>

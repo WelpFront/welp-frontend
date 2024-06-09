@@ -2,8 +2,10 @@ import {
 	AboutBusiness,
 	BusinessLocation,
 	BusinessOpen,
+	BusinessRequest,
 	BusinessReviews,
 	BusinessesHeader,
+	Facilities,
 	MediaSector,
 	MenuSector,
 	Rating,
@@ -58,6 +60,7 @@ const BusinessPage = async ({ params }: { params: any }) => {
 		reviews_stats,
 		products,
 		media,
+		facilities,
 	} = await getBusiness(slug);
 
 	return (
@@ -85,7 +88,17 @@ const BusinessPage = async ({ params }: { params: any }) => {
 							reviews: businessT("reviews"),
 						}}
 					/>
-
+					{facilities?.length > 0 && (
+						<Facilities
+							facilities={facilities}
+							translation={{
+								facilities: businessT("facilities"),
+								services: businessT("services"),
+								payment: businessT("payment"),
+								benefit: businessT("benefit"),
+							}}
+						/>
+					)}
 					{products?.length > 0 && (
 						<MenuSector
 							products={products}
@@ -135,6 +148,16 @@ const BusinessPage = async ({ params }: { params: any }) => {
 						}}
 						ratingStats={reviews_stats}
 					/>
+					{/* <BusinessRequest
+						translation={{
+							request: businessT("request"),
+							sendRequest: businessT("sendRequest"),
+							name: businessT("name"),
+							phone: businessT("phone"),
+							email: businessT("email"),
+							message: businessT("message"),
+						}}
+					/> */}
 				</div>
 			</div>
 		</div>

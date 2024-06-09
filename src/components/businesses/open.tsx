@@ -9,7 +9,7 @@ const BusinessOpen = ({
 	translation: any;
 }) => {
 	return (
-		<div className="rounded-xl overflow-hidden border-1 border-solid border-gray-100 my-7 p-3">
+		<div className="rounded-3xl overflow-hidden border-1 border-solid border-gray-100 my-7 p-3">
 			{isOpened ? (
 				<div className="flex items-center text-green-500 font-semibold gap-1">
 					<div className="bg-green-500 text-white rounded-md p-1">

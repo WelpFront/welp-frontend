@@ -22,8 +22,8 @@ const DownloadApp = ({ translation }: { translation: any }) => {
 							<p className="text-xs font-light tracking-tighter">
 								{translation.getItOn}
 							</p>
-							<p className="text-md tracking-wider">
-								Google Play{" "}
+							<p className="text-sm md:text-md tracking-wider">
+								Google Play
 							</p>
 						</div>
 					</button>
@@ -38,7 +38,9 @@ const DownloadApp = ({ translation }: { translation: any }) => {
 							<p className="text-xs font-light tracking-tighter">
 								{translation.downloadItOn}
 							</p>
-							<p className="text-md tracking-wider">App Store </p>
+							<p className="text-sm md:text-md tracking-wider">
+								App Store{" "}
+							</p>
 						</div>
 					</button>
 				</div>

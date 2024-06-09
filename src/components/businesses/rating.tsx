@@ -30,14 +30,14 @@ const Rating = ({
 		<div>
 			<h3 className="text-xl my-1">{translation.rating}</h3>
 
-			<div className=" p-3 w-full rounded-xl overflow-hidden border-1 border-solid border-gray-100 flex flex-col items-start justify-center">
+			<div className=" p-3 w-full rounded-3xl overflow-hidden border-1 border-solid border-gray-100 flex flex-col items-start justify-center ">
 				<div className="flex w-full items-center justify-center gap-5">
 					<div className="flex flex-col items-center justify-center ">
 						<h3 className="text-xl font-bold">
 							{rating_score?.toFixed(2)}
 						</h3>
 						<h4 className="text-md flex  items-center justify-center gap-1">
-							({reviews_count})<h5>{translation.review}</h5>
+							({reviews_count})<span>{translation.review}</span>
 						</h4>
 					</div>
 

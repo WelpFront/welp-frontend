@@ -63,3 +63,9 @@ export interface MediaType {
 	file: string;
 	uploaded_by: UserType | null;
 }
+
+export interface FacilitiesType {
+	id: number;
+	name: string;
+	type: number;
+}

@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const ClientProviders = ({ children }: { children: any }) => {
 	return (
-		<div>
+		<section>
 			{children}
 			<ProgressBar
 				height="4px"
@@ -15,7 +15,7 @@ const ClientProviders = ({ children }: { children: any }) => {
 				shallowRouting
 			/>
 			<ToastContainer autoClose={false} hideProgressBar />
-		</div>
+		</section>
 	);
 };
 
