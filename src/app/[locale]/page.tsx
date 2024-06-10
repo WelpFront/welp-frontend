@@ -11,7 +11,7 @@ const HomePage = async ({ params }: { params: any }) => {
 	const homeT = await getTranslations("home");
 
 	return (
-		<>
+		<main>
 			<Header translation={{ bestPlatform: homeT("bestPlatform") }} />
 			<Categories
 				categories={categories}
@@ -42,14 +42,8 @@ const HomePage = async ({ params }: { params: any }) => {
 					getItOn: homeT("getItOn"),
 				}}
 			/>
-		</>
+		</main>
 	);
 };
 
 export default HomePage;
-
-const locales = ["en", "ar"];
-
-export function generateStaticParams() {
-	return locales.map((locale) => ({ locale }));
-}
