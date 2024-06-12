@@ -37,7 +37,7 @@ const BusinessHeader = ({ business }: any) => {
 					{!!reviews_stats.rating_score && (
 						<Chip
 							text={reviews_stats.rating_score}
-							icon="/star.png"
+							icon="/star-icon.png"
 							className="bg-secondary text-white"
 						/>
 					)}
