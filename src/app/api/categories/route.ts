@@ -10,10 +10,7 @@ export async function GET(request: NextRequest, context: any) {
 
 	try {
 		const { data } = await axiosServerBase.get(
-			`/utilities/categories${
-				exclude_first_parent &&
-				`?exclude_first_parent=${exclude_first_parent}`
-			}`
+			`/utilities/categories?exclude_first_parent=${exclude_first_parent}`
 		);
 
 		return Response.json({

@@ -11,6 +11,7 @@ const config: Config = {
 	theme: {
 		extend: {
 			colors: {
+				"categories-gray": "#EBEBEB",
 				secondary: "#FF0000",
 				success: "#00e979",
 				gray: {

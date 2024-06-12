@@ -1,30 +1,28 @@
-import axios from "axios";
-import { axiosServerBase } from "config";
+"use server";
+
+import { axiosClientBase } from "config/axios-instance";
 import { toast } from "react-toastify";
+import { get } from "utils/fetch";
 
 export const getFeaturedBusinesses = async () => {
-	const { data } = await axiosServerBase.get(`/businesses`, {
-		params: { is_featured: true },
-	});
+	const data = await get(`businesses?is_featured=${true}`);
 
 	return data.results;
 };
 
 export const getBusiness = async (slug: string) => {
-	const { data: response } = await axios.get(
-		`${process.env.NEXT_PUBLIC_CLIENT_URL}/businesses/${slug}`
-	);
+	const { data } = await get(`businesses/${slug}`);
 
-	return response.data;
+	return data;
 };
 
 export const getBusinessProductTypes = async (id: number) => {
 	try {
-		const { data } = await axios.get(
-			`${process.env.NEXT_PUBLIC_CLIENT_URL}/businesses/${id}/product-types`
+		const { data: response } = await axiosClientBase.get(
+			`/businesses/${id}/product-types`
 		);
 
-		return data.data;
+		return response.data;
 	} catch (error: any) {
 		toast.error(error.message);
 	}
@@ -36,7 +34,7 @@ export const getBusinessProducts = async (
 	page: number
 ) => {
 	try {
-		let url = `${process.env.NEXT_PUBLIC_CLIENT_URL}/businesses/${businessId}/products`;
+		let url = `/businesses/${businessId}/products`;
 
 		if (type) {
 			url += `?product_type=${type}`;
@@ -50,7 +48,7 @@ export const getBusinessProducts = async (
 			}
 		}
 
-		const { data } = await axios.get(url);
+		const { data } = await axiosClientBase.get(url);
 
 		return data.data;
 	} catch (error: any) {

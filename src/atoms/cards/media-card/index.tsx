@@ -17,7 +17,7 @@ const MediaCard = ({ item }: { item: MediaType }) => {
 			<Modal className={"w-full md:w-1/2 h-96"} data={data}>
 				<Image
 					src={item.file}
-					className=" rounded-md object-fit md:object-fit h-full w-full"
+					className=" rounded-md object-contain mb-5 h-full w-full"
 					width={150}
 					height={150}
 					alt={item.file}

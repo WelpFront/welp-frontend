@@ -2,9 +2,11 @@ import { Categories, DownloadApp, Featured, Header, Cities } from "components";
 import { unstable_setRequestLocale, getTranslations } from "next-intl/server";
 import { getCategoriesList, getFeaturedBusinesses } from "services";
 
+export const dynamic = "force-dynamic"; // defaults to auto
+
 const HomePage = async ({ params }: { params: any }) => {
 	unstable_setRequestLocale(params.locale);
-	const categories = await getCategoriesList(false);
+	const categories = await getCategoriesList(true);
 
 	const featuredBusinesses = await getFeaturedBusinesses();
 

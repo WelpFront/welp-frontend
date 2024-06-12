@@ -8,8 +8,6 @@ const MediaSector = ({
 	media: Array<MediaType>;
 	translation: any;
 }) => {
-	console.log(media, "media");
-
 	return (
 		<div className="my-10">
 			<h3 className="text-xl my-1">{translation.media}</h3>

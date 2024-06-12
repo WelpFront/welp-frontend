@@ -1,4 +1,4 @@
-import { appId, baseURL } from "./api-cofigs";
+import { appId, API_URL, clientBaseURL } from "./api-configs";
 import { axiosServerBase } from "./axios-instance";
 
-export { axiosServerBase, appId, baseURL };
+export { axiosServerBase, appId, API_URL, clientBaseURL };

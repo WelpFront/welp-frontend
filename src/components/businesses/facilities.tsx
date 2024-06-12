@@ -19,7 +19,7 @@ const Facilities = ({
 					<div className="w-full my-4">
 						<h3 className="text-lg my-1">{translation.services}</h3>
 						<div className="my-3 grid grid-cols-2 md:grid-cols-4">
-							{services.map((item) => (
+							{services.map((item, index) => (
 								<h2
 									key={item.id}
 									className="flex items-center gap-1 text-md text-gray-400">
@@ -32,6 +32,7 @@ const Facilities = ({
 				)}
 				{payment.length > 0 && (
 					<div className="w-full my-4">
+						<hr className="my-2" />
 						<h3 className="text-lg my-1">{translation.payment}</h3>
 						<div className="my-3 grid grid-cols-2 md:grid-cols-4">
 							{payment.map((item) => (
@@ -47,6 +48,7 @@ const Facilities = ({
 				)}
 				{benefit.length > 0 && (
 					<div className="w-full my-4">
+						<hr className="my-2" />
 						<h3 className="text-lg my-1">{translation.benefit}</h3>
 						<div className="my-3 grid grid-cols-2 md:grid-cols-4">
 							{benefit.map((item) => (

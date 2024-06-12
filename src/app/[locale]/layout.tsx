@@ -62,6 +62,12 @@ export default function RootLayout({
 					egypt: footerT("egypt"),
 					cairo: footerT("cairo"),
 					offices: footerT("offices"),
+					home: footerT("home"),
+					forBusinesses: footerT("forBusinesses"),
+					termsConditions: footerT("termsConditions"),
+					privacyPolicy: footerT("privacyPolicy"),
+					blog: footerT("blog"),
+					aboutUs: footerT("aboutUs"),
 				}}
 			/>
 		</div>

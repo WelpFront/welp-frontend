@@ -39,12 +39,12 @@ const Footer = ({ translation }: { translation: any }) => {
 				<div className="flex w-full flex-col items-start justify-start gap-2 md:ps-10">
 					<h1 className="text-lg"> {translation.importantLinks}</h1>
 					<ol className="text-gray-500 list-disc ms-5 flex flex-col gap-3 text-sm">
-						<li>Home</li>
-						<li>For Business</li>
-						<li>Blog</li>
-						<li>About Us</li>
-						<li>Terms & Conditions</li>
-						<li>Privacy of policy</li>
+						<li>{translation.home}</li>
+						<li>{translation.blog}</li>
+						<li>{translation.forBusinesses}</li>
+						<li>{translation.aboutUs}</li>
+						<li>{translation.termsConditions}</li>
+						<li>{translation.privacyPolicy}</li>
 					</ol>
 				</div>
 				<div className="flex flex-col w-full items-start justify-start gap-2 text-sm ">

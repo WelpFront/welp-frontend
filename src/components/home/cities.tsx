@@ -48,7 +48,7 @@ const Cities = ({ translation }: { translation: any }) => {
 									backgroundSize: "100% 100%",
 									backgroundPosition: "center",
 								}}>
-								{item.name}
+								{/* {item.name} */}
 							</div>
 						</SwiperSlide>
 					))}

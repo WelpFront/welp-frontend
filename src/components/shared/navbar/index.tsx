@@ -16,7 +16,7 @@ const Navbar = ({ translation }: { translation: any }) => {
 
 	const isActive = (link: string) => pathname === link;
 
-	const linksWithWhiteBackground = ["menu"];
+	const linksWithWhiteBackground = ["menu", "categories"];
 
 	const withWhiteBackground = !!linksWithWhiteBackground.find((link) =>
 		pathname.includes(link)
@@ -115,7 +115,8 @@ const Navbar = ({ translation }: { translation: any }) => {
 								: undefined,
 							fontWeight: isActive("/about") ? "bold" : undefined,
 						}}
-						href={"/about"}>
+						target="_blank"
+						href={"https://blog.welpstar.com/"}>
 						{translation.blog}
 					</Link>
 					<Link

@@ -1,3 +1,4 @@
+import CategoriesCard from "./cards/categories-card";
 import FeaturedCard from "./cards/featured";
 import ItemCard from "./cards/item-card/index";
 import MediaCard from "./cards/media-card";
@@ -34,4 +35,5 @@ export {
 	CategoriesItem,
 	FeaturedCard,
 	ProgressBar,
+	CategoriesCard,
 };
