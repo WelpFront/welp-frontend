@@ -38,7 +38,7 @@ const BusinessesList = ({
 	};
 
 	return (
-		<div className="col-span-4 lg:col-span-3 w-full min-h-screen">
+		<div className="col-span-4 lg:col-span-3 w-full min-h-screen bg-gray-businesses">
 			<ResponsiveBusinessesFilters
 				translation={{
 					filters: translation.filters,
@@ -52,7 +52,7 @@ const BusinessesList = ({
 					offersDelivery: translation.offersDelivery,
 				}}
 			/>
-			<div className=" bg-gray-businesses shadow-md w-full min-h-screen rounded-3xl p-3 ">
+			<div className="  shadow-md w-full min-h-screen rounded-3xl p-3 ">
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-3 ">
 					{loading && loaders}
 				</div>

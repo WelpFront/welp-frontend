@@ -128,6 +128,8 @@ const BusinessesFiltersContent = ({
 							<CheckBox
 								key={item.id}
 								onChange={(e) => {
+									setOpened && setOpened(false);
+
 									if (e.target.checked) {
 										setCategoriesToFilterWith([
 											...categoriesToFilterWith,
