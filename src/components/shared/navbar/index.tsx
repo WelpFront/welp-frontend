@@ -17,14 +17,13 @@ const Navbar = ({ translation }: { translation: any }) => {
 	const isActive = (link: string) => pathname === link;
 
 	const linksWithWhiteBackground = [
-		"menu",
 		"/categories",
 		"/businesses",
 		"/biz/businesses",
 	];
 
 	const withWhiteBackground = !!linksWithWhiteBackground.find(
-		(link) => pathname === link
+		(link) => pathname === link || pathname.includes("menu")
 	);
 
 	const toggleOpenedHandler = () => {
@@ -64,7 +63,7 @@ const Navbar = ({ translation }: { translation: any }) => {
 					? "bg-white md:bg-transparent shadow-md  static top-0 text-black"
 					: "absolute shadow-none lg:bg-transparent text-white"
 			}			
-			  w-full`}>
+			  w-full `}>
 			<div
 				className={`flex items-center gap-2 md:gap-12 justify-between  px-5 md:px-10
 					${withWhiteBackground ? "h-16	lg:h-20" : "h-16 lg:h-36"}
@@ -186,7 +185,7 @@ const Navbar = ({ translation }: { translation: any }) => {
 					onClick={() => {
 						toggleOpenedHandler();
 					}}
-					href={"/#services"}>
+					href={"/businesses"}>
 					{translation.forBusinesses}
 				</Link>
 				<Link

@@ -22,6 +22,15 @@ const BusinessesListPage = ({ params }: { params: any }) => {
 			<BusinessesList
 				translation={{
 					noResults: businessT("noResults"),
+					filters: businessT("filters"),
+					price: businessT("price"),
+					high: businessT("high"),
+					medium: businessT("medium"),
+					low: businessT("low"),
+					expensive: businessT("expensive"),
+					isOpened: businessT("isOpened"),
+					suggested: businessT("suggested"),
+					offersDelivery: businessT("offersDelivery"),
 				}}
 				locale={params.locale}
 			/>

@@ -8,6 +8,7 @@ import ReviewCard from "./cards/review-card";
 import CategoriesItem from "./categories-item";
 import CheckBox from "./checkbox";
 import Chip from "./chip/index";
+import Drawer from "./drawer";
 import CategoryItemDropdown from "./dropdowns/category-item-dropdown";
 import CategoriesSearchInput from "./inputs/categories-search-input";
 import SearchInput from "./inputs/search-input";
@@ -27,6 +28,7 @@ export {
 	BusinessesListLoader,
 	BusinessCard,
 	RadioButton,
+	Drawer,
 	ForBusinessCard,
 	CheckBox,
 	CategoriesSearchInput,

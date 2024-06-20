@@ -66,8 +66,10 @@ const useBusinessesList = () => {
 	};
 
 	useEffect(() => {
-		fetchBusinessesHandler();
-		window.scrollTo({ top: 0, behavior: "smooth" });
+		if (page > 1) {
+			fetchBusinessesHandler();
+			window.scrollTo({ top: 0, behavior: "smooth" });
+		}
 	}, [page]);
 
 	useEffect(() => {

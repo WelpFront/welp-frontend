@@ -8,8 +8,10 @@ import BusinessOpen from "./business/open";
 import Rating from "./business/rating";
 import BusinessRequest from "./business/request";
 import BusinessReviews from "./business/reviews";
+import BusinessesFiltersContent from "./businesses-list/businesses-filters-content";
 import BusinessesFilters from "./businesses-list/filters";
 import BusinessesList from "./businesses-list/list";
+import ResponsiveBusinessesFilters from "./businesses-list/responsive-filters";
 import CategoriesList from "./categories/categories-list";
 import DownloadBusinessApp from "./for-businesses/download-app";
 import ForBusinessesHeader from "./for-businesses/header";
@@ -36,6 +38,7 @@ export {
 	BoostBusiness,
 	Categories,
 	Facilities,
+	ResponsiveBusinessesFilters,
 	CategoriesList,
 	MediaSector,
 	BusinessReviews,
@@ -60,4 +63,5 @@ export {
 	DownloadApp,
 	Featured,
 	BusinessLocation,
+	BusinessesFiltersContent,
 };

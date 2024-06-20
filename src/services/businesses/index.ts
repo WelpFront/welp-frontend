@@ -10,10 +10,14 @@ export const getBusinessesList = async (
 	isDeliveryAvailable: boolean
 ) => {
 	try {
+		const validCategories = categories?.filter(
+			(category) => typeof category === "number" && !isNaN(category)
+		);
+
 		let url = `/businesses?page=${page}`;
 
-		if (categories?.length > 0) {
-			url += `&categories_in=${categories.join(",")}`;
+		if (validCategories?.length > 0) {
+			url += `&categories_in=${validCategories.join(",")}`;
 		}
 
 		if (isOpened) {

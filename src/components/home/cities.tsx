@@ -40,7 +40,7 @@ const Cities = ({ translation }: { translation: any }) => {
 							<div
 								className={`${
 									index % 2 !== 0 ? "h-96" : "h-72"
-								} w-11/12 flex items-start justify-center  rounded-3xl border border-yellow-500 border-solid text-xl font-semibold text-white
+								} w-11/12 flex items-start justify-center rounded-3xl border border-yellow-500 border-solid text-xl font-semibold text-white
                                 `}
 								style={{
 									background: ` url(${item.img})`,
