@@ -16,10 +16,15 @@ const Navbar = ({ translation }: { translation: any }) => {
 
 	const isActive = (link: string) => pathname === link;
 
-	const linksWithWhiteBackground = ["menu", "categories"];
+	const linksWithWhiteBackground = [
+		"menu",
+		"/categories",
+		"/businesses",
+		"/biz/businesses",
+	];
 
-	const withWhiteBackground = !!linksWithWhiteBackground.find((link) =>
-		pathname.includes(link)
+	const withWhiteBackground = !!linksWithWhiteBackground.find(
+		(link) => pathname === link
 	);
 
 	const toggleOpenedHandler = () => {
@@ -70,7 +75,7 @@ const Navbar = ({ translation }: { translation: any }) => {
 						width={100}
 						height={100}
 						alt="logo"
-						className="h-20 w-20 md:w-40 md:h-40"
+						className="h-20 w-20 lg:w-40 lg:h-40"
 					/>
 				</Link>
 				<SearchInput
@@ -89,19 +94,14 @@ const Navbar = ({ translation }: { translation: any }) => {
 					</Link>
 
 					<Link
-						className={`flex items-center justify-center gap-2 whitespace-nowrap text-md ${
-							!isActive("/services") && "hover:text-yellow-400"
-						}`}
-						scroll={pathname !== "/"}
+						className={`flex items-center justify-center gap-2 whitespace-nowrap text-md
+							${isActive("/businesses") ? "text-yellow-400" : "hover:text-yellow-400"}`}
 						style={{
-							textShadow: isActive("/services")
-								? ".5px .5px .5px #fff"
-								: undefined,
-							fontWeight: isActive("/services")
+							fontWeight: isActive("/businesses")
 								? "bold"
 								: undefined,
 						}}
-						href={"/#services"}>
+						href={"/businesses"}>
 						{translation.forBusinesses}
 					</Link>
 

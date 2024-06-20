@@ -17,6 +17,7 @@ const config: Config = {
 				gray: {
 					50: "#f7f6f6",
 					100: "#DAD9D9",
+					businesses: "#F7F5F5",
 				},
 				orange: {
 					100: "#FFF7E2",

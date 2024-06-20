@@ -1,6 +1,6 @@
 "use client";
 
-import { FeaturedCard, CustomSwiper } from "atoms";
+import { BusinessCard, CustomSwiper } from "atoms";
 import { BusinessType } from "interfaces";
 import { Link } from "navigation";
 import React from "react";
@@ -28,7 +28,7 @@ const Featured = ({
 	};
 
 	return (
-		<div>
+		<div className="mb-10">
 			<h1 className="text-center text-black text-3xl font-bold">
 				{translation.featuredBusinesses}
 			</h1>
@@ -37,10 +37,14 @@ const Featured = ({
 				breakPoints={breakpoints as any}
 				slidesPerView={3}
 				className="featuredSwiper">
-				{featuredBusinesses.map((item, index) => (
-					<SwiperSlide className="py-2" key={index}>
+				{featuredBusinesses.map((item) => (
+					<SwiperSlide className="py-2" key={item.id}>
 						<Link href={`/biz/businesses/${item.id}`}>
-							<FeaturedCard item={item} locale={locale} />
+							<BusinessCard
+								withBackground
+								item={item}
+								locale={locale}
+							/>
 						</Link>
 					</SwiperSlide>
 				))}

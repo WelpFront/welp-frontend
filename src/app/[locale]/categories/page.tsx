@@ -1,27 +1,31 @@
-import { CategoriesCard } from "atoms";
-import { CategoryType } from "interfaces";
+import { CategoriesSearchInput } from "atoms";
+import { CategoriesList } from "components";
+import { getTranslations } from "next-intl/server";
+import React from "react";
 import { getCategoriesList } from "services";
 
-const Categories = async ({ params }: { params: any }) => {
-	const categories = await getCategoriesList(true);
+const Categories: React.FC<any> = async ({ params }: { params: any }) => {
+	const categories = await getCategoriesList(false);
+
+	const categoriesT = await getTranslations("categories");
 
 	return (
-		<div className="my-10 flex flex-col justify-center ">
+		<div className="my-10 flex flex-col justify-center items-center gap-10 ">
 			<h1 className="text-5xl font-semibold text-center">
-				All Categories
+				{categoriesT("allCategories")}
 			</h1>
-
-			<div></div>
-
-			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-10 my-4">
-				{categories.map((item: CategoryType) => (
-					<CategoriesCard
-						locale={params.locale}
-						key={item.id}
-						item={item}
-					/>
-				))}
-			</div>
+			<CategoriesSearchInput
+				translation={{
+					search: categoriesT("searchCategories"),
+				}}
+				fetchedCategories={categories}
+			/>
+			<CategoriesList
+				translation={{
+					noCategories: categoriesT("noCategories"),
+				}}
+				locale={params.locale}
+			/>
 		</div>
 	);
 };

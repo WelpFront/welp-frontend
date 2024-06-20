@@ -1,13 +1,19 @@
-import AboutBusiness from "./businesses/about";
-import Facilities from "./businesses/facilities";
-import BusinessesHeader from "./businesses/header";
-import BusinessLocation from "./businesses/location";
-import MediaSector from "./businesses/media";
-import MenuSector from "./businesses/menu-sector";
-import BusinessOpen from "./businesses/open";
-import Rating from "./businesses/rating";
-import BusinessRequest from "./businesses/request";
-import BusinessReviews from "./businesses/reviews";
+import AboutBusiness from "./business/about";
+import Facilities from "./business/facilities";
+import BusinessesHeader from "./business/header";
+import BusinessLocation from "./business/location";
+import MediaSector from "./business/media";
+import MenuSector from "./business/menu-sector";
+import BusinessOpen from "./business/open";
+import Rating from "./business/rating";
+import BusinessRequest from "./business/request";
+import BusinessReviews from "./business/reviews";
+import BusinessesFilters from "./businesses-list/filters";
+import BusinessesList from "./businesses-list/list";
+import CategoriesList from "./categories/categories-list";
+import DownloadBusinessApp from "./for-businesses/download-app";
+import ForBusinessesHeader from "./for-businesses/header";
+import BusinessPageInfo from "./for-businesses/info";
 import BusinessRequestForm from "./forms/businesses/business-request";
 import BoostBusiness from "./home/boost-business";
 import Categories from "./home/categories";
@@ -24,16 +30,22 @@ import Footer from "./shared/footer";
 import Navbar from "./shared/navbar";
 
 export {
+	ForBusinessesHeader,
 	MenuSector,
 	AboutBusiness,
 	BoostBusiness,
 	Categories,
 	Facilities,
+	CategoriesList,
 	MediaSector,
 	BusinessReviews,
 	BusinessOpen,
+	DownloadBusinessApp,
 	Footer,
 	Header,
+	BusinessesFilters,
+	BusinessesList,
+	BusinessPageInfo,
 	BusinessesHeader,
 	Cities,
 	BusinessHeader,

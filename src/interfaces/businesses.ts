@@ -33,6 +33,9 @@ export interface ReviewsStats {
 
 export interface BusinessType {
 	description: string;
+	whatsapp: string;
+	phone_number: string;
+	website: string;
 	id: number;
 	cover_image: string;
 	name: string;

@@ -3,8 +3,9 @@ import {
 	getBusinessProductTypes,
 	getBusinessProducts,
 	getFeaturedBusinesses,
+	getBusinessesList,
 } from "./businesses";
-import { getCategoriesList } from "./catrgories";
+import { getCategoriesList, getCategory } from "./catrgories";
 import { getBusinessReviews } from "./reviews";
 
 export {
@@ -14,4 +15,6 @@ export {
 	getFeaturedBusinesses,
 	getBusinessProducts,
 	getCategoriesList,
+	getBusinessesList,
+	getCategory,
 };

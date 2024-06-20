@@ -1,16 +1,19 @@
 import Image from "next/image";
 import React from "react";
 
-const DownloadApp = ({ translation }: { translation: any }) => {
+const DownloadBusinessApp = ({ translation }: { translation: any }) => {
 	return (
-		<div className="flex px-10 flex-col md:flex-row md:px-28 bg-orange-200 min-h-96 gap-4  py-10 md:py-0  my-10  ">
-			<div className="flex flex-col  flex-1  justify-center order-2 md:order-1">
-				<h1 className="text-4xl font-bold my-2">
+		<div
+			className="min-h-[30vh] my-10 flex flex-col md:flex-row items-center justify-between gap-10 py-10  px-5 md:px-20"
+			style={{
+				background:
+					" linear-gradient(97.55deg, rgba(255, 0, 0, 0.3) -2.18%, rgba(243, 179, 1, 0.3) 94.39%)",
+			}}>
+			<div className="flex flex-1 flex-col gap-5 order-2 md:order-1">
+				<div className="font-bold text-3xl md:text-5xl">
 					{translation.download}
-				</h1>
-				<p className="font-semibold my-2">{translation.available}</p>
-
-				<div className="flex gap-1">
+				</div>
+				<div className=" flex gap-10 mt-4">
 					<button className="bg-black p-3 text-white rounded-md flex items-center gap-1">
 						<Image
 							src={"/google-play.svg"}
@@ -39,30 +42,23 @@ const DownloadApp = ({ translation }: { translation: any }) => {
 								{translation.downloadItOn}
 							</p>
 							<p className="text-sm md:text-md tracking-wider">
-								App Store{" "}
+								App Store
 							</p>
 						</div>
 					</button>
 				</div>
 			</div>
-			<div className=" flex-1 flex justify-center md:justify-normal align-center relative overflow-hidden order-1 md:order-2 ">
+			<div className="flex-1 h-[50vh] md:h-[70vh] flex items-center justify-end order-1 md:order-2">
 				<Image
-					src="/iPhone.svg"
-					width={150}
-					height={150}
-					alt="iPhone"
-					className="hidden md:block absolute left-8 -bottom-32"
-				/>
-				<Image
-					src="/iPhone.svg"
-					width={150}
-					height={150}
-					alt="iphone"
-					className="md:absolute right-8 -top-32"
+					src={"/business-mobile.svg"}
+					width={200}
+					height={200}
+					className=" h-full"
+					alt="download app"
 				/>
 			</div>
 		</div>
 	);
 };
 
-export default DownloadApp;
+export default DownloadBusinessApp;

@@ -4,12 +4,14 @@ import Image from "next/image";
 import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from "react-icons/io";
 import { SlLocationPin } from "react-icons/sl";
 
-const FeaturedCard = ({
+const BusinessCard = ({
 	item,
 	locale = "ar",
+	withBackground,
 }: {
 	item: BusinessType;
 	locale: string;
+	withBackground?: boolean;
 }) => {
 	const ratingHandler = (rate: number) => {
 		const stars = [];
@@ -35,13 +37,18 @@ const FeaturedCard = ({
 	};
 
 	return (
-		<div className="bg-white shadow-md rounded-md w-full h-80 cursor-pointer overflow-hidden hover:scale-95 duration-200">
+		<div
+			className={`${
+				withBackground && "bg-white shadow-md"
+			}  rounded-md w-full h-80 cursor-pointer overflow-hidden hover:scale-95 duration-200`}>
 			<Image
 				alt={item.name}
-				src={item.cover_image}
+				src={item.cover_image || "/header.png"}
 				width={250}
 				height={150}
-				className="object-cover w-full h-48"
+				className={`object-cover w-full h-48 ${
+					!withBackground && "rounded-xl"
+				}`}
 			/>
 			<div className="flex justify-between items-center px-2">
 				<h1 className="text-sm font-bold w-48 overflow-hidden text-ellipsis whitespace-nowrap text-animation">
@@ -78,4 +85,4 @@ const FeaturedCard = ({
 	);
 };
 
-export default FeaturedCard;
+export default BusinessCard;

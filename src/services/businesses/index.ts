@@ -1,8 +1,40 @@
-"use server";
-
 import { axiosClientBase } from "config/axios-instance";
 import { toast } from "react-toastify";
 import { get } from "utils/fetch";
+
+export const getBusinessesList = async (
+	page: number,
+	categories: Array<number> | [],
+	isOpened: boolean,
+	priceCategory: string | null,
+	isDeliveryAvailable: boolean
+) => {
+	try {
+		let url = `/businesses?page=${page}`;
+
+		if (categories?.length > 0) {
+			url += `&categories_in=${categories.join(",")}`;
+		}
+
+		if (isOpened) {
+			url += `&is_opened=${isOpened}`;
+		}
+
+		if (priceCategory) {
+			url += `&price_category=${priceCategory}`;
+		}
+
+		if (isDeliveryAvailable) {
+			url += `&is_delivery_available=${isDeliveryAvailable}`;
+		}
+
+		const { data: response } = await axiosClientBase.get(url);
+
+		return response.data;
+	} catch (error: any) {
+		toast.error(error.message);
+	}
+};
 
 export const getFeaturedBusinesses = async () => {
 	const data = await get(`businesses?is_featured=${true}`);

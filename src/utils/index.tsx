@@ -135,3 +135,13 @@ export const renderField = (
 		/>
 	);
 };
+
+export const debounce = (callback: Function, time: number) => {
+	let timeout: any = null;
+
+	return (value: any, ...rest: any) => {
+		if (timeout) clearTimeout(timeout);
+
+		timeout = setTimeout(() => callback(value, ...rest), time);
+	};
+};

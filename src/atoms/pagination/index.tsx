@@ -15,21 +15,76 @@ const CustomPagination = ({
 }>) => {
 	const renderPaginationItems = () => {
 		const items = [];
-		for (let i = 1; i <= pagesCount; i++) {
-			items.push(
-				<div className="cursor-pointer" key={i}>
-					<button
-						className={`${
-							i === page ? "text-black " : "text-gray-400"
-						} bg-transparent border-none  text-xl font-bold`}
-						onClick={() => setPage(i)}>
-						{i}
-					</button>
-				</div>
-			);
+		const ellipsis = (
+			<span key="ellipsis" className="text-xl font-bold">
+				...
+			</span>
+		);
+
+		if (pagesCount <= 7) {
+			for (let i = 1; i <= pagesCount; i++) {
+				items.push(
+					<div className="cursor-pointer" key={i}>
+						<button
+							className={`${
+								i === page ? "text-black" : "text-gray-400"
+							} bg-transparent border-none text-xl font-bold mx-1`}
+							onClick={() => setPage(i)}>
+							{i}
+						</button>
+					</div>
+				);
+			}
+		} else {
+			for (let i = 1; i <= 3; i++) {
+				items.push(
+					<div className="cursor-pointer" key={i}>
+						<button
+							className={`${
+								i === page ? "text-black" : "text-gray-400"
+							} bg-transparent border-none text-xl font-bold mx-1`}
+							onClick={() => setPage(i)}>
+							{i}
+						</button>
+					</div>
+				);
+			}
+			items.push(ellipsis);
+
+			if (page > 3 && page < pagesCount - 2) {
+				for (let i = page - 1; i <= page + 1; i++) {
+					items.push(
+						<div className="cursor-pointer" key={i}>
+							<button
+								className={`${
+									i === page ? "text-black" : "text-gray-400"
+								} bg-transparent border-none text-xl font-bold mx-1`}
+								onClick={() => setPage(i)}>
+								{i}
+							</button>
+						</div>
+					);
+				}
+				items.push(ellipsis);
+			}
+
+			for (let i = pagesCount - 2; i <= pagesCount; i++) {
+				items.push(
+					<div className="cursor-pointer" key={i}>
+						<button
+							className={`${
+								i === page ? "text-black" : "text-gray-400"
+							} bg-transparent border-none text-xl font-bold mx-1`}
+							onClick={() => setPage(i)}>
+							{i}
+						</button>
+					</div>
+				);
+			}
 		}
 		return items;
 	};
+
 	return (
 		<div
 			dir="ltr"

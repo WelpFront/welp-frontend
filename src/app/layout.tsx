@@ -21,7 +21,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="ar" dir="rtl">
+		<html>
 			<body className={kufi.className}>
 				<ClientProviders>{children}</ClientProviders>
 			</body>

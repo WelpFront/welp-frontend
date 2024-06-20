@@ -6,7 +6,7 @@ const Footer = ({ translation }: { translation: any }) => {
 	return (
 		<div className="flex flex-col gap-4">
 			<div className="flex flex-col md:flex-row bg-white rounded-t-3xl shadow-inner py-2 px-10 items-center md:items-start justify-start  md:justify-around gap-5 md:gap-14">
-				<div className="flex flex-col gap-2 w-full items-center justify-center">
+				<div className="flex  md:w-full w-3/4 mx-auto  gap-2 flex-col items-start md:items-center justify-center">
 					<Image
 						src="/logo.svg"
 						width={100}
@@ -36,8 +36,8 @@ const Footer = ({ translation }: { translation: any }) => {
 						/>
 					</div>
 				</div>
-				<div className="flex w-full flex-col items-start justify-start gap-2 md:ps-10">
-					<h1 className="text-lg"> {translation.importantLinks}</h1>
+				<div className="flex flex-col w-3/4 mx-auto md:w-full items-start justify-center gap-2 md:ps-10">
+					<h1 className="text-lg">{translation.importantLinks}</h1>
 					<ol className="text-gray-500 list-disc ms-5 flex flex-col gap-3 text-sm">
 						<li>{translation.home}</li>
 						<li>{translation.blog}</li>
@@ -47,13 +47,12 @@ const Footer = ({ translation }: { translation: any }) => {
 						<li>{translation.privacyPolicy}</li>
 					</ol>
 				</div>
-				<div className="flex flex-col w-full items-start justify-start gap-2 text-sm ">
+				<div className="flex flex-col w-3/4 md:w-full mx-auto items-start justify-start gap-2 text-sm ">
 					<h1 className="text-lg">{translation.offices}</h1>
 					<div className=" flex flex-col items-start justify-center text-gray-500">
-						<p className="flex gap-1 text-sm">
+						<p className="flex flex-1 gap-1 text-sm">
 							{translation.usa}:
-							<span className="text-xs">
-								{" "}
+							<span className="text-xs flex-1">
 								{translation.losAngles}
 							</span>
 						</p>
@@ -70,18 +69,18 @@ const Footer = ({ translation }: { translation: any }) => {
 							{translation.phone}:{" "}
 							<span dir="ltr"> +1 (949) 993-8566</span>
 						</p>
-						<p className="flex gap-1">
+						<p className="flex gap-1 text-xs md:text-sm flex-1">
 							{translation.email} :{" "}
 							<Link
 								href={"mailto:w.star@welp.cpm"}
 								target="_blank"
-								className="underline">
+								className="underline flex-1">
 								w.star@welp.cpm
 							</Link>
 						</p>
 					</div>
 				</div>
-				<div className="flex flex-col w-full items-start justify-start gap-2 ">
+				<div className="flex flex-col w-3/4 mx-auto md:w-full items-start justify-start gap-2 ">
 					<h1 className="text-lg"> {translation.download}</h1>
 					<button className="bg-black p-3 text-white rounded-md flex text-sm items-center gap-1 min-w-40">
 						<Image

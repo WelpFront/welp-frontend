@@ -32,7 +32,10 @@ export default function RootLayout({
 	const footerT = useTranslations("footer");
 
 	return (
-		<div className={kufi.className}>
+		<div
+			dir={params.locale === "ar" ? "rtl" : "ltr"}
+			lang={params.locale}
+			className={kufi.className}>
 			<Navbar
 				translation={{
 					home: navbarT("home"),

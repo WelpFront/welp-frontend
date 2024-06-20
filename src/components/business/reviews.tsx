@@ -38,7 +38,7 @@ const BusinessReviews = ({
 
 	return (
 		<div className="my-10">
-			<h3 className="text-xl my-1">{translation.reviews}</h3>
+			<h3 className="text-xl my-1 font-bold">{translation.reviews}</h3>
 
 			{loading ? (
 				<div className="flex flex-col  border-1 border-solid border-gray-100 p-3 rounded-3xl text-xs md:text-md min-h-[30vh]">

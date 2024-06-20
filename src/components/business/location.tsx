@@ -37,7 +37,9 @@ const BusinessLocation = ({
 	);
 	return (
 		<div>
-			<h3 className="text-xl my-1">{translation.locationAndContact}</h3>
+			<h3 className="text-xl my-1 font-bold">
+				{translation.locationAndContact}
+			</h3>
 			<div className="rounded-3xl overflow-hidden border-1 border-solid border-gray-100 text-gray-500 ">
 				<div className="w-full h-[40vh]">
 					<CustomMap lng={lng} lat={lat} name={name} />
