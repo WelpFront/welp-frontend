@@ -16,7 +16,7 @@ const CustomPagination = ({
 	const renderPaginationItems = () => {
 		const items = [];
 		const ellipsis = (
-			<span key="ellipsis" className="text-xl font-bold">
+			<span key="ellipsis" className="text-sm md:text-xl font-bold">
 				...
 			</span>
 		);
@@ -28,7 +28,7 @@ const CustomPagination = ({
 						<button
 							className={`${
 								i === page ? "text-black" : "text-gray-400"
-							} bg-transparent border-none text-xl font-bold mx-1`}
+							} bg-transparent border-none text-sm md:text-xl font-bold mx-1`}
 							onClick={() => setPage(i)}>
 							{i}
 						</button>
@@ -42,7 +42,7 @@ const CustomPagination = ({
 						<button
 							className={`${
 								i === page ? "text-black" : "text-gray-400"
-							} bg-transparent border-none text-xl font-bold mx-1`}
+							} bg-transparent border-none text-sm md:text-xl font-bold mx-1`}
 							onClick={() => setPage(i)}>
 							{i}
 						</button>
@@ -58,7 +58,7 @@ const CustomPagination = ({
 							<button
 								className={`${
 									i === page ? "text-black" : "text-gray-400"
-								} bg-transparent border-none text-xl font-bold mx-1`}
+								} bg-transparent border-none text-sm md:text-xl font-bold mx-1`}
 								onClick={() => setPage(i)}>
 								{i}
 							</button>
@@ -74,7 +74,7 @@ const CustomPagination = ({
 						<button
 							className={`${
 								i === page ? "text-black" : "text-gray-400"
-							} bg-transparent border-none text-xl font-bold mx-1`}
+							} bg-transparent border-none text-sm md:text-xl font-bold mx-1`}
 							onClick={() => setPage(i)}>
 							{i}
 						</button>

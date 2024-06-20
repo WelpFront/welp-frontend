@@ -38,7 +38,7 @@ const BusinessesList = ({
 	};
 
 	return (
-		<div className="col-span-4 lg:col-span-3 w-full min-h-screen bg-gray-businesses">
+		<div className=" col-span-4 lg:col-span-3 w-full ">
 			<ResponsiveBusinessesFilters
 				translation={{
 					filters: translation.filters,
@@ -52,7 +52,7 @@ const BusinessesList = ({
 					offersDelivery: translation.offersDelivery,
 				}}
 			/>
-			<div className="  shadow-md w-full min-h-screen rounded-3xl p-3 ">
+			<div className=" bg-gray-businesses shadow-md col-span-4 lg:col-span-3 w-full min-h-screen rounded-3xl p-3 ">
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-3 ">
 					{loading && loaders}
 				</div>
@@ -77,9 +77,7 @@ const BusinessesList = ({
 				{loading ? (
 					<div className=" bg-gray-200 rounded-md col-span-3  w-full  h-10 animate-pulse"></div>
 				) : (
-					<div
-						dir="ltr"
-						className="w-full flex items-center float-left select-none col-span-3 bottom-0">
+					<div dir="ltr" className="select-none col-span-3">
 						{pagesCount > 1 && (
 							<CustomPagination
 								setPage={setPage}
