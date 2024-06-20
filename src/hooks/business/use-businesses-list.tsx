@@ -81,7 +81,13 @@ const useBusinessesList = () => {
 			fetchBusinessesHandler();
 			window.scrollTo({ top: 0, behavior: "smooth" });
 		}
-	}, [isOpened, priceCategory, isDeliveryAvailable, categoriesToFilterWith]);
+	}, [
+		isOpened,
+		priceCategory,
+		isDeliveryAvailable,
+		categoriesToFilterWith,
+		page,
+	]);
 
 	return {
 		setPage,
