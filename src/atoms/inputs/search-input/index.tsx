@@ -76,7 +76,7 @@ const SearchInput = ({
 			if (
 				cityValue !== translation.currentLocation &&
 				data.find((city) =>
-					city.name.toLowerCase().includes(cityValue.toLowerCase)
+					city?.name?.toLowerCase().includes(cityValue?.toLowerCase)
 				)
 			)
 				setCity(
