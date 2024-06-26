@@ -30,7 +30,8 @@ const BusinessesPage = async () => {
 			/>
 			<DownloadBusinessApp
 				translation={{
-					download: forBusinessesT("download"),
+					downloadNow: forBusinessesT("downloadNow"),
+					startWork: forBusinessesT("startWork"),
 					downloadItOn: forBusinessesT("downloadItOn"),
 					getItOn: forBusinessesT("getItOn"),
 				}}

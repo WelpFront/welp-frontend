@@ -7,7 +7,11 @@ export const getBusinessesList = async (
 	categories: Array<number> | [],
 	isOpened: boolean,
 	priceCategory: string | null,
-	isDeliveryAvailable: boolean
+	isDeliveryAvailable: boolean,
+	searchKeyword: string | null,
+	city: any,
+	lat: string | null,
+	long: string | null
 ) => {
 	try {
 		const validCategories = categories?.filter(
@@ -30,6 +34,22 @@ export const getBusinessesList = async (
 
 		if (isDeliveryAvailable) {
 			url += `&is_delivery_available=${isDeliveryAvailable}`;
+		}
+
+		if (searchKeyword) {
+			url += `&search=${searchKeyword}`;
+		}
+
+		if (city) {
+			url += `&city=${city}`;
+		}
+
+		if (lat) {
+			url += `&latitude=${lat}`;
+		}
+
+		if (long) {
+			url += `&longitude=${long}`;
 		}
 
 		const { data: response } = await axiosClientBase.get(url);

@@ -5,8 +5,8 @@ import React from "react";
 const Footer = ({ translation }: { translation: any }) => {
 	return (
 		<div className="flex flex-col gap-4">
-			<div className="flex flex-col md:flex-row bg-white rounded-t-3xl shadow-inner py-2 px-10 items-center md:items-start justify-start  md:justify-around gap-5 md:gap-14">
-				<div className="flex  md:w-full w-3/4 mx-auto  gap-2 flex-col items-start md:items-center justify-center">
+			<div className="flex flex-col md:flex-row bg-white rounded-t-3xl shadow-inner py-2 px-10 md:px-28 items-center md:items-start justify-start  md:justify-around gap-5 md:gap-14">
+				<div className="flex  md:w-full w-3/4 mx-auto  gap-2 flex-col items-start justify-center">
 					<Image
 						src="/logo.svg"
 						width={100}
@@ -80,40 +80,20 @@ const Footer = ({ translation }: { translation: any }) => {
 						</p>
 					</div>
 				</div>
-				<div className="flex flex-col w-3/4 mx-auto md:w-full items-start justify-start gap-2 ">
-					<h1 className="text-lg"> {translation.download}</h1>
-					<button className="bg-black p-3 text-white rounded-md flex text-sm items-center gap-1 min-w-40">
-						<Image
-							src={"/google-play.svg"}
-							width={30}
-							height={30}
-							alt="google"
-						/>
-						<div className="flex flex-col items-start">
-							<p className="text-xs font-light tracking-tighter">
-								{translation.getItOn}
-							</p>
-							<p className="text-sm md:text-md tracking-widest">
-								Google Play
-							</p>
-						</div>
-					</button>
-					<button className="bg-black p-3 text-white rounded-md flex text-sm items-center gap-1 min-w-40">
-						<Image
-							src={"/apple.svg"}
-							width={30}
-							height={30}
-							alt="apple"
-						/>
-						<div className="flex flex-col items-start">
-							<p className="text-xs font-light tracking-tighter">
-								{translation.downloadItOn}
-							</p>
-							<p className="text-sm md:text-md tracking-widest">
-								App Store{" "}
-							</p>
-						</div>
-					</button>
+				<div className="flex flex-col w-3/4 mx-auto md:w-full items-start justify-start gap-3 ">
+					<h1 className="text-lg "> {translation.download}</h1>
+					<Image
+						src={"/google-store.png"}
+						width={150}
+						height={120}
+						alt="google"
+					/>
+					<Image
+						src={"/app-store.png"}
+						width={150}
+						height={120}
+						alt="apple"
+					/>
 				</div>
 			</div>
 

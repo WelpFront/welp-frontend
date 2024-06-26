@@ -16,39 +16,19 @@ const ForBusinessesHeader = ({ translation }: { translation: any }) => {
 				<div className="font-bold text-[20px] md:text-[30px]">
 					{translation.presence}
 				</div>
-				<div className=" flex gap-5 md:gap-10 mt-4">
-					<button className="bg-black p-3 text-white rounded-md flex items-center gap-1">
-						<Image
-							src={"/google-play.svg"}
-							width={30}
-							height={30}
-							alt="google"
-						/>
-						<div className="flex flex-col items-start">
-							<p className="text-xs font-light tracking-tighter">
-								{translation.getItOn}
-							</p>
-							<p className="text-sm md:text-md tracking-wider">
-								Google Play
-							</p>
-						</div>
-					</button>
-					<button className="bg-black p-3 text-white rounded-md flex items-center gap-1">
-						<Image
-							src={"/apple.svg"}
-							width={30}
-							height={30}
-							alt="apple"
-						/>
-						<div className="flex flex-col items-start">
-							<p className="text-xs font-light tracking-tighter">
-								{translation.downloadItOn}
-							</p>
-							<p className="text-sm md:text-md tracking-wider">
-								App Store
-							</p>
-						</div>
-					</button>
+				<div className=" flex gap-[31px] mt-4">
+					<Image
+						src={"/google-store.png"}
+						width={150}
+						height={120}
+						alt="google"
+					/>
+					<Image
+						src={"/app-store.png"}
+						width={150}
+						height={120}
+						alt="apple"
+					/>
 				</div>
 			</div>
 		</div>

@@ -23,9 +23,9 @@ const useGetCategory = (id: string) => {
 			getCategory(id)
 				.then((res) => {
 					setData(res.data);
-					console.log(res, "res");
 
 					setCategory(res.data);
+
 					setCategories(res.data.children);
 				})
 				.finally(() => {

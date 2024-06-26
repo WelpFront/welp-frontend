@@ -6,6 +6,7 @@ import {
 	getBusinessesList,
 } from "./businesses";
 import { getCategoriesList, getCategory } from "./catrgories";
+import { getCitiesList } from "./cities";
 import { getBusinessReviews } from "./reviews";
 
 export {
@@ -17,4 +18,5 @@ export {
 	getCategoriesList,
 	getBusinessesList,
 	getCategory,
+	getCitiesList,
 };

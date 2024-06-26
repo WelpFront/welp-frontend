@@ -10,6 +10,10 @@ export async function GET(request: NextRequest) {
 
 	const priceCategory = request.nextUrl.searchParams.get("price_category");
 
+	const searchKeyword = request.nextUrl.searchParams.get("search");
+
+	const city = request.nextUrl.searchParams.get("city");
+
 	const isDeliveryAvailable = request.nextUrl.searchParams.get(
 		"is_delivery_available"
 	);
@@ -35,10 +39,16 @@ export async function GET(request: NextRequest) {
 			url += `&is_delivery_available=${isDeliveryAvailable}`;
 		}
 
-		console.log(categories);
-
 		if (categories) {
 			url += `&categories__in=${categories}`;
+		}
+
+		if (searchKeyword) {
+			url += `&search=${searchKeyword}`;
+		}
+
+		if (city) {
+			url += `&city=${city}`;
 		}
 
 		const data = await get(url);

@@ -8,12 +8,14 @@ import type {
 	FacilitiesType,
 } from "./businesses";
 import type { CategoryType, CategoryChildType } from "./categories";
+import type { CityType } from "./cities";
 import type { ReviewType } from "./reviews";
 import type { CookiesType } from "./shared";
 import type { UserType } from "./users";
 
 export {
 	OpeningHoursType,
+	CityType,
 	CookiesType,
 	ProductTypesType,
 	ReviewsStats,

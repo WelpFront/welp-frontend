@@ -12,6 +12,8 @@ import { FaPlus } from "react-icons/fa6";
 const Navbar = ({ translation }: { translation: any }) => {
 	const [opened, setOpened] = useState<boolean>(false);
 
+	const locale = getCookie("NEXT_LOCALE");
+
 	const pathname = usePathname();
 
 	const isActive = (link: string) => pathname === link;
@@ -44,11 +46,17 @@ const Navbar = ({ translation }: { translation: any }) => {
 
 		const country = lookup(coords.longitude, coords.latitude, true);
 
-		setCookie("location", {
-			country: country[0],
-			long: coords.longitude,
-			lat: coords.latitude,
-		});
+		const expiryDate = new Date();
+		expiryDate.setDate(expiryDate.getDate() + 3);
+		setCookie(
+			"location",
+			{
+				country: country[0],
+				long: coords.longitude,
+				lat: coords.latitude,
+			},
+			{ expires: expiryDate }
+		);
 	}
 
 	function errorFunction() {
@@ -57,17 +65,16 @@ const Navbar = ({ translation }: { translation: any }) => {
 
 	return (
 		<div
+			dir="ltr"
 			className={`
 			${
 				withWhiteBackground || opened
-					? "bg-white md:bg-transparent shadow-md  static top-0 text-black"
+					? "bg-white md:bg-transparent shadow-md   static top-0 text-black"
 					: "absolute shadow-none lg:bg-transparent text-white"
 			}			
 			  w-full `}>
 			<div
-				className={`flex items-center gap-2 md:gap-12 justify-between  px-5 md:px-10
-					${withWhiteBackground ? "h-16	lg:h-20" : "h-16 lg:h-36"}
-				`}>
+				className={`flex items-center gap-2 md:gap-12 justify-between  px-5 md:px-10 h-14 lg:h-20`}>
 				<Link href={"/"}>
 					<Image
 						src="/logo.svg"
@@ -164,6 +171,7 @@ const Navbar = ({ translation }: { translation: any }) => {
 			</div>
 
 			<div
+				dir={locale === "ar" ? "rtl" : "ltr"}
 				className={`flex lg:hidden flex-col items-start justify-start ease-out duration-100 gap-10 px-5  ${
 					opened
 						? "max-h-96 py-4 border-t border-white"
@@ -190,7 +198,8 @@ const Navbar = ({ translation }: { translation: any }) => {
 				</Link>
 				<Link
 					className="flex items-center justify-center gap-2 text-lg"
-					href={"/about"}
+					target="_blank"
+					href={"https://blog.welpstar.com/"}
 					onClick={toggleOpenedHandler}>
 					{translation.blog}
 				</Link>

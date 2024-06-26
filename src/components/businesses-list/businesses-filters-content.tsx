@@ -2,6 +2,7 @@
 
 import { CheckBox, RadioButton } from "atoms";
 import React, { useEffect } from "react";
+import { GiCancel } from "react-icons/gi";
 import { useBusinessesFilterStore } from "store/businesses-filters";
 
 const BusinessesFiltersContent = ({
@@ -13,12 +14,18 @@ const BusinessesFiltersContent = ({
 }) => {
 	const setIsOpened = useBusinessesFilterStore((state) => state.setIsOpened);
 
+	const isOpened = useBusinessesFilterStore((state) => state.isOpened);
+
 	const categoriesToFilterWith = useBusinessesFilterStore(
 		(state) => state.categoriesToFilterWith
 	);
 
 	const setIsDeliveryAvailable = useBusinessesFilterStore(
 		(state) => state.setIsDeliveryAvailable
+	);
+
+	const isDeliveryAvailable = useBusinessesFilterStore(
+		(state) => state.isDeliveryAvailable
 	);
 
 	const setCategoriesToFilterWith = useBusinessesFilterStore(
@@ -31,6 +38,10 @@ const BusinessesFiltersContent = ({
 
 	const setPriceCategory = useBusinessesFilterStore(
 		(state) => state.setPriceCategory
+	);
+
+	const priceCategory = useBusinessesFilterStore(
+		(state) => state.priceCategory
 	);
 
 	const setCategory = useBusinessesFilterStore((state) => state.setCategory);
@@ -57,9 +68,18 @@ const BusinessesFiltersContent = ({
 	return (
 		<>
 			<div className="flex flex-col items-start  gap-3">
+				<div className="w-full flex justify-between items-center ">
+					<h1 className="font-bold">{translation.filters}</h1>
+					{/* <GiCancel
+						onClick={resetFiltersHandler}
+						className="w-5 h-5 hover:text-red-500"
+					/> */}
+				</div>
+				<hr className="my-2 h-[1px] bg-gray-100 w-full	" />
 				<h1 className="font-bold">{translation.suggested}</h1>
 				<CheckBox
 					disabled={isLoading}
+					checked={isOpened}
 					onChange={(e) => {
 						if (e.target.checked) {
 							setIsOpened(true);
@@ -71,6 +91,7 @@ const BusinessesFiltersContent = ({
 					label={translation.isOpened}
 				/>
 				<CheckBox
+					// checked={isDeliveryAvailable}
 					onChange={(e) => {
 						if (e.target.checked) {
 							setIsDeliveryAvailable(true);
@@ -91,10 +112,12 @@ const BusinessesFiltersContent = ({
 						setOpened && setOpened(false);
 						setPriceCategory("$$$$");
 					}}
+					// checked={priceCategory === "$$$$"}
 					disabled={isLoading}
 					label={translation.expensive}
 				/>
 				<RadioButton
+					// checked={priceCategory === "$$$"}
 					onChange={(e) => {
 						setOpened && setOpened(false);
 						setPriceCategory("$$$");
@@ -103,6 +126,7 @@ const BusinessesFiltersContent = ({
 					label={translation.high}
 				/>
 				<RadioButton
+					// checked={priceCategory === "$$"}
 					onChange={(e) => {
 						setOpened && setOpened(false);
 						setPriceCategory("$$");
@@ -111,6 +135,7 @@ const BusinessesFiltersContent = ({
 					label={translation.medium}
 				/>
 				<RadioButton
+					// checked={priceCategory === "$"}
 					onChange={(e) => {
 						setOpened && setOpened(false);
 						setPriceCategory("$");

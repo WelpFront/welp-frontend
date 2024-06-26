@@ -13,9 +13,6 @@ const BusinessesFilters = ({ translation }: { translation: any }) => {
 
 	return (
 		<div className="col-span-1 hidden lg:block bg-gray-businesses shadow-md w-full h-screen rounded-3xl p-3 sticky top-0">
-			<h1 className="font-bold">{translation.filters}</h1>
-			<hr className="my-2 h-[1px] bg-gray-100	" />
-
 			<BusinessesFiltersContent
 				translation={{
 					filters: translation.filters,

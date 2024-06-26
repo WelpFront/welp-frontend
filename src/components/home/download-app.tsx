@@ -3,46 +3,28 @@ import React from "react";
 
 const DownloadApp = ({ translation }: { translation: any }) => {
 	return (
-		<div className="flex px-10 flex-col md:flex-row md:px-28 bg-orange-200 min-h-96 gap-4  py-10 md:py-0  my-10  ">
+		<div className="flex px-10 flex-col md:flex-row md:px-28 bg-orange-200 min-h-96 gap-8  py-10 md:py-0  my-10  ">
 			<div className="flex flex-col  flex-1  justify-center order-2 md:order-1">
 				<h1 className="text-4xl font-bold my-2">
 					{translation.download}
 				</h1>
-				<p className="font-semibold my-2">{translation.available}</p>
+				<p className="font-light text-gray-900 my-2">
+					{translation.available}
+				</p>
 
-				<div className="flex gap-1">
-					<button className="bg-black p-3 text-white rounded-md flex items-center gap-1">
-						<Image
-							src={"/google-play.svg"}
-							width={30}
-							height={30}
-							alt="google"
-						/>
-						<div className="flex flex-col items-start">
-							<p className="text-xs font-light tracking-tighter">
-								{translation.getItOn}
-							</p>
-							<p className="text-sm md:text-md tracking-wider">
-								Google Play
-							</p>
-						</div>
-					</button>
-					<button className="bg-black p-3 text-white rounded-md flex items-center gap-1">
-						<Image
-							src={"/apple.svg"}
-							width={30}
-							height={30}
-							alt="apple"
-						/>
-						<div className="flex flex-col items-start">
-							<p className="text-xs font-light tracking-tighter">
-								{translation.downloadItOn}
-							</p>
-							<p className="text-sm md:text-md tracking-wider">
-								App Store{" "}
-							</p>
-						</div>
-					</button>
+				<div className=" flex gap-[40px] mt-4">
+					<Image
+						src={"/google-store.png"}
+						width={150}
+						height={120}
+						alt="google"
+					/>
+					<Image
+						src={"/app-store.png"}
+						width={150}
+						height={120}
+						alt="apple"
+					/>
 				</div>
 			</div>
 			<div className=" flex-1 flex justify-center md:justify-normal align-center relative overflow-hidden order-1 md:order-2 ">

@@ -9,43 +9,24 @@ const DownloadBusinessApp = ({ translation }: { translation: any }) => {
 				background:
 					" linear-gradient(97.55deg, rgba(255, 0, 0, 0.3) -2.18%, rgba(243, 179, 1, 0.3) 94.39%)",
 			}}>
-			<div className="flex flex-1 flex-col gap-5 order-2 md:order-1">
-				<div className="font-bold text-3xl md:text-5xl">
-					{translation.download}
+			<div className="flex flex-1 flex-col gap-[50px] order-2 md:order-1">
+				<div className="font-bold text-[40px] text-nowrap  md:text-5xl">
+					<h1>{translation.downloadNow}</h1>
+					<h1 className="mt-[20px]">{translation.startWork}</h1>
 				</div>
-				<div className=" flex gap-10 mt-4">
-					<button className="bg-black p-3 text-white rounded-md flex items-center gap-1">
-						<Image
-							src={"/google-play.svg"}
-							width={30}
-							height={30}
-							alt="google"
-						/>
-						<div className="flex flex-col items-start">
-							<p className="text-xs font-light tracking-tighter">
-								{translation.getItOn}
-							</p>
-							<p className="text-sm md:text-md tracking-wider">
-								Google Play
-							</p>
-						</div>
-					</button>
-					<button className="bg-black p-3 text-white rounded-md flex items-center gap-1">
-						<Image
-							src={"/apple.svg"}
-							width={30}
-							height={30}
-							alt="apple"
-						/>
-						<div className="flex flex-col items-start">
-							<p className="text-xs font-light tracking-tighter">
-								{translation.downloadItOn}
-							</p>
-							<p className="text-sm md:text-md tracking-wider">
-								App Store
-							</p>
-						</div>
-					</button>
+				<div className=" flex gap-10">
+					<Image
+						src={"/google-store.png"}
+						width={150}
+						height={120}
+						alt="google"
+					/>
+					<Image
+						src={"/app-store.png"}
+						width={150}
+						height={120}
+						alt="apple"
+					/>
 				</div>
 			</div>
 			<div className="flex-1 h-[50vh] md:h-[70vh] flex items-center justify-end order-1 md:order-2">

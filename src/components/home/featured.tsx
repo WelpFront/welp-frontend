@@ -23,7 +23,7 @@ const Featured = ({
 			slidesPerView: 2,
 		},
 		1000: {
-			slidesPerView: 3,
+			slidesPerView: 4,
 		},
 	};
 
@@ -35,10 +35,10 @@ const Featured = ({
 
 			<CustomSwiper
 				breakPoints={breakpoints as any}
-				slidesPerView={3}
+				slidesPerView={4}
 				className="featuredSwiper">
 				{featuredBusinesses.map((item) => (
-					<SwiperSlide className="py-2" key={item.id}>
+					<SwiperSlide className="py-2 w-1/3" key={item.id}>
 						<Link href={`/biz/businesses/${item.id}`}>
 							<BusinessCard
 								withBackground

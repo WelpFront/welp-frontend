@@ -1,3 +1,4 @@
+import { getCookie } from "cookies-next";
 import { BusinessType } from "interfaces";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -20,9 +21,13 @@ const useBusinessesList = () => {
 
 	const category = searchParams.get("category");
 
+	const location = JSON.parse(getCookie("location") as string);
+
 	const priceCategory = useBusinessesFilterStore(
 		(state) => state.priceCategory
 	);
+
+	const city = useBusinessesFilterStore((state) => state.city);
 
 	const isDeliveryAvailable = useBusinessesFilterStore(
 		(state) => state.isDeliveryAvailable
@@ -36,10 +41,18 @@ const useBusinessesList = () => {
 		(state) => state.setIsLoading
 	);
 
+	const searchKeyword = useBusinessesFilterStore(
+		(state) => state.searchKeyword
+	);
+
 	const filteredCategories =
 		categoriesToFilterWith?.length > 0
 			? categoriesToFilterWith
 			: [parseInt(category as string)];
+
+	const finalizedSearchKeyword = searchKeyword || searchParams.get("search");
+
+	const finalizedCity = city || parseInt(searchParams.get("city") as string);
 
 	const fetchBusinessesHandler = async () => {
 		setLoading(true);
@@ -50,7 +63,11 @@ const useBusinessesList = () => {
 				filteredCategories,
 				isOpened,
 				priceCategory,
-				isDeliveryAvailable
+				isDeliveryAvailable,
+				finalizedSearchKeyword,
+				finalizedCity,
+				location.lat,
+				location.long
 			);
 
 			setBusinesses(data.results);
@@ -67,6 +84,8 @@ const useBusinessesList = () => {
 
 	useEffect(() => {
 		if (page > 1) {
+			console.log(page, "page1");
+
 			fetchBusinessesHandler();
 			window.scrollTo({ top: 0, behavior: "smooth" });
 		}
@@ -74,10 +93,29 @@ const useBusinessesList = () => {
 
 	useEffect(() => {
 		setPage(1);
-	}, [isOpened, priceCategory, isDeliveryAvailable, categoriesToFilterWith]);
+		window.scrollTo({ top: 0, behavior: "smooth" });
+	}, [
+		isOpened,
+		priceCategory,
+		isDeliveryAvailable,
+		categoriesToFilterWith,
+		searchKeyword,
+		finalizedCity,
+	]);
 
 	useEffect(() => {
 		if (page === 1) {
+			console.log(
+				isOpened,
+				priceCategory,
+				isDeliveryAvailable,
+				categoriesToFilterWith,
+				page,
+				searchKeyword,
+				finalizedCity,
+				"page2"
+			);
+
 			fetchBusinessesHandler();
 			window.scrollTo({ top: 0, behavior: "smooth" });
 		}
@@ -87,6 +125,8 @@ const useBusinessesList = () => {
 		isDeliveryAvailable,
 		categoriesToFilterWith,
 		page,
+		searchKeyword,
+		finalizedCity,
 	]);
 
 	return {

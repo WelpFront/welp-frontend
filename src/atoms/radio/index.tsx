@@ -3,10 +3,12 @@ import React from "react";
 const RadioButton = ({
 	label,
 	disabled,
+	checked = false,
 	onChange,
 }: {
 	label: string;
 	disabled?: boolean;
+	checked?: boolean;
 	onChange?: (e: any) => void;
 }) => {
 	return (

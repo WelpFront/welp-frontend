@@ -44,6 +44,7 @@ export default function RootLayout({
 					addPlace: navbarT("addPlace"),
 					ex: navbarT("ex"),
 					where: navbarT("where"),
+					currentLocation: navbarT("currentLocation"),
 				}}
 			/>
 			<ClientProviders>{children}</ClientProviders>
