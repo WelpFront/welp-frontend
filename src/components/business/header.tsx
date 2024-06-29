@@ -4,13 +4,20 @@ const BusinessesHeader = ({
 	title,
 	city,
 	type,
+	image,
 }: {
 	title: string | null;
 	city: string;
 	type: string;
+	image: string;
 }) => {
 	return (
-		<div className="h-129 bg-cover bg-no-repeat bg-right bg-[url(/header.png)] flex flex-col items-center justify-center gap-10 text-white">
+		<div
+			style={{
+				background: `url(${image}) center center fixed no-repeat`,
+				backgroundSize: "cover",
+			}}
+			className={`h-129 bg-cover bg-no-repeat bg-right  flex flex-col items-center justify-center gap-10 text-white`}>
 			<h1 className="text-5xl font-bold text-center"> {title}</h1>
 
 			<div className=" flex items-center gap-5">

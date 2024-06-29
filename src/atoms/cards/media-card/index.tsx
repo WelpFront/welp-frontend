@@ -14,7 +14,7 @@ const MediaCard = ({ item }: { item: MediaType }) => {
 	};
 	return (
 		<div className="rounded-lg shadow-lg overflow-hidden">
-			<Modal className={"w-full md:w-1/2 h-96"} data={data}>
+			<Modal className={"w-full md:w-1/2 min-h-96"} data={data}>
 				<Image
 					src={item.file}
 					className=" rounded-md object-contain mb-5 h-full w-full"

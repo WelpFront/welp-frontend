@@ -61,6 +61,7 @@ const BusinessPage = async ({ params }: { params: any }) => {
 		products,
 		media,
 		facilities,
+		cover_image,
 	} = await getBusiness(slug);
 
 	return (
@@ -69,6 +70,7 @@ const BusinessPage = async ({ params }: { params: any }) => {
 				title={name}
 				city={city_name}
 				type={business_type}
+				image={cover_image}
 			/>
 
 			<div className="grid grid-cols-12 gap-4 px-4 md:px-12 my-6">

@@ -28,7 +28,7 @@ const CustomSwiper = ({
 	}, []);
 
 	return (
-		<div className="py-2 md:px-10 lg:px-20 ">
+		<div className="py-2 md:px-10 lg:px-10 ">
 			{domLoaded && (
 				<div className="container flex flex-col justify-center px-5 py-2 rounded-md min-h-96 ">
 					<div className="relative z-0">

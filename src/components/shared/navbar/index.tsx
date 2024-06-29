@@ -7,10 +7,13 @@ import * as lookup from "coordinate_to_country";
 import { Link, usePathname } from "navigation";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { FaSearch } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa6";
 
 const Navbar = ({ translation }: { translation: any }) => {
 	const [opened, setOpened] = useState<boolean>(false);
+
+	const [searchOpened, setSearchOpened] = useState<boolean>(false);
 
 	const locale = getCookie("NEXT_LOCALE");
 
@@ -29,7 +32,15 @@ const Navbar = ({ translation }: { translation: any }) => {
 	);
 
 	const toggleOpenedHandler = () => {
-		setOpened((prev) => !prev);
+		if (searchOpened) {
+			setSearchOpened(false);
+		} else {
+			setOpened((prev) => !prev);
+		}
+	};
+
+	const toggleSearchOpenedHandler = () => {
+		setSearchOpened((prev) => !prev);
 	};
 
 	useEffect(() => {
@@ -68,8 +79,8 @@ const Navbar = ({ translation }: { translation: any }) => {
 			dir="ltr"
 			className={`
 			${
-				withWhiteBackground || opened
-					? "bg-white md:bg-transparent shadow-md   static top-0 text-black"
+				withWhiteBackground || opened || searchOpened
+					? "bg-white md:bg-transparent shadow-md   static top-0 text-black "
 					: "absolute shadow-none lg:bg-transparent text-white"
 			}			
 			  w-full `}>
@@ -90,7 +101,7 @@ const Navbar = ({ translation }: { translation: any }) => {
 				/>
 				<div className="items-center justify-between hidden gap-7 lg:flex  ">
 					<Link
-						className={`flex items-center justify-center gap-2 text-md whitespace-nowrap
+						className={`flex items-center justify-center gap-2  whitespace-nowrap text-[20px]
 						${isActive("/") ? "text-yellow-400" : "hover:text-yellow-400"}`}
 						style={{
 							fontWeight: isActive("/") ? "bold" : undefined,
@@ -100,7 +111,7 @@ const Navbar = ({ translation }: { translation: any }) => {
 					</Link>
 
 					<Link
-						className={`flex items-center justify-center gap-2 whitespace-nowrap text-md
+						className={`flex items-center justify-center gap-2 whitespace-nowrap  text-[20px]
 							${isActive("/businesses") ? "text-yellow-400" : "hover:text-yellow-400"}`}
 						style={{
 							fontWeight: isActive("/businesses")
@@ -112,8 +123,9 @@ const Navbar = ({ translation }: { translation: any }) => {
 					</Link>
 
 					<Link
-						className={`  whitespace-nowrap text-md ${
-							!isActive("/about") && "hover:text-yellow-400"
+						className={`  whitespace-nowrap  ${
+							!isActive("/about") &&
+							"hover:text-yellow-400 text-[20px]"
 						}`}
 						style={{
 							textShadow: isActive("/about")
@@ -126,8 +138,9 @@ const Navbar = ({ translation }: { translation: any }) => {
 						{translation.blog}
 					</Link>
 					<Link
-						className={`flex items-center justify-center gap-2 whitespace-nowrap text-white bg-secondary p-2 rounded-full text-md ${
-							!isActive("/contact") && "hover:text-yellow-400"
+						className={`flex items-center justify-center gap-2 whitespace-nowrap text-white bg-secondary p-2 rounded-full  ${
+							!isActive("/contact") &&
+							"hover:text-yellow-400 text-[15px]"
 						}`}
 						style={{
 							textShadow: isActive("/contact")
@@ -143,44 +156,55 @@ const Navbar = ({ translation }: { translation: any }) => {
 					</Link>
 				</div>
 
-				<button
-					onClick={toggleOpenedHandler}
-					className="flex flex-col gap-1 cursor-pointer lg:hidden">
-					<div
-						className={`w-6 h-0.5 ease-in-out duration-100 ${
-							withWhiteBackground || opened
-								? "bg-black"
-								: "bg-white"
-						} ${opened && "rotate-45 translate-y-1.5 "} `}
-					/>
-					<div
-						className={`w-6 h-0.5 ease-in-out duration-100 ${
-							withWhiteBackground || opened
-								? "bg-black"
-								: "bg-white"
-						} ${opened && "opacity-0 "}`}
-					/>
-					<div
-						className={`w-6 h-0.5 ease-in-out duration-100 ${
-							withWhiteBackground || opened
-								? "bg-black"
-								: "bg-white"
-						} ${opened && "-rotate-45 -translate-y-1.5 "}`}
-					/>
-				</button>
+				<div className="flex gap-3 items-center lg:hidden">
+					<button
+						className={`block ${
+							(searchOpened || opened) && "hidden"
+						} `}
+						onClick={toggleSearchOpenedHandler}>
+						<FaSearch className="w-6 h-6" />
+					</button>
+					<button
+						onClick={toggleOpenedHandler}
+						className="flex flex-col gap-1 cursor-pointer ">
+						<div
+							className={`w-6 h-0.5 ease-in-out duration-100 ${
+								withWhiteBackground || opened || searchOpened
+									? "bg-black"
+									: "bg-white"
+							} ${
+								(opened || searchOpened) &&
+								"rotate-45 translate-y-1.5 "
+							} `}
+						/>
+						<div
+							className={`w-6 h-0.5 ease-in-out duration-100 ${
+								withWhiteBackground || opened || searchOpened
+									? "bg-black"
+									: "bg-white"
+							} ${(opened || searchOpened) && "opacity-0 "}`}
+						/>
+						<div
+							className={`w-6 h-0.5 ease-in-out duration-100 ${
+								withWhiteBackground || opened || searchOpened
+									? "bg-black"
+									: "bg-white"
+							} ${
+								(opened || searchOpened) &&
+								"-rotate-45 -translate-y-1.5 "
+							}`}
+						/>
+					</button>
+				</div>
 			</div>
 
 			<div
 				dir={locale === "ar" ? "rtl" : "ltr"}
 				className={`flex lg:hidden flex-col items-start justify-start ease-out duration-100 gap-10 px-5  ${
 					opened
-						? "max-h-96 py-4 border-t border-white"
+						? "max-h-96 py-4 border-t border-gray-300"
 						: "overflow-hidden max-h-0"
 				}    md:px-10 lg:px-20`}>
-				<SearchInput
-					className="flex lg:hidden"
-					translation={translation}
-				/>
 				<Link
 					className="flex items-center justify-center gap-2 text-lg"
 					href={"/"}
@@ -204,7 +228,7 @@ const Navbar = ({ translation }: { translation: any }) => {
 					{translation.blog}
 				</Link>
 				<Link
-					className={`flex items-center justify-center gap-2 whitespace-nowrap text-white bg-secondary p-2 rounded-full text-md ${
+					className={`flex items-center justify-center gap-2 whitespace-nowrap text-white bg-secondary p-2 rounded-full  ${
 						!isActive("/contact") && "hover:text-yellow-400"
 					}`}
 					href={"/contact"}
@@ -213,6 +237,19 @@ const Navbar = ({ translation }: { translation: any }) => {
 
 					{translation.addPlace}
 				</Link>
+			</div>
+
+			<div
+				dir={locale === "ar" ? "rtl" : "ltr"}
+				className={`flex lg:hidden flex-col items-start justify-start ease-out duration-100 gap-10 px-5  ${
+					searchOpened
+						? "max-h-96 py-4 border-t border-gray-300"
+						: "overflow-hidden max-h-0"
+				}    md:px-10 lg:px-20`}>
+				<SearchInput
+					className="flex lg:hidden"
+					translation={translation}
+				/>
 			</div>
 		</div>
 	);

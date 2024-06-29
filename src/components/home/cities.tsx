@@ -36,11 +36,11 @@ const Cities = ({ translation }: { translation: any }) => {
 					breakPoints={breakpoints as any}
 					slidesPerView={4}>
 					{cities.map((item, index) => (
-						<SwiperSlide className="py-2" key={index}>
+						<SwiperSlide className="py-2 mx-2 w-full" key={index}>
 							<div
 								className={`${
 									index % 2 !== 0 ? "h-96" : "h-72"
-								} w-11/12 flex items-start justify-center rounded-3xl border border-yellow-500 border-solid text-xl font-semibold text-white
+								} w-full flex items-start justify-center rounded-3xl border border-yellow-500 border-solid text-xl font-semibold text-white
                                 `}
 								style={{
 									background: ` url(${item.img})`,

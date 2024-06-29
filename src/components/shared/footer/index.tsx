@@ -6,7 +6,7 @@ const Footer = ({ translation }: { translation: any }) => {
 	return (
 		<div className="flex flex-col gap-4">
 			<div className="flex flex-col md:flex-row bg-white rounded-t-3xl shadow-inner py-2 px-10 md:px-28 items-center md:items-start justify-start  md:justify-around gap-5 md:gap-14">
-				<div className="flex  md:w-full w-3/4 mx-auto  gap-2 flex-col items-start justify-center">
+				<div className="flex  md:w-full w-1/2 mx-auto  gap-2 flex-col items-start justify-center">
 					<Image
 						src="/logo.svg"
 						width={100}
@@ -36,18 +36,36 @@ const Footer = ({ translation }: { translation: any }) => {
 						/>
 					</div>
 				</div>
-				<div className="flex flex-col w-3/4 mx-auto md:w-full items-start justify-center gap-2 md:ps-10">
+				<div className="flex flex-col w-1/2 mx-auto md:w-full items-start justify-center gap-2 md:ps-10">
 					<h1 className="text-lg">{translation.importantLinks}</h1>
 					<ol className="text-gray-500 list-disc ms-5 flex flex-col gap-3 text-sm">
-						<li>{translation.home}</li>
-						<li>{translation.blog}</li>
-						<li>{translation.forBusinesses}</li>
-						<li>{translation.aboutUs}</li>
-						<li>{translation.termsConditions}</li>
-						<li>{translation.privacyPolicy}</li>
+						<li>
+							<Link href={"/"}>{translation.home}</Link>
+						</li>
+						<li>
+							<Link
+								href={"https://blog.welpstar.com/"}
+								target="_blank">
+								{translation.blog}
+							</Link>
+						</li>
+						<li>
+							<Link href={"/businesses"}>
+								{translation.forBusinesses}
+							</Link>
+						</li>
+						<li>
+							<Link href={""}>{translation.aboutUs}</Link>
+						</li>
+						<li>
+							<Link href={""}>{translation.termsConditions}</Link>
+						</li>
+						<li>
+							<Link href={""}>{translation.privacyPolicy}</Link>
+						</li>
 					</ol>
 				</div>
-				<div className="flex flex-col w-3/4 md:w-full mx-auto items-start justify-start gap-2 text-sm ">
+				<div className="flex flex-col w-1/2 md:w-full mx-auto items-start justify-start gap-2 text-sm ">
 					<h1 className="text-lg">{translation.offices}</h1>
 					<div className=" flex flex-col items-start justify-center text-gray-500">
 						<p className="flex flex-1 gap-1 text-sm">
@@ -80,7 +98,7 @@ const Footer = ({ translation }: { translation: any }) => {
 						</p>
 					</div>
 				</div>
-				<div className="flex flex-col w-3/4 mx-auto md:w-full items-start justify-start gap-3 ">
+				<div className="flex flex-col w-1/2 mx-auto md:w-full items-start justify-start gap-3 ">
 					<h1 className="text-lg "> {translation.download}</h1>
 					<Image
 						src={"/google-store.png"}

@@ -54,10 +54,9 @@ const BusinessesFiltersContent = ({
 
 	const resetFiltersHandler = () => {
 		setPriceCategory(null);
-		setCategoriesToFilterWith([]);
 		setIsOpened(false);
 		setIsDeliveryAvailable(false);
-		setChildrenCategories([]);
+		setCategoriesToFilterWith([]);
 		setCategory(null);
 	};
 
@@ -70,10 +69,16 @@ const BusinessesFiltersContent = ({
 			<div className="flex flex-col items-start  gap-3">
 				<div className="w-full flex justify-between items-center ">
 					<h1 className="font-bold">{translation.filters}</h1>
-					{/* <GiCancel
-						onClick={resetFiltersHandler}
-						className="w-5 h-5 hover:text-red-500"
-					/> */}
+					{(isOpened ||
+						isDeliveryAvailable ||
+						priceCategory ||
+						categoriesToFilterWith.length > 0) &&
+						!isLoading && (
+							<GiCancel
+								onClick={resetFiltersHandler}
+								className="w-5 h-5 hover:text-red-500 cursor-pointer"
+							/>
+						)}
 				</div>
 				<hr className="my-2 h-[1px] bg-gray-100 w-full	" />
 				<h1 className="font-bold">{translation.suggested}</h1>
@@ -91,7 +96,7 @@ const BusinessesFiltersContent = ({
 					label={translation.isOpened}
 				/>
 				<CheckBox
-					// checked={isDeliveryAvailable}
+					checked={isDeliveryAvailable}
 					onChange={(e) => {
 						if (e.target.checked) {
 							setIsDeliveryAvailable(true);
@@ -107,38 +112,54 @@ const BusinessesFiltersContent = ({
 			<hr className="my-2 h-[2px] bg-gray-100	" />
 			<div className="flex flex-col items-start  gap-3">
 				<h1 className="font-bold">{translation.price}</h1>
-				<RadioButton
+				<CheckBox
+					checked={priceCategory === "$$$$"}
 					onChange={(e) => {
+						if (e.target.checked) {
+							setPriceCategory("$$$$");
+						} else {
+							setPriceCategory(null);
+						}
 						setOpened && setOpened(false);
-						setPriceCategory("$$$$");
 					}}
-					// checked={priceCategory === "$$$$"}
 					disabled={isLoading}
 					label={translation.expensive}
 				/>
-				<RadioButton
-					// checked={priceCategory === "$$$"}
+				<CheckBox
+					checked={priceCategory === "$$$"}
 					onChange={(e) => {
+						if (e.target.checked) {
+							setPriceCategory("$$$");
+						} else {
+							setPriceCategory(null);
+						}
 						setOpened && setOpened(false);
-						setPriceCategory("$$$");
 					}}
 					disabled={isLoading}
 					label={translation.high}
 				/>
-				<RadioButton
-					// checked={priceCategory === "$$"}
+				<CheckBox
+					checked={priceCategory === "$$"}
 					onChange={(e) => {
+						if (e.target.checked) {
+							setPriceCategory("$$");
+						} else {
+							setPriceCategory(null);
+						}
 						setOpened && setOpened(false);
-						setPriceCategory("$$");
 					}}
 					disabled={isLoading}
 					label={translation.medium}
 				/>
-				<RadioButton
-					// checked={priceCategory === "$"}
+				<CheckBox
+					checked={priceCategory === "$"}
 					onChange={(e) => {
+						if (e.target.checked) {
+							setPriceCategory("$");
+						} else {
+							setPriceCategory(null);
+						}
 						setOpened && setOpened(false);
-						setPriceCategory("$");
 					}}
 					disabled={isLoading}
 					label={translation.low}
@@ -152,6 +173,11 @@ const BusinessesFiltersContent = ({
 						{categories?.map((item) => (
 							<CheckBox
 								key={item.id}
+								checked={
+									!!categoriesToFilterWith?.find(
+										(category) => category === item.id
+									)
+								}
 								onChange={(e) => {
 									setOpened && setOpened(false);
 

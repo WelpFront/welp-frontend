@@ -35,3 +35,8 @@
 .leaflet-top {
 	z-index: 40 !important;
 }
+
+.swiper-slide {
+	margin-inline: 20px !important;
+	margin-left: 0 !important;
+}

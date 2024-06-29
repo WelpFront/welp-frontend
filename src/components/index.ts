@@ -30,15 +30,21 @@ import OpenApp from "./menu/open-app";
 import ProductsList from "./menu/products-list";
 import Footer from "./shared/footer";
 import Navbar from "./shared/navbar";
+import UsersDownloadHeader from "./users/header";
+import ImagesSection from "./users/images";
+import UserDownloadInfo from "./users/info";
 
 export {
+	UserDownloadInfo,
 	ForBusinessesHeader,
+	ImagesSection,
 	MenuSector,
 	AboutBusiness,
 	BoostBusiness,
 	Categories,
 	Facilities,
 	ResponsiveBusinessesFilters,
+	UsersDownloadHeader,
 	CategoriesList,
 	MediaSector,
 	BusinessReviews,

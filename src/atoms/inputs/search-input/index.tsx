@@ -44,18 +44,24 @@ const SearchInput = ({
 
 	const createQueryString = useCallback(
 		(name: string, value: any) => {
-			const params = new URLSearchParams(searchParams.toString());
-			params.set(name, value);
-			return params.toString();
+			if (value) {
+				console.log(value);
+
+				const params = new URLSearchParams(searchParams.toString());
+				params.set(name, value);
+				return params.toString();
+			}
 		},
 		[searchParams]
 	);
 
 	const removeQueryParam = useCallback(
 		(name: string, pathname: string) => {
-			const params = new URLSearchParams(searchParams.toString());
-			params.delete(name);
-			router.push(pathname + "?" + params);
+			if (name) {
+				const params = new URLSearchParams(searchParams.toString());
+				params.delete(name);
+				router.push(pathname + "?" + params);
+			}
 		},
 		[searchParams]
 	);
@@ -70,13 +76,34 @@ const SearchInput = ({
 	const setCity = useBusinessesFilterStore((state) => state.setCity);
 
 	const searchHandler = () => {
-		if (keyword) {
-			setSearchKeyword(keyword);
+		console.log(
+			(cityValue?.name?.toLowerCase() &&
+				data.find((city) =>
+					city?.name
+						?.toLowerCase()
+						.includes(cityValue?.name?.toLowerCase() || cityValue)
+				)) ||
+				cityValue === translation.currentLocation
+		);
+
+		if (
+			keyword ||
+			(cityValue &&
+				(data.find((city) =>
+					city?.name
+						?.toLowerCase()
+						.includes(cityValue?.name?.toLowerCase() || cityValue)
+				) ||
+					cityValue === translation.currentLocation))
+		) {
+			if (keyword) setSearchKeyword(keyword);
 
 			if (
 				cityValue !== translation.currentLocation &&
 				data.find((city) =>
-					city?.name?.toLowerCase().includes(cityValue?.toLowerCase)
+					city?.name
+						?.toLowerCase()
+						.includes(cityValue?.name?.toLowerCase() || cityValue)
 				)
 			)
 				setCity(
@@ -92,14 +119,10 @@ const SearchInput = ({
 					router.push(
 						pathname +
 							"?" +
-							createQueryString("search", keyword as string)
-					);
-					router.push(
-						pathname +
-							"?" +
 							createQueryString("city", cityValue.id as string)
 					);
-				} else {
+				}
+				if (keyword) {
 					router.push(
 						pathname +
 							"?" +
@@ -109,10 +132,17 @@ const SearchInput = ({
 			} else {
 				if (cityValue && cityValue !== translation.currentLocation) {
 					router.push(
-						`/biz/businesses?search=${keyword}&city=${cityValue?.id}`
+						`/biz/businesses` +
+							"?" +
+							createQueryString("city", cityValue.id as string)
 					);
-				} else {
-					router.push(`/biz/businesses?search=${keyword}`);
+				}
+				if (keyword) {
+					router.push(
+						`/biz/businesses` +
+							"?" +
+							createQueryString("search", keyword as string)
+					);
 				}
 			}
 		} else {

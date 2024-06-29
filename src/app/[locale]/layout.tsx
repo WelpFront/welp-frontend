@@ -2,11 +2,11 @@ import { Footer, Navbar } from "components";
 import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
-import { Noto_Kufi_Arabic } from "next/font/google";
+import { Roboto } from "next/font/google";
 import ClientProviders from "providers/client-providers";
 import "styles/globals.css";
 
-const kufi = Noto_Kufi_Arabic({ subsets: ["arabic"] });
+const roboto = Roboto({ weight: ["700"], preload: false });
 
 export const metadata: Metadata = {
 	title: {
@@ -35,7 +35,7 @@ export default function RootLayout({
 		<div
 			dir={params.locale === "ar" ? "rtl" : "ltr"}
 			lang={params.locale}
-			className={kufi.className}>
+			className={roboto.className}>
 			<Navbar
 				translation={{
 					home: navbarT("home"),

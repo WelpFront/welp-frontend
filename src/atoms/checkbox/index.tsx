@@ -25,7 +25,7 @@ const CheckBox = ({
 			/>
 			<label
 				htmlFor={label}
-				className="ms-2 text-sm select-none font-medium text-gray-900 ">
+				className="ms-2 text-lg select-none font-medium text-gray-900 ">
 				{label}
 			</label>
 		</div>
