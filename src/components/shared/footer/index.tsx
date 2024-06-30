@@ -100,18 +100,30 @@ const Footer = ({ translation }: { translation: any }) => {
 				</div>
 				<div className="flex flex-col w-1/2 mx-auto md:w-full items-start justify-start gap-3 ">
 					<h1 className="text-lg "> {translation.download}</h1>
-					<Image
-						src={"/google-store.png"}
-						width={150}
-						height={120}
-						alt="google"
-					/>
-					<Image
-						src={"/app-store.png"}
-						width={150}
-						height={120}
-						alt="apple"
-					/>
+					<Link
+						target="_blank"
+						href={
+							"https://play.google.com/store/apps/details?id=com.welp.welp"
+						}>
+						<Image
+							src={"/google-store.png"}
+							width={150}
+							height={120}
+							alt="google"
+						/>
+					</Link>
+					<Link
+						target="_blank"
+						href={
+							"https://apps.apple.com/us/app/welp-rating-social-reviews/id6478454000"
+						}>
+						<Image
+							src={"/app-store.png"}
+							width={150}
+							height={120}
+							alt="apple"
+						/>
+					</Link>
 				</div>
 			</div>
 

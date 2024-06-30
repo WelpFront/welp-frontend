@@ -1,7 +1,6 @@
 "use client";
 
 import { Chip, TagsLoader } from "atoms";
-import { useCategoriesList } from "hooks";
 import { CategoryType, ProductTypesType } from "interfaces";
 import { useMemo } from "react";
 
@@ -13,10 +12,12 @@ const CategoriesSlider = ({
 	router,
 	setActive,
 	createQueryString,
+	productsLoading,
 }: {
 	active: number | null;
 	data: Array<CategoryType>;
 	loading: boolean;
+	productsLoading: boolean;
 	pathname: string;
 	router: any;
 	setActive: (state: number) => void;
@@ -31,8 +32,10 @@ const CategoriesSlider = ({
 	}, []);
 
 	const chipClickHandler = (id: number) => {
-		setActive(id);
-		router.push(pathname + "?" + createQueryString("type", id));
+		if (!productsLoading) {
+			setActive(id);
+			router.push(pathname + "?" + createQueryString("type", id));
+		}
 	};
 
 	return (

@@ -1,9 +1,8 @@
+import { Link } from "navigation";
 import Image from "next/image";
 import React from "react";
 
 const UsersDownloadHeader = ({ translation }: { translation: any }) => {
-	console.log(translation);
-
 	return (
 		<div
 			className="h-[60vh] md:h-screen rounded-br-[300px] flex items-center justify-start pt-28 flex-col"
@@ -15,18 +14,30 @@ const UsersDownloadHeader = ({ translation }: { translation: any }) => {
 				{translation.header}
 			</h1>
 			<div className=" flex gap-10">
-				<Image
-					src={"/google-store.png"}
-					width={150}
-					height={120}
-					alt="google"
-				/>
-				<Image
-					src={"/app-store.png"}
-					width={150}
-					height={120}
-					alt="apple"
-				/>
+				<Link
+					target="_blank"
+					href={
+						"https://play.google.com/store/apps/details?id=com.welp.welp"
+					}>
+					<Image
+						src={"/google-store.png"}
+						width={150}
+						height={120}
+						alt="google"
+					/>
+				</Link>
+				<Link
+					target="_blank"
+					href={
+						"https://apps.apple.com/us/app/welp-rating-social-reviews/id6478454000"
+					}>
+					<Image
+						src={"/app-store.png"}
+						width={150}
+						height={120}
+						alt="apple"
+					/>
+				</Link>
 			</div>
 		</div>
 	);

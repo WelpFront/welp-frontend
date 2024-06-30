@@ -35,6 +35,7 @@ const Menu = ({ slug }: { slug: number }) => {
 				active={active}
 				createQueryString={createQueryString}
 				pathname={pathname}
+				productsLoading={productsLoading}
 				router={router}
 			/>
 			<ProductsList

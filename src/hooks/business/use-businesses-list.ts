@@ -84,8 +84,6 @@ const useBusinessesList = () => {
 
 	useEffect(() => {
 		if (page > 1) {
-			console.log(page, "page1");
-
 			fetchBusinessesHandler();
 			window.scrollTo({ top: 0, behavior: "smooth" });
 		}
@@ -105,17 +103,6 @@ const useBusinessesList = () => {
 
 	useEffect(() => {
 		if (page === 1) {
-			console.log(
-				isOpened,
-				priceCategory,
-				isDeliveryAvailable,
-				categoriesToFilterWith,
-				page,
-				searchKeyword,
-				finalizedCity,
-				"page2"
-			);
-
 			fetchBusinessesHandler();
 			window.scrollTo({ top: 0, behavior: "smooth" });
 		}

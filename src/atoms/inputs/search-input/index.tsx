@@ -45,8 +45,6 @@ const SearchInput = ({
 	const createQueryString = useCallback(
 		(name: string, value: any) => {
 			if (value) {
-				console.log(value);
-
 				const params = new URLSearchParams(searchParams.toString());
 				params.set(name, value);
 				return params.toString();
@@ -76,16 +74,6 @@ const SearchInput = ({
 	const setCity = useBusinessesFilterStore((state) => state.setCity);
 
 	const searchHandler = () => {
-		console.log(
-			(cityValue?.name?.toLowerCase() &&
-				data.find((city) =>
-					city?.name
-						?.toLowerCase()
-						.includes(cityValue?.name?.toLowerCase() || cityValue)
-				)) ||
-				cityValue === translation.currentLocation
-		);
-
 		if (
 			keyword ||
 			(cityValue &&

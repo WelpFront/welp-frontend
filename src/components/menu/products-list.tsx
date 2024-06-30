@@ -24,7 +24,7 @@ const ProductsList = ({
 	}, []);
 
 	return (
-		<div className=" overflow-auto h-screen">
+		<div className=" overflow-auto h-[50vh]">
 			{loading
 				? loaders
 				: data?.results.map((item: ProductType, index: number) => {
