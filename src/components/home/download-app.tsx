@@ -4,7 +4,7 @@ import React from "react";
 
 const DownloadApp = ({ translation }: { translation: any }) => {
 	return (
-		<div className="flex px-10 flex-col md:flex-row md:px-28 bg-orange-200 min-h-96 gap-8  py-10 md:py-0  my-10  ">
+		<div className="flex px-5 md:px-10 flex-col md:flex-row bg-orange-200 min-h-96 gap-8  py-10 md:py-0  my-10  ">
 			<div className="flex flex-col  flex-1  justify-center order-2 md:order-1">
 				<h1 className="text-4xl font-bold my-2">
 					{translation.download}

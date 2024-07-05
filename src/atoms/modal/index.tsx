@@ -27,7 +27,7 @@ const Modal = ({
 					<div className="flex items-center justify-center min-h-screen px-4 pt-4">
 						<div
 							onClick={(e) => e.stopPropagation()}
-							className={` overflow-hidden bg-white rounded-lg shadow-md relative ${className}`}>
+							className={` overflow-hidden max-h-3/4 bg-white rounded-lg shadow-md relative ${className}`}>
 							<div className="top-2  cursor-pointer text-3xl mt-2 w-full flex items-end justify-end px-4">
 								<button
 									className="left-10"

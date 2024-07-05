@@ -11,6 +11,7 @@ const AboutBusiness = ({
 		<div className="text-start">
 			<h3 className="text-xl my-1 font-bold">{translation.about}</h3>
 			<div
+				dir="auto"
 				className={`border-1 border-solid border-gray-100 p-3 rounded-3xl text-justify  min-h-[40vh] overflow-y-auto ${
 					(!about || about.length === 0) &&
 					" flex items-center justify-center"

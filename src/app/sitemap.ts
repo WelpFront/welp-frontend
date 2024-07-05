@@ -9,7 +9,7 @@ const pathnames = [
 	"/biz/businesses",
 ];
 
-const host = "http://localhost:3000";
+const host = process.env.NEXT_PUBLIC_FRONTEND_URL;
 
 export default function sitemap() {
 	return [

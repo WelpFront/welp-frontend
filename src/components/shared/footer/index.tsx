@@ -5,7 +5,7 @@ import React from "react";
 const Footer = ({ translation }: { translation: any }) => {
 	return (
 		<div className="flex flex-col gap-4">
-			<div className="flex flex-col md:flex-row bg-white rounded-t-3xl shadow-inner py-2 px-10 md:px-28 items-center md:items-start justify-start  md:justify-around gap-5 md:gap-14">
+			<div className="flex flex-col md:flex-row bg-white rounded-t-3xl shadow-inner py-2 px-5 md:px-10  items-center md:items-start justify-start  md:justify-around gap-5 md:gap-14">
 				<div className="flex  md:w-full w-1/2 mx-auto  gap-2 flex-col items-start justify-center">
 					<Image
 						src="/logo.svg"
@@ -26,18 +26,27 @@ const Footer = ({ translation }: { translation: any }) => {
 								alt="facebook"
 							/>
 						</Link>
-						<Image
-							src="/instagram.svg"
-							width={30}
-							height={30}
-							alt="instagram"
-						/>
-						<Image
-							src="/tiktok.svg"
-							width={30}
-							height={30}
-							alt="tiktok"
-						/>
+
+						<Link
+							target="_blank"
+							href={"https://instagram.com/welpegy"}>
+							<Image
+								src="/instagram.svg"
+								width={30}
+								height={30}
+								alt="instagram"
+							/>
+						</Link>
+						<Link
+							target="_blank"
+							href={"https://www.tiktok.com/@welpegy"}>
+							<Image
+								src="/tiktok.svg"
+								width={30}
+								height={30}
+								alt="tiktok"
+							/>
+						</Link>
 					</div>
 				</div>
 				<div className="flex flex-col w-1/2 mx-auto md:w-full items-start justify-center gap-2 md:ps-10">
@@ -69,7 +78,7 @@ const Footer = ({ translation }: { translation: any }) => {
 						</li>
 					</ol>
 				</div>
-				<div className="flex flex-col w-1/2 md:w-full mx-auto items-start justify-start gap-2 text-sm ">
+				<div className="flex flex-col w-[80%] md:w-full mx-auto items-start justify-start gap-2 text-sm ">
 					<h1 className="text-lg">{translation.offices}</h1>
 					<div className=" flex flex-col items-start justify-center text-gray-500">
 						<p className="flex flex-1 gap-1 text-sm">
@@ -87,9 +96,19 @@ const Footer = ({ translation }: { translation: any }) => {
 						<p className="flex gap-1">
 							{translation.address}: California
 						</p>
-						<p className="flex gap-1">
-							{translation.phone}:{" "}
-							<span dir="ltr"> +1 (949) 993-8566</span>
+						<p className="flex gap-1 items-center ">
+							{translation.phone}:
+							<div className="flex  justify-start items-start gap-1 ">
+								<span className="shrink-0" dir="ltr">
+									{" "}
+									+1(949) 993-8566
+								</span>
+								-
+								<span className="shrink-0" dir="ltr">
+									{" "}
+									+201229999268
+								</span>
+							</div>
 						</p>
 						<p className="flex gap-1 text-xs md:text-sm flex-1">
 							{translation.email} :{" "}
