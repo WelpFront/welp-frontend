@@ -78,7 +78,7 @@ const Footer = ({ translation }: { translation: any }) => {
 						</li>
 					</ol>
 				</div>
-				<div className="flex flex-col w-[80%] md:w-full mx-auto items-start justify-start gap-2 text-sm ">
+				<div className="flex flex-col w-1/2 md:w-full mx-auto items-start justify-start gap-2 text-sm ">
 					<h1 className="text-lg">{translation.offices}</h1>
 					<div className=" flex flex-col items-start justify-center text-gray-500">
 						<p className="flex flex-1 gap-1 text-sm">
