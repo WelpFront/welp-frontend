@@ -15,7 +15,14 @@ const Footer = ({ translation }: { translation: any }) => {
 					/>
 					<p className="font-bold">{translation.bestPlatform}</p>
 					<div className="flex gap-2">
-						<Image src="/x.svg" width={30} height={30} alt="x" />
+						<Link target="_blank" href={"https://x.com/Welpusa"}>
+							<Image
+								src="/x.svg"
+								width={30}
+								height={30}
+								alt="x"
+							/>
+						</Link>
 						<Link
 							target="_blank"
 							href={"https://www.facebook.com/welpegy"}>

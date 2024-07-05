@@ -61,7 +61,7 @@ const BusinessesList = ({
 					{!loading &&
 						businesses.map((item) => (
 							<Link
-								href={`/biz/businesses/${item.id}`}
+								href={`/biz/businesses/${item.slug || item.id}`}
 								key={item.id}>
 								<BusinessCard item={item} locale={locale} />
 							</Link>

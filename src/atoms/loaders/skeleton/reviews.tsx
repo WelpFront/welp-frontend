@@ -6,7 +6,7 @@ const ReviewsLoader = () => {
 			<div
 				dir="ltr"
 				className="flex justify-start gap-3 overflow-hidden rounded-md my-4 bg-white cursor-pointer">
-				<div className=" bg-gray-200  rounded-full w-16 h-12 md:w-32 md:h-28  animate-pulse"></div>
+				<div className=" bg-gray-200  rounded-full w-[80px] h-[80px]  animate-pulse"></div>
 				<div className="flex flex-col items-start justify-start gap-1 my-2 w-full">
 					<div className="flex justify-between w-full">
 						<div className=" bg-gray-200 rounded-md  w-28 h-4 animate-pulse"></div>
