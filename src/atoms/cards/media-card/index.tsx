@@ -14,10 +14,10 @@ const MediaCard = ({ item }: { item: MediaType }) => {
 	};
 	return (
 		<div className="rounded-lg shadow-lg overflow-hidden">
-			<Modal className={"w-full md:w-1/2 min-h-96"} data={data}>
+			<Modal className={"w-full md:w-1/2 h-96 pb-1"} data={data}>
 				<Image
 					src={item.file}
-					className=" rounded-md object-contain mb-5 h-full w-full"
+					className=" rounded-md object-contain mb-5 max-h-72 w-full"
 					width={150}
 					height={150}
 					alt={item.file}
@@ -26,9 +26,9 @@ const MediaCard = ({ item }: { item: MediaType }) => {
 			<Image
 				onClick={() => setIsOpened(true)}
 				src={item.file}
-				className="  object-cover h-32 w-full shadow-md cursor-zoom-in"
 				width={150}
 				height={30}
+				className="  object-cover h-32 w-full shadow-md cursor-zoom-in"
 				alt={"media"}
 			/>
 		</div>
