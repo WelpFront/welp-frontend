@@ -10,9 +10,10 @@ import {
 	MenuSector,
 	Rating,
 } from "components";
+import { BusinessType } from "interfaces";
 import { Metadata } from "next";
 import { unstable_setRequestLocale, getTranslations } from "next-intl/server";
-import { getBusiness } from "services";
+import { getBusiness, getBusinessesList } from "services";
 
 export async function generateMetadata({ params }: any): Promise<Metadata> {
 	unstable_setRequestLocale(params.locale);
@@ -37,6 +38,27 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
 		},
 	};
 }
+
+// export async function generateStaticParams() {
+// 	const data = await getBusinessesList(
+// 		1,
+// 		[],
+// 		true,
+// 		null,
+// 		false,
+// 		null,
+// 		null,
+// 		null,
+// 		null
+// 	);
+
+// 	console.log(data.results);
+
+// 	return data.results.map((business: BusinessType) => ({
+// 		slug: business.slug || "",
+// 	}));
+// }
+
 const BusinessPage = async ({ params }: { params: any }) => {
 	unstable_setRequestLocale(params.locale);
 

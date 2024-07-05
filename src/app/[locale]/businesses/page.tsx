@@ -3,7 +3,27 @@ import {
 	DownloadBusinessApp,
 	ForBusinessesHeader,
 } from "components";
+import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+
+export async function metadata({
+	params: locale,
+}: {
+	params: any;
+}): Promise<Metadata> {
+	const t = await getTranslations({
+		locale,
+		namespace: "metadata",
+	});
+
+	return {
+		title: t("forBusinesses"),
+		openGraph: {
+			title: t("forBusinesses"),
+			description: t("forBusinesses"),
+		},
+	};
+}
 
 const BusinessesPage = async () => {
 	const forBusinessesT = await getTranslations("forBusinesses");

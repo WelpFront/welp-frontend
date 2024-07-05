@@ -1,4 +1,9 @@
 {
+	"metadata": {
+		"welp": "ويلب",
+		"home": "الصفحة الرئيسية",
+		"forBusinesses": "للأعمال التجارية"
+	},
 	"navbar": {
 		"home": "الصفحة الرئيسية",
 		"forBusinesses": "للأعمال التجارية",

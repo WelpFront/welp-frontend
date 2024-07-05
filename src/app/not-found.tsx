@@ -1,4 +1,7 @@
+import { unstable_setRequestLocale } from "next-intl/server";
 import Link from "next/link";
+
+export const dynamic = "force-dynamic"; // defaults to auto
 
 const NotFound = () => {
 	return (

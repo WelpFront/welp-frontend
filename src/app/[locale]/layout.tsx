@@ -1,22 +1,30 @@
 import { Footer, Navbar } from "components";
 import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { Roboto } from "next/font/google";
 import ClientProviders from "providers/client-providers";
 import "styles/globals.css";
 
 const roboto = Roboto({ weight: ["700"], preload: false });
 
-export const metadata: Metadata = {
-	title: {
-		default: "Welp",
-		template: "%s | Welp",
-	},
-	twitter: {
-		card: "summary_large_image",
-	},
-};
+export async function generateMetadata({
+	params: { locale },
+}: {
+	params: any;
+}): Promise<Metadata> {
+	const t = await getTranslations({ locale, namespace: "metadata" });
+
+	return {
+		title: {
+			default: t("welp"),
+			template: `%s | ${t("welp")}`,
+		},
+		twitter: {
+			card: "summary_large_image",
+		},
+	};
+}
 
 export default function RootLayout({
 	children,

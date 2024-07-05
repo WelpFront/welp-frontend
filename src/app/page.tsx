@@ -1,6 +1,9 @@
+import { unstable_setRequestLocale } from "next-intl/server";
 import { redirect } from "next/navigation";
 
-const RootPage = () => {
+export const dynamic = "force-dynamic"; // defaults to auto
+
+const RootPage = ({ params }: { params: any }) => {
 	redirect("/ar");
 };
 

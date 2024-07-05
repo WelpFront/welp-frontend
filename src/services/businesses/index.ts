@@ -111,3 +111,17 @@ export const getBusinessProducts = async (
 		toast.error(error.message);
 	}
 };
+
+export const getBusinessesSlugs = async (page: any) => {
+	console.log(page);
+
+	try {
+		const { data: response } = await axiosClientBase.get(
+			`https://dev.welpstar.com/api/v1/businesses/slugs?page=${page}`
+		);
+
+		return response;
+	} catch (error: any) {
+		toast.error(error.message);
+	}
+};

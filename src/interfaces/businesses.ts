@@ -33,6 +33,7 @@ export interface ReviewsStats {
 
 export interface BusinessType {
 	description: string;
+	slug: string;
 	whatsapp: string;
 	phone_number: string;
 	website: string;

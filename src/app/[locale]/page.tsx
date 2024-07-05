@@ -1,11 +1,32 @@
 import { Categories, DownloadApp, Featured, Header, Cities } from "components";
+import { Metadata } from "next";
 import { unstable_setRequestLocale, getTranslations } from "next-intl/server";
 import { getCategoriesList, getFeaturedBusinesses } from "services";
 
 export const dynamic = "force-dynamic"; // defaults to auto
 
+export async function metadata({
+	params: locale,
+}: {
+	params: any;
+}): Promise<Metadata> {
+	const t = await getTranslations({
+		locale,
+		namespace: "metadata",
+	});
+
+	return {
+		title: t("home"),
+		openGraph: {
+			title: t("home"),
+			description: t("home"),
+		},
+	};
+}
+
 const HomePage = async ({ params }: { params: any }) => {
 	unstable_setRequestLocale(params.locale);
+
 	const categories = await getCategoriesList(true);
 
 	const featuredBusinesses = await getFeaturedBusinesses();
