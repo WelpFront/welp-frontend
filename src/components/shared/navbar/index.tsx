@@ -73,7 +73,7 @@ const Navbar = ({ translation }: { translation: any }) => {
 	function errorFunction() {
 		console.log("Unable to retrieve your location.");
 	}
-	console.log("");
+
 	return (
 		<div
 			dir="ltr"
