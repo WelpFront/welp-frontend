@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { getCitiesList } from "services";
 
 const useCitiesList = () => {
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(true);
 
 	const [data, setData] = useState<Array<CityType>>([]);
 
@@ -17,7 +17,7 @@ const useCitiesList = () => {
 			setLoading(true);
 			getCitiesList()
 				.then((res) => {
-					setData(res);
+					setData(res?.data);
 					const expiryDate = new Date();
 					expiryDate.setDate(expiryDate.getDate() + 1);
 					setCookie("cities", res?.data, { expires: expiryDate });

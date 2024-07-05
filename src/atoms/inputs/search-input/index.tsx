@@ -26,7 +26,7 @@ const SearchInput = ({
 
 	const [showCities, setShowCities] = useState(false);
 
-	const [filteredCities, setFilteredCities] = useState(data);
+	const [filteredCities, setFilteredCities] = useState(data || []);
 
 	const [cityValue, setCityValue] = useState<any>();
 
@@ -96,11 +96,14 @@ const SearchInput = ({
 			)
 				setCity(
 					cityValue?.id ||
-						filteredCities.find(
-							(city) =>
-								city?.id ===
-								parseInt(searchParams?.get("city") as string)
-						)
+						(filteredCities &&
+							filteredCities?.find(
+								(city) =>
+									city?.id ===
+									parseInt(
+										searchParams?.get("city") as string
+									)
+							))
 				);
 			if (pathname === "/biz/businesses") {
 				if (cityValue && cityValue !== translation.currentLocation) {
@@ -200,6 +203,7 @@ const SearchInput = ({
 	function errorFunction() {
 		toast.info("Please enable location permission.");
 	}
+
 	return (
 		<div
 			dir={locale === "ar" ? "rtl" : "ltr"}
@@ -234,11 +238,14 @@ const SearchInput = ({
 					defaultValue={
 						cityValue?.name ||
 						cityValue ||
-						filteredCities.find(
-							(city) =>
-								city?.id ===
-								parseInt(searchParams?.get("city") as string)
-						)?.name ||
+						(filteredCities &&
+							filteredCities?.find(
+								(city) =>
+									city?.id ===
+									parseInt(
+										searchParams?.get("city") as string
+									)
+							)?.name) ||
 						""
 					}
 					className="text-gray-800 text-xs md:text-sm  h-full w-1/3 md:w-full  outline-none"
@@ -278,17 +285,18 @@ const SearchInput = ({
 						</p>
 						<hr className="h-[1px] " />
 						<div className="h-full  flex flex-col justify-start items-start">
-							{filteredCities?.map((city) => (
-								<p
-									onClick={() => {
-										setCityValue(city);
-										setShowCities(false);
-									}}
-									key={city.id}
-									className=" font-semiBold my-3 w-full  text-sm cursor-pointer ">
-									{city.name}
-								</p>
-							))}
+							{filteredCities &&
+								filteredCities?.map((city) => (
+									<p
+										onClick={() => {
+											setCityValue(city);
+											setShowCities(false);
+										}}
+										key={city.id}
+										className=" font-semiBold my-3 w-full  text-sm cursor-pointer ">
+										{city.name}
+									</p>
+								))}
 						</div>
 					</div>
 				)}
