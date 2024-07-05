@@ -88,7 +88,7 @@ const CustomPagination = ({
 	return (
 		<div
 			dir="ltr"
-			className="flex items-center justify-start gap-1 my-2 border-t-1 border-gray-100  border-solid py-2">
+			className="flex items-center justify-start gap-1 my-2 border-t-1 overflow-auto border-gray-100  border-solid py-2">
 			<FaChevronCircleLeft
 				onClick={paginationPrevAction}
 				className={` w-5 h-5  ${

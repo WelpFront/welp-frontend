@@ -16,12 +16,16 @@ const Footer = ({ translation }: { translation: any }) => {
 					<p className="font-bold">{translation.bestPlatform}</p>
 					<div className="flex gap-2">
 						<Image src="/x.svg" width={30} height={30} alt="x" />
-						<Image
-							src="/facebook.svg"
-							width={30}
-							height={30}
-							alt="facebook"
-						/>
+						<Link
+							target="_blank"
+							href={"https://www.facebook.com/welpegy"}>
+							<Image
+								src="/facebook.svg"
+								width={30}
+								height={30}
+								alt="facebook"
+							/>
+						</Link>
 						<Image
 							src="/instagram.svg"
 							width={30}

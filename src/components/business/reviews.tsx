@@ -16,7 +16,7 @@ const BusinessReviews = ({
 
 	const loaders = useMemo(() => {
 		const loaders = [];
-		for (let i = 0; i < 4; i++) {
+		for (let i = 0; i < 8; i++) {
 			loaders.push(<ReviewsLoader key={i} />); // Add ProductsLoader component to the array
 		}
 		return loaders;

@@ -40,3 +40,10 @@
 	margin-inline: 20px !important;
 	margin-left: 0 !important;
 }
+
+@media screen and (max-width: 700px) {
+	.swiper-slide {
+		margin-inline: 0px !important;
+		margin-left: 30px !important;
+	}
+}

@@ -38,7 +38,7 @@ const Featured = ({
 				slidesPerView={4}
 				className="featuredSwiper">
 				{featuredBusinesses.map((item) => (
-					<SwiperSlide className="py-2 w-1/3" key={item.id}>
+					<SwiperSlide className="py-2 w-full md:w-1/3" key={item.id}>
 						<Link href={`/biz/businesses/${item.id}`}>
 							<BusinessCard
 								withBackground
