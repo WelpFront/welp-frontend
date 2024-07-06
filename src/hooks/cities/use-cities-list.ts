@@ -26,7 +26,7 @@ const useCitiesList = () => {
 
 					setData(allCities);
 
-					const chunkSize = 40;
+					const chunkSize = 30;
 					const numberOfChunks = Math.ceil(
 						allCities.length / chunkSize
 					);
