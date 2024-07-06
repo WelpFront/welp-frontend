@@ -18,26 +18,15 @@ const Cities = ({ translation }: { translation: any }) => {
 		},
 	};
 
-	const getAllCitiesFromCookies = () => {
-		const cities = [];
-		let index = 0;
-		let cookie;
-		while ((cookie = getCookie(`cities_${index}`))) {
-			cities.push(...JSON.parse(cookie));
-			index++;
-		}
-		return cities;
-	};
+	const cities = (getCookie("cities") &&
+		JSON.parse(getCookie("cities") as string)) || [
+		{ name: translation.cairo, image: "/cairo.jpg" },
+		{ name: translation.giza, image: "/giza.jpg" },
+		{ name: translation.hurghada, image: "/hurghada.jpg" },
+		{ name: translation.alex, image: "/alex.jpg" },
+		{ name: translation.sainai, image: "/sainai.jpg" },
+	];
 
-	const cities = getAllCitiesFromCookies().length
-		? getAllCitiesFromCookies()
-		: [
-				{ name: translation.cairo, image: "/cairo.jpg" },
-				{ name: translation.giza, image: "/giza.jpg" },
-				{ name: translation.hurghada, image: "/hurghada.jpg" },
-				{ name: translation.alex, image: "/alex.jpg" },
-				{ name: translation.sainai, image: "/sainai.jpg" },
-		  ];
 	return (
 		<div className="bg-gray-home py-4 ">
 			<div>
