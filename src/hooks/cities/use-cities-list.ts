@@ -13,6 +13,7 @@ const useCitiesList = () => {
 	useEffect(() => {
 		if (citiesList) {
 			setData(JSON.parse(citiesList));
+			setLoading(false);
 		} else {
 			setLoading(true);
 			getCitiesList()

@@ -4,8 +4,8 @@ import React from "react";
 
 const DownloadApp = ({ translation }: { translation: any }) => {
 	return (
-		<div className="flex px-5 md:px-10 flex-col md:flex-row bg-orange-200 min-h-96 gap-8  py-10 md:py-0  my-10  ">
-			<div className="flex flex-col  flex-1  justify-center order-2 md:order-1">
+		<div className="flex px-10 md:px-20 flex-col md:flex-row bg-orange-200 min-h-96 gap-8  py-10 md:py-0  my-10  ">
+			<div className="flex flex-col  flex-2 text-center md:text-start  justify-center order-2 md:order-1">
 				<h1 className="text-4xl font-bold my-2">
 					{translation.download}
 				</h1>
@@ -40,20 +40,20 @@ const DownloadApp = ({ translation }: { translation: any }) => {
 					</Link>
 				</div>
 			</div>
-			<div className=" flex-1 flex justify-center md:justify-normal align-center relative overflow-hidden order-1 md:order-2 ">
+			<div className=" flex-1 flex justify-center lg:justify-normal align-center relative overflow-hidden order-1 md:order-2 ">
 				<Image
 					src="/iPhone.svg"
-					width={150}
+					width={160}
 					height={150}
 					alt="iPhone"
-					className="hidden md:block absolute left-8 -bottom-32"
+					className="hidden lg:block absolute left-20 -bottom-32"
 				/>
 				<Image
 					src="/iPhone.svg"
-					width={150}
+					width={160}
 					height={150}
 					alt="iphone"
-					className="md:absolute right-8 -top-32"
+					className="lg:absolute right-20 -top-32"
 				/>
 			</div>
 		</div>

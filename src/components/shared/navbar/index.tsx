@@ -4,6 +4,7 @@ import { SearchInput } from "atoms";
 import { getCookie, setCookie } from "cookies-next";
 // @ts-ignore
 import * as lookup from "coordinate_to_country";
+import { useCitiesList } from "hooks";
 import { Link, usePathname } from "navigation";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -18,6 +19,8 @@ const Navbar = ({ translation }: { translation: any }) => {
 	const locale = getCookie("NEXT_LOCALE");
 
 	const pathname = usePathname();
+
+	const { data, loading } = useCitiesList();
 
 	const isActive = (link: string) => pathname === link;
 
@@ -96,6 +99,8 @@ const Navbar = ({ translation }: { translation: any }) => {
 					/>
 				</Link>
 				<SearchInput
+					data={data}
+					loading={loading}
 					className="hidden lg:flex"
 					translation={translation}
 				/>
@@ -247,6 +252,8 @@ const Navbar = ({ translation }: { translation: any }) => {
 						: "overflow-hidden max-h-0"
 				}    md:px-10 lg:px-20`}>
 				<SearchInput
+					data={data}
+					loading={loading}
 					className="flex lg:hidden"
 					translation={translation}
 				/>

@@ -2,11 +2,12 @@ import { Footer, Navbar } from "components";
 import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
-import { Roboto } from "next/font/google";
+import { Roboto, Tajawal } from "next/font/google";
 import ClientProviders from "providers/client-providers";
 import "styles/globals.css";
 
 const roboto = Roboto({ weight: ["700"], preload: false });
+const tajawal = Tajawal({ weight: ["700"], preload: false });
 
 export async function generateMetadata({
 	params: { locale },
@@ -43,7 +44,9 @@ export default function RootLayout({
 		<div
 			dir={params.locale === "ar" ? "rtl" : "ltr"}
 			lang={params.locale}
-			className={roboto.className}>
+			className={
+				params.locale === "ar" ? tajawal.className : roboto.className
+			}>
 			<Navbar
 				translation={{
 					home: navbarT("home"),

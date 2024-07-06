@@ -12,7 +12,7 @@ const MediaSector = ({
 		<div className="my-10">
 			<h3 className="text-xl my-1 font-bold">{translation.media}</h3>
 			<div className=" p-3 w-full rounded-3xl overflow-hidden border-1 border-solid border-gray-100">
-				<div className="grid grid-cols-3 gap-3">
+				<div className="grid grid-cols-3 gap-5">
 					{media.map((item) => (
 						<MediaCard key={item.id} item={item} />
 					))}

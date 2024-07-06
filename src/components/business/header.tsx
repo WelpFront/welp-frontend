@@ -18,7 +18,12 @@ const BusinessesHeader = ({
 				backgroundSize: "cover",
 			}}
 			className={`h-129 bg-cover bg-no-repeat bg-right  `}>
-			<div className="w-full h-full flex flex-col items-center justify-center gap-10 text-white bg-[rgba(0,0,0,0.6)]">
+			<div
+				className="w-full h-full flex flex-col items-center justify-center gap-10 text-white "
+				style={{
+					background:
+						"linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.4))",
+				}}>
 				<h1 className="text-5xl font-bold text-center"> {title}</h1>
 
 				<div className=" flex items-center gap-5">

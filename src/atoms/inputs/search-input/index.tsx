@@ -16,12 +16,14 @@ import { useBusinessesFilterStore } from "store/businesses-filters";
 const SearchInput = ({
 	translation,
 	className,
+	data,
+	loading,
 }: {
 	translation: any;
+	loading: boolean;
+	data: any;
 	className?: string;
 }) => {
-	const { data, loading } = useCitiesList();
-
 	const searchParams = useSearchParams();
 
 	const [showCities, setShowCities] = useState(false);
@@ -77,7 +79,7 @@ const SearchInput = ({
 		if (
 			keyword ||
 			(cityValue &&
-				(data.find((city) =>
+				(data.find((city: any) =>
 					city?.name
 						?.toLowerCase()
 						.includes(cityValue?.name?.toLowerCase() || cityValue)
@@ -88,7 +90,7 @@ const SearchInput = ({
 
 			if (
 				cityValue !== translation.currentLocation &&
-				data.find((city) =>
+				data.find((city: any) =>
 					city?.name
 						?.toLowerCase()
 						.includes(cityValue?.name?.toLowerCase() || cityValue)
@@ -96,14 +98,11 @@ const SearchInput = ({
 			)
 				setCity(
 					cityValue?.id ||
-						(filteredCities &&
-							filteredCities?.find(
-								(city) =>
-									city?.id ===
-									parseInt(
-										searchParams?.get("city") as string
-									)
-							))
+						filteredCities?.find(
+							(city: any) =>
+								city?.id ===
+								parseInt(searchParams?.get("city") as string)
+						)
 				);
 			if (pathname === "/biz/businesses") {
 				if (cityValue && cityValue !== translation.currentLocation) {
@@ -171,7 +170,7 @@ const SearchInput = ({
 		if (value) {
 			setCityValue(value);
 			setFilteredCities(
-				data.filter((city) =>
+				data.filter((city: any) =>
 					city.name.toLowerCase().includes(value.toLowerCase())
 				)
 			);
@@ -207,8 +206,8 @@ const SearchInput = ({
 	return (
 		<div
 			dir={locale === "ar" ? "rtl" : "ltr"}
-			className={`rounded-full h-10 md:h-12 w-full md:w-3/4  relative  justify-start shadow-searchInputShadow  bg-white flex text-gray-600 gap-1  items-center  ${className} `}>
-			<div className="flex items-center w-full h-full gap-2 border-e-2 border-solid ps-3 border-gray-200 ">
+			className={`rounded-full h-10 md:h-12 w-full   relative  justify-start shadow-searchInputShadow  bg-white flex text-gray-600 gap-1  items-center  ${className} `}>
+			<div className="flex items-center w-11/12 h-full gap-2 border-e-2 border-solid ps-3 border-gray-200 ">
 				<FaSearch className="text-gray-400" />
 				<input
 					type="text"
@@ -221,7 +220,7 @@ const SearchInput = ({
 					defaultValue={searchParams?.get("search") as string}
 				/>
 			</div>
-			<div className="flex relative items-center h-full gap-2 justify-start">
+			<div className="flex relative items-center w-56 h-full gap-2 justify-start">
 				<Image
 					width={20}
 					height={20}
@@ -238,17 +237,14 @@ const SearchInput = ({
 					defaultValue={
 						cityValue?.name ||
 						cityValue ||
-						(filteredCities &&
-							filteredCities?.find(
-								(city) =>
-									city?.id ===
-									parseInt(
-										searchParams?.get("city") as string
-									)
-							)?.name) ||
+						filteredCities?.find(
+							(city: any) =>
+								city?.id ===
+								parseInt(searchParams?.get("city") as string)
+						)?.name ||
 						""
 					}
-					className="text-gray-800 text-xs md:text-sm  h-full w-1/3 md:w-full  outline-none"
+					className="text-gray-800 text-xs md:text-sm  h-full w-full  outline-none"
 				/>
 				<button
 					onClick={() => {
@@ -285,18 +281,17 @@ const SearchInput = ({
 						</p>
 						<hr className="h-[1px] " />
 						<div className="h-full  flex flex-col justify-start items-start">
-							{filteredCities &&
-								filteredCities?.map((city) => (
-									<p
-										onClick={() => {
-											setCityValue(city);
-											setShowCities(false);
-										}}
-										key={city.id}
-										className=" font-semiBold my-3 w-full  text-sm cursor-pointer ">
-										{city.name}
-									</p>
-								))}
+							{filteredCities?.map((city: any) => (
+								<p
+									onClick={() => {
+										setCityValue(city);
+										setShowCities(false);
+									}}
+									key={city.id}
+									className=" font-semiBold my-3 w-full  text-sm cursor-pointer ">
+									{city.name}
+								</p>
+							))}
 						</div>
 					</div>
 				)}

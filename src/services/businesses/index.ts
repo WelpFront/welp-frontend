@@ -1,4 +1,5 @@
 import { axiosClientBase } from "config/axios-instance";
+import { get as getClient } from "fetch/client";
 import { toast } from "react-toastify";
 import { get } from "utils/fetch";
 
@@ -113,12 +114,8 @@ export const getBusinessProducts = async (
 };
 
 export const getBusinessesSlugs = async (page: any) => {
-	console.log(page);
-
 	try {
-		const { data: response } = await axiosClientBase.get(
-			`https://dev.welpstar.com/api/v1/businesses/slugs?page=${page}`
-		);
+		const response = await getClient(`businesses/slugs?page=${page}`);
 
 		return response;
 	} catch (error: any) {

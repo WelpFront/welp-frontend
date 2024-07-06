@@ -59,7 +59,7 @@ const BusinessCard = ({
 						<p className="text-success font-bold">مفتوح </p>
 					</div>
 				) : (
-					<div className="flex  gap-1 text-xs md:text-md">
+					<div className="flex flex-col items-start justify-start gap-1 text-xs md:text-md">
 						<p className="text-red-500 font-bold">مغلق</p>
 					</div>
 				)}
