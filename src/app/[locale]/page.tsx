@@ -1,7 +1,11 @@
 import { Categories, DownloadApp, Featured, Header, Cities } from "components";
 import { Metadata } from "next";
 import { unstable_setRequestLocale, getTranslations } from "next-intl/server";
-import { getCategoriesList, getFeaturedBusinesses } from "services";
+import {
+	getCategoriesList,
+	getFeaturedBusinesses,
+	getHomePageData,
+} from "services";
 
 export const dynamic = "force-dynamic"; // defaults to auto
 
@@ -27,9 +31,7 @@ export async function metadata({
 const HomePage = async ({ params }: { params: any }) => {
 	unstable_setRequestLocale(params.locale);
 
-	const categories = await getCategoriesList(true);
-
-	const featuredBusinesses = await getFeaturedBusinesses();
+	const { featured_businesses, categories } = await getHomePageData();
 
 	const homeT = await getTranslations("home");
 
@@ -42,7 +44,7 @@ const HomePage = async ({ params }: { params: any }) => {
 			/>
 			<Featured
 				locale={params.locale}
-				featuredBusinesses={featuredBusinesses}
+				featuredBusinesses={featured_businesses}
 				translation={{
 					featuredBusinesses: homeT("featuredBusinesses"),
 				}}

@@ -1,6 +1,8 @@
 "use client";
 
 import { CustomSwiper } from "atoms";
+import { getCookie } from "cookies-next";
+import { CityType } from "interfaces";
 import { SwiperSlide } from "swiper/react";
 
 const Cities = ({ translation }: { translation: any }) => {
@@ -16,12 +18,12 @@ const Cities = ({ translation }: { translation: any }) => {
 		},
 	};
 
-	const cities = [
-		{ name: translation.cairo, img: "/cairo.jpg" },
-		{ name: translation.giza, img: "/giza.jpg" },
-		{ name: translation.hurghada, img: "/hurghada.jpg" },
-		{ name: translation.alex, img: "/alex.jpg" },
-		{ name: translation.sainai, img: "/sainai.jpg" },
+	const cities = JSON.parse(getCookie("cities") as string) || [
+		{ name: translation.cairo, image: "/cairo.jpg" },
+		{ name: translation.giza, image: "/giza.jpg" },
+		{ name: translation.hurghada, image: "/hurghada.jpg" },
+		{ name: translation.alex, image: "/alex.jpg" },
+		{ name: translation.sainai, image: "/sainai.jpg" },
 	];
 
 	return (
@@ -35,20 +37,27 @@ const Cities = ({ translation }: { translation: any }) => {
 					className="citiesSwiper"
 					breakPoints={breakpoints as any}
 					slidesPerView={4}>
-					{cities.map((item, index) => (
+					{cities.map((item: CityType, index: number) => (
 						<SwiperSlide className="py-2 mx-2 w-full" key={index}>
 							<div
 								className={`${
 									index % 2 !== 0 ? "h-96" : "h-72"
-								} w-full flex items-start justify-center rounded-3xl border border-yellow-500 border-solid text-xl font-semibold text-white
+								} w-full rounded-3xl border overflow-hidden border-yellow-500 border-solid text-xl font-semibold text-white
                                 `}
 								style={{
-									background: ` url(${item.img})`,
+									background: ` url(${item.image})`,
 									backgroundRepeat: "no-repeat",
-									backgroundSize: "100% 100%",
+									backgroundSize: "cover",
 									backgroundPosition: "center",
 								}}>
-								{/* {item.name} */}
+								<div
+									className="w-full h-full  flex items-start justify-center"
+									style={{
+										background:
+											"linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.2))",
+									}}>
+									{item.name}
+								</div>
 							</div>
 						</SwiperSlide>
 					))}

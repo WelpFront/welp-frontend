@@ -4,6 +4,7 @@ import {
 	getBusinessProducts,
 	getFeaturedBusinesses,
 	getBusinessesList,
+	getHomePageData,
 } from "./businesses";
 import { getCategoriesList, getCategory } from "./catrgories";
 import { getCitiesList } from "./cities";
@@ -19,4 +20,5 @@ export {
 	getBusinessesList,
 	getCategory,
 	getCitiesList,
+	getHomePageData,
 };

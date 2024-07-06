@@ -66,6 +66,11 @@ export const getFeaturedBusinesses = async () => {
 
 	return data.results;
 };
+export const getHomePageData = async () => {
+	const data = await get(`utilities/app-home-screen`);
+
+	return data;
+};
 
 export const getBusiness = async (slug: string) => {
 	const { data } = await get(`businesses/${slug}`);
