@@ -42,6 +42,7 @@ const useCitiesList = () => {
 							expires: expiryDate,
 							secure: true,
 							path: "/",
+							sameSite: "lax",
 						});
 					}
 				})
