@@ -95,11 +95,20 @@ export const del = async (path: string, withAuth = false) => {
 	return parsedRes;
 };
 
-export const get = async (path: string, withAuth = false) => {
+export const get = async (
+	path: string,
+	withAuth = false,
+	customHeaders?: HeadersInit
+) => {
 	const headers: HeadersInit = { "app-id": appId as string };
 
 	if (withAuth) {
 		Object.assign(headers, getAuthHeader());
+	}
+
+	// If custom headers are provided, merge them with existing headers
+	if (customHeaders) {
+		Object.assign(headers, customHeaders);
 	}
 
 	const res = await fetch(`${API_URL}/${path}`, {

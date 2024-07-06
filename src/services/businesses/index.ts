@@ -115,7 +115,11 @@ export const getBusinessProducts = async (
 
 export const getBusinessesSlugs = async (page: any) => {
 	try {
-		const response = await getClient(`businesses/slugs?page=${page}`);
+		const response = await getClient(
+			`businesses/slugs?page=${page}`,
+			false,
+			{ "Content-Type": "application/xml" }
+		);
 
 		return response;
 	} catch (error: any) {
