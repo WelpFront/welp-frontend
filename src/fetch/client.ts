@@ -59,8 +59,6 @@ export const patch = async (
 		headers["Content-Type"] = "application/json";
 	}
 
-	console.log(headers);
-
 	const res = await fetch(`${API_URL}/${path}`, {
 		method: "PATCH",
 		headers,

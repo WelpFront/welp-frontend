@@ -18,7 +18,8 @@ const Cities = ({ translation }: { translation: any }) => {
 		},
 	};
 
-	const cities = JSON.parse(getCookie("cities") as string) || [
+	const cities = (getCookie("cities") &&
+		JSON.parse(getCookie("cities") as string)) || [
 		{ name: translation.cairo, image: "/cairo.jpg" },
 		{ name: translation.giza, image: "/giza.jpg" },
 		{ name: translation.hurghada, image: "/hurghada.jpg" },
