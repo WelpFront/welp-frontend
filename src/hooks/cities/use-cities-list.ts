@@ -38,12 +38,7 @@ const useCitiesList = () => {
 						);
 						const expiryDate = new Date();
 						expiryDate.setDate(expiryDate.getDate() + 1);
-						setCookie(`cities_${i}`, JSON.stringify(chunk), {
-							expires: expiryDate,
-							secure: true,
-							path: "/",
-							sameSite: "lax",
-						});
+						setCookie(`cities_${i}`, "dwq");
 					}
 				})
 				.finally(() => {
