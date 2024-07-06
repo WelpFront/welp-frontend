@@ -95,7 +95,7 @@ const Navbar = ({ translation }: { translation: any }) => {
 						width={100}
 						height={100}
 						alt="logo"
-						className="h-20 w-20 lg:w-40 lg:h-40"
+						className="h-20 w-20 lg:w-52 lg:h-52"
 					/>
 				</Link>
 				<SearchInput
