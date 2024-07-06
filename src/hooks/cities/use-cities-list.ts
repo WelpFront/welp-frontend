@@ -5,24 +5,59 @@ import { getCitiesList } from "services";
 
 const useCitiesList = () => {
 	const [loading, setLoading] = useState(true);
-
 	const [data, setData] = useState<Array<CityType>>([]);
 
-	const citiesList = getCookie("cities");
+	const citiesList: any = [];
+	let index = 0;
+	let cookie;
+	while ((cookie = getCookie(`cities_${index}`))) {
+		citiesList.push(...JSON.parse(cookie));
+		index++;
+	}
 
 	useEffect(() => {
-		if (citiesList) {
-			setData(JSON.parse(citiesList));
+		if (citiesList.length > 0) {
+			setData(citiesList);
 			setLoading(false);
 		} else {
 			setLoading(true);
 			getCitiesList()
 				.then((res) => {
-					setData(res?.data);
-					const expiryDate = new Date();
-					expiryDate.setDate(expiryDate.getDate() + 1);
+					const allCities = res?.data;
 
-					setCookie("cities", "res?.data", { expires: expiryDate });
+					setData(allCities);
+
+					const chunkSize = 100;
+					const numberOfChunks = Math.ceil(
+						allCities.length / chunkSize
+					);
+
+					for (let i = 0; i < numberOfChunks; i++) {
+						const chunk = allCities.slice(
+							i * chunkSize,
+							(i + 1) * chunkSize
+						);
+						const chunkStr = JSON.stringify(chunk);
+						const expiryDate = new Date();
+						expiryDate.setDate(expiryDate.getDate() + 1);
+
+						if (chunkStr.length > 4000) {
+							console.error(
+								`Chunk size exceeds cookie limit: ${chunkStr.length} bytes`
+							);
+							continue;
+						}
+
+						setCookie(`cities_${i}`, chunkStr, {
+							expires: expiryDate,
+							secure: process.env.NODE_ENV === "production",
+							path: "/",
+							sameSite: "lax",
+						});
+					}
+				})
+				.catch((error) => {
+					console.error("Error fetching cities list:", error);
 				})
 				.finally(() => {
 					setLoading(false);
