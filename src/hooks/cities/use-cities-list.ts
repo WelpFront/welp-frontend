@@ -5,18 +5,17 @@ import { getCitiesList } from "services";
 
 const useCitiesList = () => {
 	const [loading, setLoading] = useState(true);
+
 	const [data, setData] = useState<Array<CityType>>([]);
 
 	const citiesList: any = [];
 	let index = 0;
-	let cookie;
-	while ((cookie = getCookie(`cities_${index}`))) {
-		citiesList.push(...JSON.parse(cookie));
+	while (getCookie(`cities_${index}`)) {
+		citiesList.push(...JSON.parse(getCookie(`cities_${index}`) as string));
 		index++;
 	}
-
 	useEffect(() => {
-		if (citiesList.length > 0) {
+		if (citiesList?.length > 0) {
 			setData(citiesList);
 			setLoading(false);
 		} else {
@@ -37,27 +36,15 @@ const useCitiesList = () => {
 							i * chunkSize,
 							(i + 1) * chunkSize
 						);
-						const chunkStr = JSON.stringify(chunk);
 						const expiryDate = new Date();
 						expiryDate.setDate(expiryDate.getDate() + 1);
-
-						if (chunkStr.length > 4000) {
-							console.error(
-								`Chunk size exceeds cookie limit: ${chunkStr.length} bytes`
-							);
-							continue;
-						}
-
-						setCookie(`cities_${i}`, chunkStr, {
+						setCookie(`cities_${i}`, JSON.stringify(chunk), {
 							expires: expiryDate,
-							secure: process.env.NODE_ENV === "production",
+							secure: true,
 							path: "/",
 							sameSite: "lax",
 						});
 					}
-				})
-				.catch((error) => {
-					console.error("Error fetching cities list:", error);
 				})
 				.finally(() => {
 					setLoading(false);
