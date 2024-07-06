@@ -8,38 +8,21 @@ const useCitiesList = () => {
 
 	const [data, setData] = useState<Array<CityType>>([]);
 
-	const citiesList: any = [];
-	let index = 0;
-	while (getCookie(`cities_${index}`)) {
-		citiesList.push(...JSON.parse(getCookie(`cities_${index}`) as string));
-		index++;
-	}
+	const citiesList = getCookie("cities");
+
 	useEffect(() => {
-		if (citiesList?.length > 0) {
-			setData(citiesList);
+		if (citiesList) {
+			setData(JSON.parse(citiesList));
 			setLoading(false);
 		} else {
 			setLoading(true);
 			getCitiesList()
 				.then((res) => {
-					const allCities = res?.data;
+					setData(res?.data);
+					const expiryDate = new Date();
+					expiryDate.setDate(expiryDate.getDate() + 1);
 
-					setData(allCities);
-
-					const chunkSize = 100;
-					const numberOfChunks = Math.ceil(
-						allCities.length / chunkSize
-					);
-
-					for (let i = 0; i < numberOfChunks; i++) {
-						const chunk = allCities.slice(
-							i * chunkSize,
-							(i + 1) * chunkSize
-						);
-						const expiryDate = new Date();
-						expiryDate.setDate(expiryDate.getDate() + 1);
-						setCookie(`cities_${i}`, "dwq");
-					}
+					setCookie("cities", "res?.data", { expires: expiryDate });
 				})
 				.finally(() => {
 					setLoading(false);
