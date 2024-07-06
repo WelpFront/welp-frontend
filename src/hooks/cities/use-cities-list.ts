@@ -40,6 +40,8 @@ const useCitiesList = () => {
 						expiryDate.setDate(expiryDate.getDate() + 1);
 						setCookie(`cities_${i}`, JSON.stringify(chunk), {
 							expires: expiryDate,
+							secure: true,
+							path: "/",
 						});
 					}
 				})
