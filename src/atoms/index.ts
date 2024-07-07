@@ -15,6 +15,7 @@ import SearchInput from "./inputs/search-input";
 import CircularLoader from "./loaders/circular";
 import ProgressBar from "./loaders/progress-bar";
 import BusinessesListLoader from "./loaders/skeleton/businesses-list";
+import CitiesLoader from "./loaders/skeleton/cities-loader";
 import ProductsLoader from "./loaders/skeleton/products";
 import ReviewsLoader from "./loaders/skeleton/reviews";
 import TagsLoader from "./loaders/skeleton/tags";
@@ -25,6 +26,7 @@ import RadioButton from "./radio";
 import CustomSwiper from "./slider";
 
 export {
+	CitiesLoader,
 	BusinessesListLoader,
 	BusinessCard,
 	RadioButton,

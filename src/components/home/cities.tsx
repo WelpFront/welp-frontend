@@ -1,8 +1,8 @@
 "use client";
 
-import { CustomSwiper } from "atoms";
-import { getCookie } from "cookies-next";
+import { CitiesLoader, CustomSwiper } from "atoms";
 import { CityType } from "interfaces";
+import { useCitiesStore } from "store/cities";
 import { SwiperSlide } from "swiper/react";
 
 const Cities = ({ translation }: { translation: any }) => {
@@ -17,15 +17,7 @@ const Cities = ({ translation }: { translation: any }) => {
 			slidesPerView: 4,
 		},
 	};
-
-	const cities = (getCookie("cities") &&
-		JSON.parse(getCookie("cities") as string)) || [
-		{ name: translation.cairo, image: "/cairo.jpg" },
-		{ name: translation.giza, image: "/giza.jpg" },
-		{ name: translation.hurghada, image: "/hurghada.jpg" },
-		{ name: translation.alex, image: "/alex.jpg" },
-		{ name: translation.sainai, image: "/sainai.jpg" },
-	];
+	const { cities } = useCitiesStore((state) => state);
 
 	return (
 		<div className="bg-gray-home py-4 ">
@@ -38,6 +30,8 @@ const Cities = ({ translation }: { translation: any }) => {
 					className="citiesSwiper"
 					breakPoints={breakpoints as any}
 					slidesPerView={4}>
+					{cities?.length === 0 && <CitiesLoader />}
+
 					{cities.map((item: CityType, index: number) => (
 						<SwiperSlide className="py-2 mx-2 w-full" key={index}>
 							<div
