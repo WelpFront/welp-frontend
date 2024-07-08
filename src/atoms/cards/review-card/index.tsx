@@ -27,11 +27,11 @@ const ReviewCard = ({ item }: { item: ReviewType }) => {
 			<div className="flex items-start gap-3 md:gap-5 text-gray-400">
 				<div>
 					<Image
-						src={"/default-user.jpg"}
+						src={item.reviewer.avatar || "/default-user.jpg"}
 						width={50}
 						height={50}
 						alt="user"
-						className="rounded-full w-[80px] h-[80px]  flex-1"
+						className="rounded-full object-cover w-[80px] h-[80px]  flex-1"
 					/>
 				</div>
 				<div className="flex flex-col gap-3 items-start justify-center flex-1 ">

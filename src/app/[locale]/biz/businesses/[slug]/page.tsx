@@ -39,26 +39,6 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
 	};
 }
 
-// export async function generateStaticParams() {
-// 	const data = await getBusinessesList(
-// 		1,
-// 		[],
-// 		true,
-// 		null,
-// 		false,
-// 		null,
-// 		null,
-// 		null,
-// 		null
-// 	);
-
-// 	console.log(data.results);
-
-// 	return data.results.map((business: BusinessType) => ({
-// 		slug: business.slug || "",
-// 	}));
-// }
-
 const BusinessPage = async ({ params }: { params: any }) => {
 	unstable_setRequestLocale(params.locale);
 
@@ -84,6 +64,11 @@ const BusinessPage = async ({ params }: { params: any }) => {
 		media,
 		facilities,
 		cover_image,
+		instagram_profile_url,
+		twitter_profile_url,
+		facebook_profile_url,
+		tiktok_profile_url,
+		youtube_profile_url,
 	} = await getBusiness(slug);
 
 	return (
@@ -151,6 +136,11 @@ const BusinessPage = async ({ params }: { params: any }) => {
 						phone={phone_number}
 						location={location_name}
 						website={website}
+						instagram_profile_url={instagram_profile_url}
+						twitter_profile_url={twitter_profile_url}
+						facebook_profile_url={facebook_profile_url}
+						tiktok_profile_url={tiktok_profile_url}
+						youtube_profile_url={youtube_profile_url}
 						translation={{
 							locationAndContact: businessT("locationAndContact"),
 							site: businessT("site"),

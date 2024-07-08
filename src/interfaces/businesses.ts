@@ -60,6 +60,11 @@ export interface BusinessType {
 	media: Array<{}>;
 	categories: Array<{}>;
 	reviews_stats?: ReviewsStats;
+	instagram_profile_url: string | null;
+	twitter_profile_url: string | null;
+	facebook_profile_url: string | null;
+	tiktok_profile_url: string | null;
+	youtube_profile_url: string | null;
 }
 
 export interface MediaType {

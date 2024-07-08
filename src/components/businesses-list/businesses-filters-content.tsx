@@ -66,7 +66,7 @@ const BusinessesFiltersContent = ({
 
 	return (
 		<>
-			<div className="flex flex-col items-start  gap-3">
+			<div className="flex flex-col items-start  gap-2">
 				<div className="w-full flex justify-between items-center ">
 					<h1 className="font-bold">{translation.filters}</h1>
 					{(isOpened ||
@@ -110,7 +110,7 @@ const BusinessesFiltersContent = ({
 				/>
 			</div>
 			<hr className="my-2 h-[2px] bg-gray-100	" />
-			<div className="flex flex-col items-start  gap-3">
+			<div className="flex flex-col items-start  gap-2">
 				<h1 className="font-bold">{translation.price}</h1>
 				<CheckBox
 					checked={priceCategory === "$$$$"}
@@ -169,7 +169,7 @@ const BusinessesFiltersContent = ({
 				<>
 					<hr className="my-2 h-[1px] bg-gray-100	" />
 					<h1 className="font-bold mb-3">{category?.name}</h1>
-					<div className="flex flex-col items-start h-56  overflow-auto gap-3">
+					<div className="flex flex-col items-start h-40  overflow-auto gap-2">
 						{categories?.map((item) => (
 							<CheckBox
 								key={item.id}

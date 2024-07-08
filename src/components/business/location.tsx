@@ -2,6 +2,7 @@
 
 import { Link } from "navigation";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import React, { useMemo } from "react";
 import { FaPhoneVolume } from "react-icons/fa6";
 import { RiGlobalFill } from "react-icons/ri";
@@ -17,6 +18,11 @@ const BusinessLocation = ({
 	location,
 	website,
 	translation,
+	instagram_profile_url,
+	twitter_profile_url,
+	facebook_profile_url,
+	tiktok_profile_url,
+	youtube_profile_url,
 }: {
 	lng: number;
 	lat: number;
@@ -26,6 +32,11 @@ const BusinessLocation = ({
 	location: string;
 	website: string;
 	translation: any;
+	instagram_profile_url: string | null;
+	twitter_profile_url: string | null;
+	facebook_profile_url: string | null;
+	tiktok_profile_url: string | null;
+	youtube_profile_url: string | null;
 }) => {
 	const CustomMap = useMemo(
 		() =>
@@ -82,6 +93,82 @@ const BusinessLocation = ({
 								className="underline">
 								{translation.site}
 							</Link>
+						</div>
+					</>
+				)}
+				{(instagram_profile_url ||
+					twitter_profile_url ||
+					facebook_profile_url ||
+					tiktok_profile_url ||
+					youtube_profile_url) && (
+					<>
+						<hr />
+						<div className="flex justify-start items-center py-3 gap-3 px-2">
+							{youtube_profile_url && (
+								<Link
+									href={youtube_profile_url}
+									target="_blank"
+									className="underline">
+									<Image
+										alt="youtube"
+										width={35}
+										height={35}
+										src={"/youtube.svg"}
+									/>
+								</Link>
+							)}
+							{tiktok_profile_url && (
+								<Link
+									href={tiktok_profile_url}
+									target="_blank"
+									className="underline">
+									<Image
+										alt="tiktok"
+										width={35}
+										height={35}
+										src={"/tiktok.svg"}
+									/>
+								</Link>
+							)}
+							{instagram_profile_url && (
+								<Link
+									href={instagram_profile_url}
+									target="_blank"
+									className="underline">
+									<Image
+										alt="instagram"
+										width={35}
+										height={35}
+										src={"/instagram.svg"}
+									/>
+								</Link>
+							)}
+							{facebook_profile_url && (
+								<Link
+									href={facebook_profile_url}
+									target="_blank"
+									className="underline">
+									<Image
+										alt="facebook"
+										width={35}
+										height={35}
+										src={"/facebook.svg"}
+									/>
+								</Link>
+							)}
+							{twitter_profile_url && (
+								<Link
+									href={twitter_profile_url}
+									target="_blank"
+									className="underline">
+									<Image
+										alt="x"
+										width={35}
+										height={35}
+										src={"/x.svg"}
+									/>
+								</Link>
+							)}
 						</div>
 					</>
 				)}

@@ -1,5 +1,7 @@
+"use client";
+
 import Image from "next/image";
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect } from "react";
 
 interface Data {
 	setIsOpened: Function;
@@ -18,6 +20,14 @@ const Modal = ({
 	const { setIsOpened, isOpened } = data;
 
 	const handleClose = () => setIsOpened(false);
+
+	useEffect(() => {
+		if (isOpened) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "auto";
+		}
+	}, [isOpened]);
 	return (
 		<>
 			{isOpened && (
