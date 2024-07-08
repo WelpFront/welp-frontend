@@ -54,15 +54,6 @@ const BusinessCard = ({
 				<h1 className="text-sm font-bold w-40 overflow-hidden text-ellipsis whitespace-nowrap text-animation">
 					{item.name}
 				</h1>
-				{item.is_opened ? (
-					<div className="flex  gap-1 text-xs md:text-md">
-						<p className="text-success font-bold">مفتوح </p>
-					</div>
-				) : (
-					<div className="flex flex-col items-start justify-start gap-1 text-xs md:text-md">
-						<p className="text-red-500 font-bold">مغلق</p>
-					</div>
-				)}
 			</div>
 			<div className="flex items-center flex-wrap gap-2 px-3 py-1">
 				{ratingHandler(item.reviews_stats?.rating_score || 0)}(
