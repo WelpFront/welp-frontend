@@ -1,13 +1,13 @@
 {
-    "applinks": {
-        "apps": [],
-        "details": [
-            {
-                "appID": "YOUR_TEAM_ID.com.welp.welp",
-                "paths": [
-                    "/path/*"
-                ]
-            }
-        ]
-    }
+	"applinks": {
+		"apps": [],
+		"details": [
+			{
+				"appID": "YOUR_TEAM_ID.com.welp.welp",
+				"paths": [
+					"https://welp-frontend.vercel.app/*"
+				]
+			}
+		]
+	}
 }
