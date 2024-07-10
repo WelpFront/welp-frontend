@@ -1,3 +1,4 @@
+import { BreadCrumbs } from "atoms";
 import {
 	AboutBusiness,
 	BusinessLocation,
@@ -79,7 +80,15 @@ const BusinessPage = async ({ params }: { params: any }) => {
 				type={business_type}
 				image={cover_image}
 			/>
-
+			<div className="w-full px-4 md:px-12 my-[20px]">
+				<BreadCrumbs
+					links={[
+						{ name: "home", href: "/" },
+						{ name: "categories", href: "/categories" },
+						{ name: name, href: "" },
+					]}
+				/>
+			</div>
 			<div className="grid grid-cols-12 gap-4 px-4 md:px-12 my-6">
 				<div className="col-span-12 md:col-span-8 order-2 md:order-1 ">
 					<AboutBusiness

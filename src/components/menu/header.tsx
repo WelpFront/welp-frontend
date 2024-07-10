@@ -27,7 +27,7 @@ const BusinessHeader = ({ business }: any) => {
 				alt="business"
 			/>
 			<div className="w-full flex-1 flex flex-col gap-4">
-				<div className="flex justify-between ">
+				<div className="flex justify-between gap-1">
 					<Link
 						href={`/biz/businesses/${slug}`}
 						className="text-black font-extrabold">
@@ -38,7 +38,7 @@ const BusinessHeader = ({ business }: any) => {
 						<Chip
 							text={reviews_stats.rating_score}
 							icon="/star-icon.png"
-							className="bg-secondary text-white"
+							className="bg-secondary text-white min-w-[50px] px-2 h-[20px]"
 						/>
 					)}
 				</div>

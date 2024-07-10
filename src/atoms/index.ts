@@ -1,3 +1,4 @@
+import BreadCrumbs from "./bread-crumbs";
 import BusinessCard from "./cards/business-card";
 import CategoriesCard from "./cards/categories-card";
 import ForBusinessCard from "./cards/for-business-card";
@@ -27,6 +28,7 @@ import CustomSwiper from "./slider";
 
 export {
 	CitiesLoader,
+	BreadCrumbs,
 	BusinessesListLoader,
 	BusinessCard,
 	RadioButton,

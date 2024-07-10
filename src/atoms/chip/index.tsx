@@ -12,13 +12,13 @@ const Chip = ({
 }) => {
 	return (
 		<div
-			className={`rounded-full min-w-16 flex gap-1 items-center justify-center ${className}`}>
-			<h2 className="text-md">{text}</h2>
+			className={`rounded-full  flex gap-1 items-center justify-center ${className}`}>
+			<h2 className="text-[15px]">{text}</h2>
 			{icon && (
 				<Image
 					width={10}
 					height={10}
-					className="w-6 h-6"
+					className="w-[16px] h-[16px]"
 					alt="star"
 					src={icon}
 				/>

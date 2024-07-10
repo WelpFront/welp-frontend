@@ -53,9 +53,12 @@ const ItemCard = ({ item }: { item: ProductType }) => {
 					height={200}
 					alt="restaurant"
 				/>
-				<div className="flex flex-col items-start justify-start gap-1 my-2">
+				<div className="flex flex-col items-start justify-between min-h-24 gap-1 my-2">
 					<h1 className="font-bold">{item.name}</h1>
-					<p className="text-gray-600 text-sm"> {item.description}</p>
+					<p className="text-gray-600 text-sm text-start">
+						{" "}
+						{item.description}
+					</p>
 
 					<div className="flex gap-3">
 						{!!item?.price_before_discount && (
