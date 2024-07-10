@@ -9,7 +9,7 @@ const OpenApp = () => {
 
 			<button
 				onClick={() =>
-					(window.location.assign = "YOUR_TEAM_ID.com.welp.welp://")
+					window.location.assign("YOUR_TEAM_ID.com.welp.welp://")
 				}
 				className="bg-secondary p-2 px-4 rounded-full ">
 				فتح الأبليكيشن
