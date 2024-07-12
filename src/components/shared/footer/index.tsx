@@ -75,13 +75,19 @@ const Footer = ({ translation }: { translation: any }) => {
 							</Link>
 						</li>
 						<li>
-							<Link href={""}>{translation.aboutUs}</Link>
+							<Link href={"/contact"}>
+								{translation.contactUs}
+							</Link>
 						</li>
 						<li>
-							<Link href={""}>{translation.termsConditions}</Link>
+							<Link href={"/terms"}>
+								{translation.termsConditions}
+							</Link>
 						</li>
 						<li>
-							<Link href={""}>{translation.privacyPolicy}</Link>
+							<Link href={"/privacy"}>
+								{translation.privacyPolicy}
+							</Link>
 						</li>
 					</ol>
 				</div>

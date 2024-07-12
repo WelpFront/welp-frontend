@@ -8,6 +8,7 @@ import { FaPhoneVolume } from "react-icons/fa6";
 import { RiGlobalFill } from "react-icons/ri";
 import { SiWhatsapp } from "react-icons/si";
 import { SlLocationPin } from "react-icons/sl";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const BusinessLocation = ({
 	lng,
@@ -41,7 +42,15 @@ const BusinessLocation = ({
 	const CustomMap = useMemo(
 		() =>
 			dynamic(() => import("atoms/map"), {
-				loading: () => <p>A map is loading</p>,
+				loading: () => (
+					<div className="flex items-center justify-center w-full h-full">
+						<ClipLoader
+							className="animate-spin"
+							color="#FF0000"
+							loading={true}
+						/>
+					</div>
+				),
 				ssr: false,
 			}),
 		[]
@@ -103,7 +112,7 @@ const BusinessLocation = ({
 					youtube_profile_url) && (
 					<>
 						<hr />
-						<div className="flex justify-start items-center py-3 gap-3 px-2">
+						<div className="flex justify-center items-center py-3 gap-3 px-2">
 							{youtube_profile_url && (
 								<Link
 									href={youtube_profile_url}

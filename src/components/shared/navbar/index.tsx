@@ -28,6 +28,8 @@ const Navbar = ({ translation }: { translation: any }) => {
 		"/categories",
 		"/businesses",
 		"/biz/businesses",
+		"/terms",
+		"/privacy",
 	];
 
 	const withWhiteBackground = !!linksWithWhiteBackground.find(

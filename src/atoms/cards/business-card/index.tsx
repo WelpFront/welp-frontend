@@ -51,7 +51,7 @@ const BusinessCard = ({
 				}`}
 			/>
 			<div className="flex justify-between items-center px-2">
-				<h1 className="text-sm font-bold w-40 overflow-hidden text-ellipsis whitespace-nowrap text-animation">
+				<h1 className="text-sm font-bold w-60 overflow-hidden text-ellipsis whitespace-nowrap text-animation">
 					{item.name}
 				</h1>
 			</div>

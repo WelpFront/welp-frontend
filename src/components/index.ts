@@ -13,6 +13,8 @@ import BusinessesFilters from "./businesses-list/filters";
 import BusinessesList from "./businesses-list/list";
 import ResponsiveBusinessesFilters from "./businesses-list/responsive-filters";
 import CategoriesList from "./categories/categories-list";
+import ContactInfo from "./contact-us/body";
+import ContactHeader from "./contact-us/header";
 import DownloadBusinessApp from "./for-businesses/download-app";
 import ForBusinessesHeader from "./for-businesses/header";
 import BusinessPageInfo from "./for-businesses/info";
@@ -28,13 +30,23 @@ import BusinessHeader from "./menu/header";
 import Menu from "./menu/menu";
 import OpenApp from "./menu/open-app";
 import ProductsList from "./menu/products-list";
+import PrivacyBody from "./privacy/body";
+import PrivacyHeader from "./privacy/header";
 import Footer from "./shared/footer";
 import Navbar from "./shared/navbar";
+import TermsBody from "./terms/body";
+import TermsHeader from "./terms/header";
 import UsersDownloadHeader from "./users/header";
 import ImagesSection from "./users/images";
 import UserDownloadInfo from "./users/info";
 
 export {
+	ContactInfo,
+	ContactHeader,
+	PrivacyBody,
+	PrivacyHeader,
+	TermsHeader,
+	TermsBody,
 	UserDownloadInfo,
 	ForBusinessesHeader,
 	ImagesSection,

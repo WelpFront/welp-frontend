@@ -20,16 +20,36 @@ export default async function sitemap({
 }): Promise<MetadataRoute.Sitemap> {
 	const businesses = await getBusinessesSlugs(id);
 
-	return businesses?.results.flatMap((business: any) => [
-		{
-			url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/en/biz/businesses/${business.slug}`,
-			locale: "en",
-			lastModified: new Date(),
-		},
-		{
-			url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/ar/biz/businesses/${business.slug}`,
-			locale: "ar",
-			lastModified: new Date(),
-		},
-	]);
+	return businesses?.results.flatMap((business: any) => {
+		const commonEntries = [
+			{
+				url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/en/biz/businesses/${business.slug}`,
+				locale: "en",
+				lastModified: new Date(),
+			},
+			{
+				url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/ar/biz/businesses/${business.slug}`,
+				locale: "ar",
+				lastModified: new Date(),
+			},
+		];
+
+		const restaurantEntries =
+			business.business_type === "RESTAURANT"
+				? [
+						{
+							url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/en/biz/businesses/${business.slug}/menu`,
+							locale: "en",
+							lastModified: new Date(),
+						},
+						{
+							url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/ar/biz/businesses/${business.slug}/menu`,
+							locale: "ar",
+							lastModified: new Date(),
+						},
+				  ]
+				: [];
+
+		return [...commonEntries, ...restaurantEntries];
+	});
 }
