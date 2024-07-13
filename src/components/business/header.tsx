@@ -35,7 +35,7 @@ const BusinessesHeader = ({
 						/>
 						<h2 className=" absolute  text-lg">{city}</h2>
 					</div>
-					<div className="relative  flex items-center justify-center">
+					<div className="relative  flex items-center flex-wrap justify-center">
 						<Image
 							src={"/subtitle.png"}
 							width={200}

@@ -24,7 +24,7 @@ const TermsOfUse = async () => {
 	const termsT = await getTranslations("termsOfUse");
 
 	return (
-		<div className=" px-5 md:px-10">
+		<div dir={"ltr"} className=" px-5 md:px-10">
 			<TermsHeader
 				translation={{
 					header: termsT("header"),

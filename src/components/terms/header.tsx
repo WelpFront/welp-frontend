@@ -14,8 +14,8 @@ const TermsHeader = ({ translation }: { translation: any }) => {
 				/>
 			</div>
 			<div className="order-2 md:order-1 flex flex-1 flex-col ">
-				<div className="font-bold text-[20px] md:text-[40px]">
-					{translation.header}
+				<div className="font-bold text-[40px] md:text-[80px]">
+					Terms of use
 				</div>
 			</div>
 		</div>
