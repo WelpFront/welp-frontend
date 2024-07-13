@@ -13,11 +13,10 @@ const BusinessesHeader = ({
 }) => {
 	return (
 		<div
+			className={`h-129  bg-scroll bg-cover bg-center bg-no-repeat md:bg-fixed`}
 			style={{
-				background: `url(${image}) center center fixed no-repeat`,
-				backgroundSize: "cover",
-			}}
-			className={`h-129`}>
+				backgroundImage: `url(${image}) `,
+			}}>
 			<div
 				className="w-full h-full flex flex-col items-center justify-center gap-10 text-white "
 				style={{
