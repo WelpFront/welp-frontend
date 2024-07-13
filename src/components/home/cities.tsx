@@ -5,7 +5,13 @@ import { CityType } from "interfaces";
 import { useCitiesStore } from "store/cities";
 import { SwiperSlide } from "swiper/react";
 
-const Cities = ({ translation }: { translation: any }) => {
+const Cities = ({
+	translation,
+	cities,
+}: {
+	translation: any;
+	cities: Array<CityType>;
+}) => {
 	const breakpoints = {
 		200: {
 			slidesPerView: 2,
@@ -17,7 +23,6 @@ const Cities = ({ translation }: { translation: any }) => {
 			slidesPerView: 4,
 		},
 	};
-	const { cities } = useCitiesStore((state) => state);
 
 	return (
 		<div className="bg-gray-home py-4 ">

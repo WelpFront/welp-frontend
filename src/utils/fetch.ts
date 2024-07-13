@@ -21,6 +21,7 @@ const getHeaders = () => {
 	if (languageCookie) headers["Accept-Language"] = languageCookie;
 	if (locationCookie) headers["X-Country-Code"] = locationCookie;
 	headers["Content-Type"] = "application/json";
+	headers["app-id"] = "WEBSITE";
 
 	return headers;
 };

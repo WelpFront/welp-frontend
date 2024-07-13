@@ -31,7 +31,7 @@ export async function metadata({
 const HomePage = async ({ params }: { params: any }) => {
 	unstable_setRequestLocale(params.locale);
 
-	const { featured_businesses, categories } = await getHomePageData();
+	const { featured_businesses, categories, cities } = await getHomePageData();
 
 	const homeT = await getTranslations("home");
 
@@ -50,6 +50,7 @@ const HomePage = async ({ params }: { params: any }) => {
 				}}
 			/>
 			<Cities
+				cities={cities}
 				translation={{
 					cities: homeT("cities"),
 					cairo: homeT("cairo"),
