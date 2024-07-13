@@ -17,7 +17,7 @@ const BusinessesHeader = ({
 				background: `url(${image}) center center fixed no-repeat`,
 				backgroundSize: "cover",
 			}}
-			className={`h-129 bg-cover bg-no-repeat bg-right  `}>
+			className={`h-129`}>
 			<div
 				className="w-full h-full flex flex-col items-center justify-center gap-10 text-white "
 				style={{
