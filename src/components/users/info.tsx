@@ -4,9 +4,11 @@ import React from "react";
 const UserDownloadInfo = ({ translation }: { translation: any }) => {
 	return (
 		<div className="flex flex-col items-center justify-center gap-2 my-10 px-10">
-			<h1 className="text-[25px] md:ext-[35px]">{translation.search}</h1>
+			<h1 className="text-[25px] md:ext-[35px] text-center md:text-start">
+				{translation.search}
+			</h1>
 			<h1 className="text-[25px] md:text-[35px]">&</h1>
-			<h1 className="text-[25px] md:text-[35px]">
+			<h1 className="text-[25px] md:text-[35px] text-center md:text-start">
 				{translation.allOfThis}
 			</h1>
 

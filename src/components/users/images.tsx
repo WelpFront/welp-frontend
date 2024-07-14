@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const ImagesSection = () => {
 	return (
-		<div className="relative -mt-56 flex items-center justify-center gap-10">
+		<div className="relative -mt-24 md:-mt-32 lg:-mt-56 flex items-center justify-center gap-10">
 			<Image
 				src="/iPhone.svg"
 				width={200}
@@ -15,7 +15,7 @@ const ImagesSection = () => {
 				width={250}
 				height={300}
 				alt="iphone"
-				className=""
+				className="w-56 h-56 md:max-w-[100%] md:h-[auto]"
 			/>
 			<Image
 				src="/iPhone.svg"
