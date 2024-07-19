@@ -3,7 +3,7 @@
 import { getCookie, setCookie } from "cookies-next";
 // @ts-ignore
 import * as lookup from "coordinate_to_country";
-import { useCitiesList } from "hooks";
+import { CityType } from "interfaces";
 import { useRouter, usePathname } from "navigation";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
@@ -30,10 +30,12 @@ const SearchInput = ({
 
 	const [filteredCities, setFilteredCities] = useState(data || []);
 
-	const [cityValue, setCityValue] = useState<any>();
+	const [cityValue, setCityValue] = useState<string | null>(
+		(searchParams?.get("city") as string) || null
+	);
 
 	const [keyword, setKeyword] = useState<string | null>(
-		searchParams?.get("search") as string
+		(searchParams?.get("search") as string) || null
 	);
 
 	const location = getCookie("location");
@@ -73,72 +75,57 @@ const SearchInput = ({
 	const setSearchKeyword = useBusinessesFilterStore(
 		(state) => state.setSearchKeyword
 	);
+
 	const setCity = useBusinessesFilterStore((state) => state.setCity);
 
 	const searchHandler = () => {
-		if (
-			keyword ||
-			(cityValue &&
-				(data.find((city: any) =>
-					city?.name
-						?.toLowerCase()
-						.includes(cityValue?.name?.toLowerCase() || cityValue)
-				) ||
-					cityValue === translation.currentLocation))
-		) {
-			if (keyword) setSearchKeyword(keyword);
+		let hasSearchParam = false;
+		let hasCityParam = false;
 
-			if (
-				cityValue !== translation.currentLocation &&
-				data.find((city: any) =>
-					city?.name
-						?.toLowerCase()
-						.includes(cityValue?.name?.toLowerCase() || cityValue)
-				)
-			)
-				setCity(
-					cityValue?.id ||
-						filteredCities?.find(
-							(city: any) =>
-								city?.id ===
-								parseInt(searchParams?.get("city") as string)
-						)
-				);
-			if (pathname === "/biz/businesses") {
-				if (cityValue && cityValue !== translation.currentLocation) {
-					router.push(
-						pathname +
-							"?" +
-							createQueryString("city", cityValue.id as string)
-					);
-				}
-				if (keyword) {
-					router.push(
-						pathname +
-							"?" +
-							createQueryString("search", keyword as string)
-					);
-				}
-			} else {
-				if (cityValue && cityValue !== translation.currentLocation) {
-					router.push(
-						`/biz/businesses` +
-							"?" +
-							createQueryString("city", cityValue.id as string)
-					);
-				}
-				if (keyword) {
-					router.push(
-						`/biz/businesses` +
-							"?" +
-							createQueryString("search", keyword as string)
-					);
-				}
-			}
-		} else {
-			setSearchKeyword(null);
-			removeQueryParam("search", pathname);
+		const queryString = [];
+
+		if (keyword) {
+			queryString.push(createQueryString("search", keyword));
+			hasSearchParam = true;
 		}
+
+		if (cityValue && cityValue !== translation.currentLocation) {
+			const cityMatch = data.find((city: CityType) =>
+				city?.name
+					?.toLowerCase()
+					.includes(cityValue?.toLowerCase() || cityValue)
+			);
+			if (cityMatch || cityValue === translation.currentLocation) {
+				queryString.push(createQueryString("city", cityValue));
+				hasCityParam = true;
+			}
+		}
+
+		const queryParams = queryString.join("&");
+
+		if (pathname === "/biz/businesses") {
+			const SP = new URLSearchParams(searchParams.toString());
+
+			if (hasSearchParam) {
+				SP.set("search", keyword as string);
+			} else {
+				SP.delete("search");
+			}
+
+			if (hasCityParam) {
+				SP.set("city", cityValue as string);
+			} else {
+				SP.delete("city");
+			}
+
+			router.push(pathname + "?" + SP.toString());
+		} else {
+			router.push(
+				`/biz/businesses${queryParams ? "?" + queryParams : ""}`
+			);
+		}
+
+		setSearchKeyword(keyword || null);
 	};
 
 	const handleClickOutside = (event: MouseEvent) => {
@@ -175,6 +162,7 @@ const SearchInput = ({
 				)
 			);
 		} else {
+			setFilteredCities(data);
 			setCityValue(null);
 		}
 	};
@@ -206,14 +194,22 @@ const SearchInput = ({
 	return (
 		<div
 			dir={locale === "ar" ? "rtl" : "ltr"}
-			className={`rounded-full h-10 md:h-12 w-full   relative  justify-start shadow-searchInputShadow  bg-white flex text-gray-600 gap-1  items-center  ${className} `}>
-			<div className="flex items-center w-11/12 h-full gap-2 border-e-2 border-solid ps-3 border-gray-200 ">
+			className={`rounded-full h-10 md:h-12 w-full relative justify-start shadow-searchInputShadow bg-white flex text-gray-600 gap-1 items-center ${className} `}>
+			<div className="flex items-center w-11/12 h-full gap-2 border-e-2 border-solid ps-3 border-gray-200">
 				<FaSearch className="text-gray-400" />
 				<input
 					type="text"
 					placeholder={translation.ex}
-					className="text-gray-800  text-xs md:text-sm  h-full w-full   outline-none"
-					onChange={(e) => setKeyword(e.target.value)}
+					className="text-gray-800 text-xs md:text-sm h-full w-full outline-none"
+					onChange={(e) => {
+						if (e.target.value) {
+							setKeyword(e.target.value);
+						} else {
+							setKeyword(null);
+							setSearchKeyword(null);
+							removeQueryParam("search", pathname);
+						}
+					}}
 					onKeyDown={(e) => {
 						if (e.key === "Enter") searchHandler();
 					}}
@@ -234,8 +230,7 @@ const SearchInput = ({
 					placeholder={translation.where}
 					onFocus={() => setShowCities(true)}
 					onChange={handleCitySearch}
-					defaultValue={
-						cityValue?.name ||
+					value={
 						cityValue ||
 						filteredCities?.find(
 							(city: any) =>
@@ -244,19 +239,20 @@ const SearchInput = ({
 						)?.name ||
 						""
 					}
-					className="text-gray-800 text-xs md:text-sm  h-full w-full  outline-none"
+					className="text-gray-800 text-xs md:text-sm h-full w-full outline-none"
 				/>
 				<button
 					onClick={() => {
 						setCity(null);
 						setCityValue(null);
 						removeQueryParam("city", pathname);
+						setFilteredCities(data);
 					}}>
 					{!!(
 						(cityValue &&
 							cityValue !== translation.currentLocation) ||
 						parseInt(searchParams?.get("city") as string)
-					) && <GiCancel className=" hover:text-red-500" />}
+					) && <GiCancel className="hover:text-red-500" />}
 				</button>
 				{showCities && (
 					<div
@@ -279,16 +275,19 @@ const SearchInput = ({
 							}}>
 							{translation.currentLocation}
 						</p>
-						<hr className="h-[1px] " />
-						<div className="h-full  flex flex-col justify-start items-start">
+						<hr className="h-[1px]" />
+						<div className="h-full flex flex-col justify-start items-start">
 							{filteredCities?.map((city: any) => (
 								<p
 									onClick={() => {
-										setCityValue(city);
+										setCityValue(city.name);
 										setShowCities(false);
+										setCity(city.id);
+										if (pathname === "/biz/businesses")
+											searchHandler();
 									}}
 									key={city.id}
-									className=" font-semiBold my-3 w-full  text-sm cursor-pointer ">
+									className="font-semiBold my-3 w-full text-sm cursor-pointer">
 									{city.name}
 								</p>
 							))}
@@ -296,9 +295,9 @@ const SearchInput = ({
 					</div>
 				)}
 			</div>
-			<div className=" items-center h-full gap-2 flex shrink-0">
+			<div className="items-center h-full gap-2 flex shrink-0">
 				<button
-					className="bg-secondary text-white rounded-e-full  h-full py-1 px-5 flex-1 start-0 relative"
+					className="bg-secondary text-white rounded-e-full h-full py-1 px-5 flex-1 start-0 relative"
 					onClick={() => searchHandler()}>
 					<FaSearch className="text-white" />
 				</button>

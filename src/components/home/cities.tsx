@@ -51,7 +51,7 @@ const Cities = ({
 									backgroundPosition: "center",
 								}}>
 								<div
-									className="w-full h-full  flex items-start justify-center"
+									className="w-full h-full  flex items-start justify-center pt-5 select-none"
 									style={{
 										background:
 											"linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.2))",

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { getBusinessesList } from "services";
 import { useBusinessesFilterStore } from "store/businesses-filters";
+import { useCitiesStore } from "store/cities";
 
 const useBusinessesList = () => {
 	const [businesses, setBusinesses] = useState<Array<BusinessType>>([]);
@@ -26,6 +27,8 @@ const useBusinessesList = () => {
 	const priceCategory = useBusinessesFilterStore(
 		(state) => state.priceCategory
 	);
+
+	const cities = useCitiesStore((state) => state.cities);
 
 	const city = useBusinessesFilterStore((state) => state.city);
 
@@ -52,7 +55,11 @@ const useBusinessesList = () => {
 
 	const finalizedSearchKeyword = searchKeyword || searchParams.get("search");
 
-	const finalizedCity = city || parseInt(searchParams.get("city") as string);
+	const finalizedCity =
+		city ||
+		cities.find(
+			(city) => city.name === (searchParams.get("city") as string)
+		)?.id;
 
 	const fetchBusinessesHandler = async () => {
 		setLoading(true);

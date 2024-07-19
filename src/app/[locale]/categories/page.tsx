@@ -10,7 +10,7 @@ const Categories: React.FC<any> = async ({ params }: { params: any }) => {
 	const categoriesT = await getTranslations("categories");
 
 	return (
-		<div className="my-10 flex flex-col justify-center items-center gap-10 ">
+		<div className="my-10 flex flex-col justify-center items-center gap-10  px-10  ">
 			<h1 className="text-5xl font-semibold text-center">
 				{categoriesT("allCategories")}
 			</h1>

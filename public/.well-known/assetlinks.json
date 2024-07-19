@@ -5,7 +5,8 @@
         "namespace": "android_app",
         "package_name": "com.welp.welp",
         "sha256_cert_fingerprints": [
-          "YOUR_APP_SHA256_FINGERPRINT"
+          "E9:4B:31:42:F3:9B:C7:42:55:02:17:DA:21:61:66:85:CA:18:A1:F7:95:1C:CB:37:03:76:38:FD:44:3D:B0:C3",
+          "A1:F4:92:D1:5C:65:EF:4E:98:D9:7F:1B:E1:AA:E1:B2:93:B7:12:28:53:CE:A5:11:02:B7:3A:B5:82:F4:11:68"
         ]
       }
     }

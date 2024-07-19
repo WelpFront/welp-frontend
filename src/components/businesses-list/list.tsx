@@ -4,7 +4,7 @@ import { BusinessCard, BusinessesListLoader, CustomPagination } from "atoms";
 import { ResponsiveBusinessesFilters } from "components";
 import { useBusinessesList } from "hooks";
 import { Link } from "navigation";
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 
 const BusinessesList = ({
 	locale,
@@ -36,6 +36,8 @@ const BusinessesList = ({
 			setPage((prev) => prev - 1);
 		}
 	};
+
+	useEffect(() => {}, []);
 
 	return (
 		<div className=" col-span-4 lg:col-span-3 w-full ">

@@ -14,14 +14,14 @@ const CustomMap = ({
 }) => {
 	const mapRef = useRef<HTMLDivElement>(null);
 
-	console.log("map");
-
 	const initMap = async () => {
 		const loader = new Loader({
 			apiKey: process.env.NEXT_PUBLIC_MAPS_API_KEY as string,
 		});
 
 		const { Map } = await loader.importLibrary("maps");
+
+		const { DirectionsService } = await loader.importLibrary("routes");
 
 		const { Marker } = (await loader.importLibrary(
 			"marker"
@@ -37,6 +37,8 @@ const CustomMap = ({
 			zoom: 17,
 			mapId: name,
 		};
+		const directions = new DirectionsService();
+		console.log(directions.route);
 
 		const map = new Map(mapRef.current as HTMLDivElement, mapOptions);
 

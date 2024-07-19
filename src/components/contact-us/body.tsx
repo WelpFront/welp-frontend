@@ -21,7 +21,12 @@ const ContactInfo = ({ translation }: { translation: any }) => {
 				<h3 className="text-[20px] mt-4 ">{translation.address}</h3>
 				<p className="mb-4">956 N Grand Ave, Covina, CA 91724, USA</p>
 				<h3 className="text-[20px] ">{translation.email}</h3>
-				<p className="mb-4">w.star@welp.cpm</p>
+				<Link
+					href={"mailto:Info@welpstar.com"}
+					target="_blank"
+					className="underline flex-1 mb-4">
+					Info@welpstar.com
+				</Link>
 				<h3 className="text-[20px] ">{translation.callUs}</h3>
 				<p dir="ltr" className="mb-4 flex items-center">
 					+1(949) 993-8566 - +201229999268
