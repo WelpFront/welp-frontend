@@ -51,7 +51,7 @@ const BusinessReviews = ({
 			`}>
 					{reviews?.map((item, index) => (
 						<div key={item.id} className="flex flex-col gap-2">
-							<ReviewCard item={item} />
+							<ReviewCard key={item.id} item={item} />
 							{index !== count - 1 && <hr className="my-2" />}
 						</div>
 					))}

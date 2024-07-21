@@ -55,6 +55,7 @@ const BusinessLocation = ({
 			}),
 		[]
 	);
+
 	return (
 		<div>
 			<h3 className="text-xl my-1 font-bold">

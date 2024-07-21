@@ -21,55 +21,11 @@ export async function metadata({
 	};
 }
 const TermsOfUse = async () => {
-	const termsT = await getTranslations("termsOfUse");
-
 	return (
 		<div dir={"ltr"} className=" px-5 md:px-10">
-			<TermsHeader
-				translation={{
-					header: termsT("header"),
-				}}
-			/>
+			<TermsHeader />
 
-			<TermsBody
-				translation={{
-					termsOfUseForCustomers: termsT("termsOfUseForCustomers"),
-					introduction: termsT("introduction"),
-					month: termsT("month"),
-					version: termsT("version"),
-					introductionDescription: termsT("introductionDescription"),
-					responsibilities: termsT("responsibilities"),
-					guidelines: termsT("guidelines"),
-					ownership: termsT("ownership"),
-					whatYouOwn: termsT("whatYouOwn"),
-					welpsRightToUse: termsT("welpsRightToUse"),
-					feedback: termsT("feedback"),
-					problemsAndSupport: termsT("problemsAndSupport"),
-					impartiality: termsT("impartiality"),
-					privacyAndDataUse: termsT("privacyAndDataUse"),
-					personalData: termsT("personalData"),
-					confidentialInformation: termsT("confidentialInformation"),
-					keepingItConfidential: termsT("keepingItConfidential"),
-					terminationAndSuspension: termsT(
-						"terminationAndSuspension"
-					),
-					ourRights: termsT("ourRights"),
-					yourRights: termsT("yourRights"),
-					importantHousekeeping: termsT("importantHousekeeping"),
-					changesToTheseTerms: termsT("changesToTheseTerms"),
-					changesToOurPlatform: termsT("changesToOurPlatform"),
-					eventsOutsideOurControl: termsT("eventsOutsideOurControl"),
-					language: termsT("language"),
-					enforcementOfTerms: termsT("enforcementOfTerms"),
-					interpretation: termsT("interpretation"),
-					contractingEntitiesAndGoverningLaw: termsT(
-						"contractingEntitiesAndGoverningLaw"
-					),
-					address: termsT("address"),
-					grandAve: termsT("grandAve"),
-					covUsa: termsT("covUsa"),
-				}}
-			/>
+			<TermsBody />
 		</div>
 	);
 };

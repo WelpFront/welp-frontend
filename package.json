@@ -9,8 +9,8 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"@googlemaps/js-api-loader": "^1.16.6",
 		"@hookform/resolvers": "^3.6.0",
+		"@react-google-maps/api": "^2.19.3",
 		"axios": "^1.6.8",
 		"cookies-next": "^4.2.1",
 		"coordinate_to_country": "^1.1.0",

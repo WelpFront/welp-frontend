@@ -191,6 +191,7 @@ const SearchInput = ({
 		toast.info("Please enable location permission.");
 	}
 
+	if (!locale) return <div className="h-10 md:h-12 w-full"></div>;
 	return (
 		<div
 			dir={locale === "ar" ? "rtl" : "ltr"}

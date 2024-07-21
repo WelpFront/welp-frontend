@@ -46,6 +46,7 @@ const BusinessPage = async ({ params }: { params: any }) => {
 	const { slug } = params;
 
 	const businessT = await getTranslations("business");
+	const breadCrumbsT = await getTranslations("breadCrumbs");
 
 	const {
 		id,
@@ -83,8 +84,11 @@ const BusinessPage = async ({ params }: { params: any }) => {
 			<div className="w-full px-4 md:px-12 my-[20px]">
 				<BreadCrumbs
 					links={[
-						{ name: "home", href: "/" },
-						{ name: "categories", href: "/categories" },
+						{ name: breadCrumbsT("home"), href: "/" },
+						{
+							name: breadCrumbsT("businesses"),
+							href: "/categories",
+						},
 						{ name: name, href: "" },
 					]}
 				/>
@@ -139,8 +143,8 @@ const BusinessPage = async ({ params }: { params: any }) => {
 				<div className="col-span-12 md:col-span-4  order-1 md:order-2">
 					<BusinessLocation
 						name={name}
-						lng={parseInt(longitude) || 31.224291}
-						lat={parseInt(latitude) || 30.045916}
+						lng={parseFloat(longitude as string)}
+						lat={parseFloat(latitude as string)}
 						whatsapp={whatsapp}
 						phone={phone_number}
 						location={location_name}

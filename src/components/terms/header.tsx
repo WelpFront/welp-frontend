@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const TermsHeader = ({ translation }: { translation: any }) => {
+const TermsHeader = () => {
 	return (
 		<div className="flex  md:flex-row flex-col px-5 md:px-10 pt-10  items-center w-full justify-start min-h-[50vh] md:min-h-[90vh]">
 			<div className="order-1 md:order-2 md:flex-1 h-[30vh]  md:h-[70vh] ">

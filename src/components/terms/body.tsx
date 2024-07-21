@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const TermsBody = ({ translation }: { translation: any }) => {
+const TermsBody = () => {
 	return (
 		<div className="grid grid-cols-1 md:grid-cols-2">
 			<div className="h-[30vh]  md:h-[70vh]">

@@ -13,7 +13,7 @@ const DownloadApp = ({ translation }: { translation: any }) => {
 					{translation.available}
 				</p>
 
-				<div className=" flex gap-[40px] mt-4">
+				<div className=" flex justify-center md:justify-start gap-[40px] mt-4">
 					<Link
 						target="_blank"
 						href={
