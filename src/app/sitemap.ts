@@ -25,7 +25,6 @@ function getUrl(pathname: string) {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-	// Generate static sitemap entries
 	const staticEntries = pathnames.map((pathname) => ({
 		url: getUrl(pathname),
 		lastModified: new Date().toISOString(),
