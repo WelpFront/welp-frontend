@@ -11,7 +11,7 @@ const pathnames = [
 
 const host = process.env.NEXT_PUBLIC_FRONTEND_URL;
 
-export async function generateSitemaps() {
+export async function generateStaticParams() {
 	const products = await getBusinessesSlugs(1);
 	const sitemapsNeeded = Math.ceil(products.count / 1000);
 
@@ -38,7 +38,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	}));
 
 	// Generate dynamic sitemap entries
-	const sitemaps = await generateSitemaps();
+	const sitemaps = await generateStaticParams();
 
 	const dynamicSitemapEntries = sitemaps.map((sitemap: any) => ({
 		url: `${host}/sitemaps/businesses/sitemap/${sitemap.id}.xml`,
