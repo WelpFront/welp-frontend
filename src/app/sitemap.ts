@@ -1,5 +1,4 @@
-const defaultLocale = "ar";
-const locales = ["en", "ar"];
+import { MetadataRoute } from "next";
 
 const pathnames = [
 	"/",
@@ -11,19 +10,19 @@ const pathnames = [
 
 const host = process.env.NEXT_PUBLIC_FRONTEND_URL;
 
-export default function sitemap() {
-	return [
-		...pathnames
-			.map((pathname) => {
-				return locales.map((locale) => ({
-					url: getUrl(pathname, locale),
-					lastModified: new Date(),
-				}));
-			})
-			.flat(),
-	];
+export default function sitemap(): MetadataRoute.Sitemap {
+	return pathnames.map((pathname) => ({
+		url: getUrl(pathname),
+		lastModified: new Date().toISOString(),
+		alternates: {
+			languages: {
+				ar: getUrl(`/ar${pathname}`),
+				en: getUrl(`/en${pathname}`),
+			},
+		},
+	}));
 }
 
-function getUrl(pathname: string, locale: string) {
-	return `${host}/${locale}${pathname === "/" ? "" : pathname}`;
+function getUrl(pathname: string) {
+	return `${host}${pathname === "/" ? "" : pathname}`;
 }
