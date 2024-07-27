@@ -38,6 +38,8 @@ export default function RootLayout({
 
 	const navbarT = useTranslations("navbar");
 
+	const businessT = useTranslations("business");
+
 	const footerT = useTranslations("footer");
 
 	return (
@@ -56,6 +58,10 @@ export default function RootLayout({
 					ex: navbarT("ex"),
 					where: navbarT("where"),
 					currentLocation: navbarT("currentLocation"),
+					placeName: navbarT("placeName"),
+					city: navbarT("city"),
+					address: navbarT("address"),
+					description: navbarT("description"),
 				}}
 			/>
 			<ClientProviders>{children}</ClientProviders>

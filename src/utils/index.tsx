@@ -1,5 +1,6 @@
 "use client";
 
+import { AutoComplete, TextInputWithIcon } from "atoms";
 import { months } from "data";
 import { OpeningHoursType } from "interfaces";
 import { ReactNode } from "react";
@@ -63,16 +64,11 @@ export const renderFormFieldByType = (
 		case "text":
 			return (
 				<div className="flex flex-col items-start">
-					<div className="flex items-center w-full h-full gap-2 border rounded-3xl overflow-hidden border-solid px-3  border-gray-400 ">
-						<input
-							{...field}
-							type="text"
-							name={name}
-							placeholder={label}
-							className="text-gray-800  text-xs md:text-sm  h-full w-full py-3 outline-none"
-						/>
-						{Icon}
-					</div>
+					<TextInputWithIcon
+						label={label}
+						name={name}
+						field={field}
+					/>
 					{error && <p className="text-sm text-red-500">{error}</p>}
 				</div>
 			);
@@ -97,6 +93,13 @@ export const renderFormFieldByType = (
 							</div>
 						)}
 					</div>
+					{error && <p className="text-sm text-red-500">{error}</p>}
+				</div>
+			);
+		case "auto-complete":
+			return (
+				<div className="flex flex-col justify-start w-full gap-2">
+					<AutoComplete label={label} field={field} />
 					{error && <p className="text-sm text-red-500">{error}</p>}
 				</div>
 			);

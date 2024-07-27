@@ -1,6 +1,7 @@
 "use client";
 
-import { SearchInput } from "atoms";
+import { Modal, SearchInput } from "atoms";
+import { AddPlacesForm } from "components";
 import { getCookie, setCookie } from "cookies-next";
 // @ts-ignore
 import * as lookup from "coordinate_to_country";
@@ -13,6 +14,13 @@ import { FaPlus } from "react-icons/fa6";
 
 const Navbar = ({ translation }: { translation: any }) => {
 	const [opened, setOpened] = useState<boolean>(false);
+
+	const [isModalOpened, setIsModalOpened] = useState(false);
+
+	const modalData = {
+		isOpened: isModalOpened,
+		setIsOpened: setIsModalOpened,
+	};
 
 	const [searchOpened, setSearchOpened] = useState<boolean>(false);
 
@@ -144,24 +152,33 @@ const Navbar = ({ translation }: { translation: any }) => {
 						href={"https://blog.welpstar.com/"}>
 						{translation.blog}
 					</Link>
-					<Link
+					<button
 						className={`flex items-center justify-center gap-2 whitespace-nowrap text-white bg-secondary p-2 rounded-full  ${
 							!isActive("/contact") &&
 							"hover:text-yellow-400 text-[15px]"
 						}`}
-						style={{
-							textShadow: isActive("/contact")
-								? "1px 2px 2px #fff"
-								: undefined,
-							fontWeight: isActive("/contact")
-								? "bold"
-								: undefined,
-						}}
-						href={"/contact"}>
+						onClick={() => setIsModalOpened((prev) => !prev)}>
 						<FaPlus />
 						{translation.addPlace}
-					</Link>
+					</button>
 				</div>
+
+				<Modal
+					withoutExitButton
+					className={"w-full max-w-sm !rounded-3xl "}
+					data={modalData}>
+					<div className="w-full h-full p-3">
+						<h1 className="text-center">{translation.addPlace}</h1>
+						<AddPlacesForm
+							translation={{
+								placeName: translation.placeName,
+								city: translation.city,
+								address: translation.address,
+								description: translation.description,
+							}}
+						/>
+					</div>
+				</Modal>
 
 				<div className="flex gap-3 items-center lg:hidden">
 					<button

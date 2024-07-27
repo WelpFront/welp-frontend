@@ -91,7 +91,11 @@
 		"expensive": "مرتفع للغاية",
 		"suggested": "مقترحات",
 		"offersDelivery": "يوجد توصيل",
-		"noResults": "لا يوجد نتائج"
+		"noResults": "لا يوجد نتائج",
+		"placeName": "اسم المكان",
+		"city": "المدينة",
+		"address": "العنوان",
+		"description": "الوصف"
 	},
 	"categories": {
 		"allCategories": "جميع الفئات",

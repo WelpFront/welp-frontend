@@ -11,8 +11,13 @@ import CheckBox from "./checkbox";
 import Chip from "./chip/index";
 import Drawer from "./drawer";
 import CategoryItemDropdown from "./dropdowns/category-item-dropdown";
+import FileLink from "./file-link";
+import AutoComplete from "./inputs/auto-complete";
 import CategoriesSearchInput from "./inputs/categories-search-input";
+import FileInput from "./inputs/file";
+import CustomMapInput from "./inputs/map";
 import SearchInput from "./inputs/search-input";
+import TextInputWithIcon from "./inputs/text";
 import CircularLoader from "./loaders/circular";
 import ProgressBar from "./loaders/progress-bar";
 import BusinessesListLoader from "./loaders/skeleton/businesses-list";
@@ -27,7 +32,12 @@ import RadioButton from "./radio";
 import CustomSwiper from "./slider";
 
 export {
+	CustomMapInput,
+	FileInput,
+	FileLink,
+	TextInputWithIcon,
 	CitiesLoader,
+	AutoComplete,
 	BreadCrumbs,
 	BusinessesListLoader,
 	BusinessCard,

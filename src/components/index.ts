@@ -18,6 +18,7 @@ import ContactHeader from "./contact-us/header";
 import DownloadBusinessApp from "./for-businesses/download-app";
 import ForBusinessesHeader from "./for-businesses/header";
 import BusinessPageInfo from "./for-businesses/info";
+import AddPlacesForm from "./forms/add-places";
 import BusinessRequestForm from "./forms/businesses/business-request";
 import BoostBusiness from "./home/boost-business";
 import Categories from "./home/categories";
@@ -41,6 +42,7 @@ import ImagesSection from "./users/images";
 import UserDownloadInfo from "./users/info";
 
 export {
+	AddPlacesForm,
 	ContactInfo,
 	ContactHeader,
 	PrivacyBody,
