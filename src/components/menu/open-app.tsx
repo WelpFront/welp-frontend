@@ -10,7 +10,7 @@ const OpenApp = () => {
 
 			<a
 				id="my-cool-app"
-				href="welp://"
+				href="welp"
 				className="bg-secondary p-2 px-4 rounded-full decoration-">
 				فتح الأبليكيشن
 			</a>
