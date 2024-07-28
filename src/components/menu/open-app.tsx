@@ -10,7 +10,8 @@ const OpenApp = () => {
 		setIsOpening(true);
 
 		// Attempt to open the app
-		window.location.href = "welp://biz/businesses/58786/menu?type=22";
+		window.location.href =
+			"welp://welp-frontend.vercel.app/biz/businesses/58786/menu?type=22";
 
 		// Fallback URL (e.g., App Store or a web page)
 		setTimeout(() => {
