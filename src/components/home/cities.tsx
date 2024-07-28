@@ -25,7 +25,7 @@ const Cities = ({
 	};
 
 	return (
-		<div className="bg-gray-home py-4 ">
+		<div className="bg-gray-home py-4 min-h-screen">
 			<div>
 				<h1 className="text-center text-black text-3xl font-bold">
 					{translation.cities}

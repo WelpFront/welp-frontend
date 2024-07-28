@@ -49,7 +49,7 @@ const CustomSwiper = ({
 							{children}
 						</Swiper>
 
-						<div className="flex items-center justify-center gap-2 mt-6">
+						<div className="flex items-center justify-center gap-4 mt-6">
 							<button
 								id={`${className}-left`}
 								className={`${

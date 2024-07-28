@@ -15,7 +15,6 @@ import FileLink from "./file-link";
 import AutoComplete from "./inputs/auto-complete";
 import CategoriesSearchInput from "./inputs/categories-search-input";
 import FileInput from "./inputs/file";
-import CustomMapInput from "./inputs/map";
 import SearchInput from "./inputs/search-input";
 import TextInputWithIcon from "./inputs/text";
 import CircularLoader from "./loaders/circular";
@@ -32,7 +31,6 @@ import RadioButton from "./radio";
 import CustomSwiper from "./slider";
 
 export {
-	CustomMapInput,
 	FileInput,
 	FileLink,
 	TextInputWithIcon,

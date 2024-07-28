@@ -4,8 +4,8 @@ import React from "react";
 
 const Footer = ({ translation }: { translation: any }) => {
 	return (
-		<div className="flex flex-col gap-4">
-			<div className="flex flex-col md:flex-row bg-white rounded-t-3xl shadow-inner py-2 px-5 md:px-10  items-center md:items-start justify-start  md:justify-around gap-5 md:gap-14">
+		<div className="flex flex-col gap-4 ">
+			<div className="flex flex-col md:flex-row  bg-white rounded-t-3xl shadow-inner pt-[40px] px-5 md:px-[80px]  items-center md:items-start justify-start  md:justify-around gap-5 md:gap-14">
 				<div className="flex  md:w-full w-1/2 mx-auto  gap-2 flex-col items-start justify-center">
 					<Image
 						src="/logo.svg"
@@ -126,10 +126,10 @@ const Footer = ({ translation }: { translation: any }) => {
 						<p className="flex gap-1 text-xs md:text-sm flex-1">
 							{translation.email} :{" "}
 							<Link
-								href={"mailto:w.star@welp.cpm"}
+								href={"mailto:Info@welpstar.com"}
 								target="_blank"
 								className="underline flex-1">
-								w.star@welp.cpm
+								Info@welpstar.com
 							</Link>
 						</p>
 					</div>
@@ -163,7 +163,7 @@ const Footer = ({ translation }: { translation: any }) => {
 				</div>
 			</div>
 
-			<div className="text-center text-sm text-gray-500 font-semibold">
+			<div className="text-center text-sm text-gray-500  my-[16px] font-semibold">
 				{translation.copyRights} | {translation.welpCo}
 			</div>
 		</div>

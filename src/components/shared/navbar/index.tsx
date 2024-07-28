@@ -170,11 +170,14 @@ const Navbar = ({ translation }: { translation: any }) => {
 					<div className="w-full h-full p-3">
 						<h1 className="text-center">{translation.addPlace}</h1>
 						<AddPlacesForm
+							setOpen={setIsModalOpened}
 							translation={{
 								placeName: translation.placeName,
 								city: translation.city,
 								address: translation.address,
 								description: translation.description,
+								sendRequest: translation.sendRequest,
+								cancel: translation.cancel,
 							}}
 						/>
 					</div>

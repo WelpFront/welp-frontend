@@ -12,12 +12,16 @@ const Categories = ({
 	categories: Array<CategoryType>;
 	translation: any;
 }) => {
+	console.log(categories);
+
 	const filteredCategories = [
 		categories?.[0],
 		categories?.[1],
 		categories?.[2],
-		categories?.[5],
+		categories?.[3],
 		categories?.[4],
+		categories?.[5],
+		categories?.[6],
 	];
 
 	const searchKeyword = useBusinessesFilterStore(
@@ -26,18 +30,27 @@ const Categories = ({
 
 	return (
 		<div className="w-full flex justify-center">
-			<div className="grid grid-cols-3 my-6 md:bg-orange-100 min-h-20 py-2  no-scrollbar w-3/4 md:w-1/2 rounded-full md:relative md:-top-16 md:flex items-center justify-around px-4 gap-4 md:overflow-auto ">
-				{filteredCategories?.map((item: CategoryType) => (
-					<Link
-						key={item.id}
-						href={
-							searchKeyword
-								? `/biz/businesses?category=${item.id}&search=${searchKeyword}`
-								: `/biz/businesses?category=${item.id}`
-						}>
-						<CategoriesItem text={item.name} icon={item?.icon} />
-					</Link>
-				))}
+			<div className="grid grid-cols-4 my-6 md:bg-orange-100 min-h-20 py-2  no-scrollbar w-3/4 md:w-1/2 rounded-full md:relative md:-top-16 md:flex items-center justify-around px-4 gap-4 md:overflow-auto ">
+				{filteredCategories?.map(
+					(item: CategoryType, index: number) => (
+						<Link
+							key={item.id}
+							className={`${
+								(index === 5 || index === 6) &&
+								"block md:hidden"
+							}`}
+							href={
+								searchKeyword
+									? `/biz/businesses?category=${item.id}&search=${searchKeyword}`
+									: `/biz/businesses?category=${item.id}`
+							}>
+							<CategoriesItem
+								text={item.name}
+								icon={item?.icon}
+							/>
+						</Link>
+					)
+				)}
 				<Link href={"/categories"}>
 					<CategoriesItem
 						text={translation.more}

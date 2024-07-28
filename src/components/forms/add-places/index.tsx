@@ -1,20 +1,33 @@
 "use client";
 
 import { yupResolver } from "@hookform/resolvers/yup";
-import { CustomMap, CustomMapInput, FileInput, FileLink } from "atoms";
+import { FileInput, FileLink } from "atoms";
 import { fileData } from "data/accept";
 import { useForm } from "react-hook-form";
-import { FaPhone } from "react-icons/fa";
-import { IoPerson } from "react-icons/io5";
+import { CiLocationOn, CiMap } from "react-icons/ci";
 import { IoCameraOutline } from "react-icons/io5";
-import { MdEmail } from "react-icons/md";
 import { addBusinessFormSchema } from "schemas";
+import { useCitiesStore } from "store/cities";
 import { renderField } from "utils";
 
-const AddPlacesForm = ({ translation }: { translation: any }) => {
+const AddPlacesForm = ({
+	translation,
+	setOpen,
+}: {
+	translation: any;
+	setOpen: (state: boolean) => void;
+}) => {
 	const schema = addBusinessFormSchema();
 
+	const cities = useCitiesStore((state) => state.cities);
+
+	const formattedCities = cities.map((city) => ({
+		label: city.name,
+		value: city.id,
+	}));
+
 	const { acceptedExtensions } = fileData;
+
 	const {
 		control,
 		handleSubmit,
@@ -27,16 +40,12 @@ const AddPlacesForm = ({ translation }: { translation: any }) => {
 
 	const images = watch("images") || [];
 
-	const setLatHandler = (lat: number) => {
-		setValue("latitude", lat);
-	};
-
-	const setLngHandler = (lng: number) => {
-		setValue("longitude", lng);
-	};
+	const addPlaceHandler = (e: any) => console.log(e);
 
 	return (
-		<form className="flex flex-col gap-2 [scrollbar-width:10px] w-full max-h-96 py-3 px-1 overflow-auto ">
+		<form
+			onSubmit={handleSubmit(addPlaceHandler)}
+			className="flex flex-col gap-2 [scrollbar-width:10px] w-full  overflow-auto max-h-[82vh] py-2 px-1 ">
 			{renderField(
 				"text",
 				"name",
@@ -44,16 +53,17 @@ const AddPlacesForm = ({ translation }: { translation: any }) => {
 				"",
 				control,
 				errors?.name?.message,
-				<IoPerson className="w-4 h-4 text-gray-400" />
+				<CiLocationOn className="w-4 h-4 text-gray-400" />
 			)}
 			{renderField(
 				"auto-complete",
-				"email",
+				"city",
 				translation.city,
 				"",
 				control,
 				errors?.name?.message,
-				<MdEmail className="w-4 h-4 text-gray-400" />
+				null,
+				formattedCities
 			)}
 			{renderField(
 				"text",
@@ -62,11 +72,9 @@ const AddPlacesForm = ({ translation }: { translation: any }) => {
 				"",
 				control,
 				errors?.name?.message,
-				<FaPhone className="w-4 h-4 text-gray-400" />
+				<CiMap className="w-4 h-4 text-gray-400" />
 			)}
-			<div className="h-32 w-full rounded-3xl">
-				<CustomMapInput setLat={setLatHandler} setLng={setLngHandler} />
-			</div>
+
 			{renderField(
 				"text-area",
 				"message",
@@ -75,7 +83,7 @@ const AddPlacesForm = ({ translation }: { translation: any }) => {
 				control,
 				errors?.name?.message
 			)}
-			<div className="flex flex-col items-start justify-center w-full py-2 mt-2">
+			<div className="flex flex-col items-start justify-center w-full py-2 ">
 				<FileInput
 					icon={<IoCameraOutline />}
 					accept={Object.values(acceptedExtensions).join(",")}
@@ -110,9 +118,19 @@ const AddPlacesForm = ({ translation }: { translation: any }) => {
 					))}
 			</div>
 
-			<button className="bg-yellow-main text-white p-3 rounded-3xl">
-				{translation.sendRequest}
-			</button>
+			<div className="flex gap-1 w-full items-center justify-center">
+				<button
+					type="submit"
+					className="bg-yellow-main flex-1 text-white px-3 py-1 rounded-3xl">
+					{translation.sendRequest}
+				</button>
+				<button
+					type="button"
+					onClick={() => setOpen(false)}
+					className="bg-transparent border  flex-1 border-yellow-500 text-yellow-500 px-3 py-1 rounded-3xl">
+					{translation.cancel}
+				</button>
+			</div>
 		</form>
 	);
 };

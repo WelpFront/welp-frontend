@@ -1,10 +1,13 @@
 "use client";
 
 import { AutoComplete, TextInputWithIcon } from "atoms";
+import { getCookie } from "cookies-next";
 import { months } from "data";
 import { OpeningHoursType } from "interfaces";
 import { ReactNode } from "react";
 import { Controller } from "react-hook-form";
+
+const locale = getCookie("NEXT_LOCALE");
 
 const getISODay = function () {
 	return ((new Date().getDay() + 6) % 7) + 1;
@@ -58,30 +61,37 @@ export const renderFormFieldByType = (
 	className: string,
 	field: any,
 	error?: string | boolean,
-	Icon?: ReactNode
+	Icon?: ReactNode,
+	options?: Array<any>
 ) => {
 	switch (type) {
 		case "text":
 			return (
-				<div className="flex flex-col items-start">
+				<div
+					dir={locale === "ar" ? "rtl" : "ltr"}
+					className="flex flex-col items-start">
 					<TextInputWithIcon
 						label={label}
+						error={error}
 						name={name}
 						field={field}
+						icon={Icon}
 					/>
-					{error && <p className="text-sm text-red-500">{error}</p>}
+					{error && <p className="text-xs text-red-500">{error}</p>}
 				</div>
 			);
 
 		case "text-area":
 			return (
-				<div className="flex flex-col justify-start w-full gap-2">
+				<div
+					dir={locale === "ar" ? "rtl" : "ltr"}
+					className="flex flex-col justify-start w-full gap-2">
 					<div className="relative rounded-3xl overflow-hidden w-full border px-3 border-solid h-auto ps-1 border-gray-400">
 						<textarea
 							{...field}
 							name={name}
 							className={`shadow-none py-3 text-xs w-full outline-none ${className} ${
-								error ? "outline-red-500" : ""
+								error ? "border-red-500" : ""
 							}`}
 							rows={5}
 							id="text"
@@ -93,14 +103,22 @@ export const renderFormFieldByType = (
 							</div>
 						)}
 					</div>
-					{error && <p className="text-sm text-red-500">{error}</p>}
+					{error && <p className="text-xs text-red-500">{error}</p>}
 				</div>
 			);
 		case "auto-complete":
 			return (
-				<div className="flex flex-col justify-start w-full gap-2">
-					<AutoComplete label={label} field={field} />
-					{error && <p className="text-sm text-red-500">{error}</p>}
+				<div
+					dir={locale === "ar" ? "rtl" : "ltr"}
+					className="flex flex-col justify-start w-full gap-2">
+					<AutoComplete
+						error={error}
+						options={options}
+						name={name}
+						label={label}
+						field={field}
+					/>
+					{error && <p className="text-xs text-red-500">{error}</p>}
 				</div>
 			);
 
@@ -116,7 +134,8 @@ export const renderField = (
 	className: string,
 	control: any,
 	error?: string | boolean,
-	Icon?: ReactNode
+	Icon?: ReactNode,
+	options?: Array<any>
 ) => {
 	return (
 		<Controller
@@ -132,7 +151,8 @@ export const renderField = (
 					className,
 					field,
 					error,
-					Icon
+					Icon,
+					options
 				)
 			}
 		/>

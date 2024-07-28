@@ -58,10 +58,12 @@ export default function RootLayout({
 					ex: navbarT("ex"),
 					where: navbarT("where"),
 					currentLocation: navbarT("currentLocation"),
-					placeName: navbarT("placeName"),
-					city: navbarT("city"),
-					address: navbarT("address"),
-					description: navbarT("description"),
+					placeName: businessT("placeName"),
+					city: businessT("city"),
+					address: businessT("address"),
+					description: businessT("description"),
+					sendRequest: businessT("sendRequest"),
+					cancel: businessT("cancel"),
 				}}
 			/>
 			<ClientProviders>{children}</ClientProviders>
