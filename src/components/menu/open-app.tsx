@@ -9,8 +9,7 @@ const OpenApp = ({ deviceType }: { deviceType: string }) => {
 	const handleOpenApp = () => {
 		setIsOpening(true);
 
-		window.location.href =
-			"welp://welp-frontend.vercel.app/biz/businesses/58786/menu?type=22";
+		window.location.href = "instagram://home";
 
 		setTimeout(() => {
 			if (!document.hidden) {

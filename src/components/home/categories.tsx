@@ -30,7 +30,7 @@ const Categories = ({
 
 	return (
 		<div className="w-full flex justify-center">
-			<div className="grid grid-cols-4 my-6 md:bg-orange-100 min-h-20 py-2  no-scrollbar w-3/4 md:w-1/2 rounded-full md:relative md:-top-16 md:flex items-center justify-around px-4 gap-4 md:overflow-auto ">
+			<div className="grid grid-cols-4 my-6 md:bg-orange-100 min-h-20 py-2  no-scrollbar w-3/4 md:w-1/2 rounded-full md:relative md:-top-16 md:flex items-center justify-around gap-x-8 gap-y-4 md:px-4 md:gap-4 md:overflow-auto ">
 				{filteredCategories?.map(
 					(item: CategoryType, index: number) => (
 						<Link
