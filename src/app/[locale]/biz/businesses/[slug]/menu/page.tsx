@@ -35,13 +35,17 @@ const MenuPage = async ({ params }: { params: any }) => {
 		userAgent || ""
 	);
 
+	const isAndroid = /Android/i.test(userAgent || "");
+
+	const deviceType = isAndroid ? "android" : "ios";
+
 	const { slug } = params;
 
 	const business = await getBusiness(slug);
 
 	return (
 		<div>
-			{isMobile && <OpenApp />}
+			{isMobile && <OpenApp deviceType={deviceType} />}
 			<BusinessHeader business={business} />
 			<Menu slug={business.id} />
 		</div>

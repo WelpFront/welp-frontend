@@ -3,21 +3,25 @@
 import Image from "next/image";
 import { useState } from "react";
 
-const OpenApp = () => {
+const OpenApp = ({ deviceType }: { deviceType: string }) => {
 	const [isOpening, setIsOpening] = useState(false);
 
 	const handleOpenApp = () => {
 		setIsOpening(true);
 
-		// Attempt to open the app
 		window.location.href =
 			"welp://welp-frontend.vercel.app/biz/businesses/58786/menu?type=22";
 
-		// Fallback URL (e.g., App Store or a web page)
 		setTimeout(() => {
 			if (!document.hidden) {
 				setIsOpening(false);
-				window.location.href = "https://example.com"; // Replace with your fallback URL
+				if (deviceType === "android") {
+					window.location.href =
+						"https://play.google.com/store/apps/details?id=com.welp.welp";
+				} else {
+					window.location.href =
+						"https://apps.apple.com/us/app/welp-rating-social-reviews/id6478454000";
+				}
 			}
 		}, 1000);
 	};
