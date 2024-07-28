@@ -9,7 +9,7 @@ const OpenApp = ({ deviceType }: { deviceType: string }) => {
 	const handleOpenApp = () => {
 		setIsOpening(true);
 
-		window.location.href = "instagram://home";
+		window.location.href = "welp://home";
 
 		setTimeout(() => {
 			if (!document.hidden) {
