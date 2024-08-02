@@ -259,8 +259,8 @@ const SearchInput = ({
 					<div
 						ref={listRef}
 						className="absolute -bottom-[16.5rem] z-50 mt-2 w-full h-64 shadow-md bg-white scroll-m-2 rounded-md py-3 px-2 overflow-auto">
-						<p
-							className="text-red-500 font-bold my-2 text-sm cursor-pointer"
+						<button
+							className="text-red-500 font-bold my-2 text-sm cursor-pointer bg-none text-start"
 							onClick={() => {
 								if (location) {
 									setShowCities(false);
@@ -275,11 +275,11 @@ const SearchInput = ({
 								}
 							}}>
 							{translation.currentLocation}
-						</p>
+						</button>
 						<hr className="h-[1px]" />
 						<div className="h-full flex flex-col justify-start items-start">
 							{filteredCities?.map((city: any) => (
-								<p
+								<button
 									onClick={() => {
 										setCityValue(city.name);
 										setShowCities(false);
@@ -288,9 +288,9 @@ const SearchInput = ({
 											searchHandler();
 									}}
 									key={city.id}
-									className="font-semiBold my-3 w-full text-sm cursor-pointer">
+									className="font-semiBold my-3 w-full text-sm cursor-pointer bg-none text-start">
 									{city.name}
-								</p>
+								</button>
 							))}
 						</div>
 					</div>

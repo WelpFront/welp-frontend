@@ -23,7 +23,6 @@ import BusinessRequestForm from "./forms/businesses/business-request";
 import BoostBusiness from "./home/boost-business";
 import Categories from "./home/categories";
 import Cities from "./home/cities";
-import DownloadApp from "./home/download-app";
 import Featured from "./home/featured";
 import Header from "./home/header";
 import CategoriesSlider from "./menu/categories-slider";
@@ -34,12 +33,20 @@ import ProductsList from "./menu/products-list";
 import PrivacyBody from "./privacy/body";
 import PrivacyHeader from "./privacy/header";
 import Footer from "./shared/footer";
-import Navbar from "./shared/navbar";
 import TermsBody from "./terms/body";
 import TermsHeader from "./terms/header";
 import UsersDownloadHeader from "./users/header";
 import ImagesSection from "./users/images";
 import UserDownloadInfo from "./users/info";
+import dynamic from "next/dynamic";
+
+const Navbar = dynamic(() => import("./shared/navbar"), {
+	ssr: false,
+});
+
+const DownloadApp = dynamic(() => import("./home/download-app"), {
+	ssr: false,
+});
 
 export {
 	AddPlacesForm,

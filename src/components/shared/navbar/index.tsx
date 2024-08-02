@@ -153,10 +153,7 @@ const Navbar = ({ translation }: { translation: any }) => {
 						{translation.blog}
 					</Link>
 					<button
-						className={`flex items-center justify-center gap-2 whitespace-nowrap text-white bg-secondary p-2 rounded-full  ${
-							!isActive("/contact") &&
-							"hover:text-yellow-400 text-[15px]"
-						}`}
+						className={`flex items-center justify-center gap-2 whitespace-nowrap text-white bg-secondary p-2 rounded-full`}
 						onClick={() => setIsModalOpened((prev) => !prev)}>
 						<FaPlus />
 						{translation.addPlace}

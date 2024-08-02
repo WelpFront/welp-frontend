@@ -12,8 +12,6 @@ const Categories = ({
 	categories: Array<CategoryType>;
 	translation: any;
 }) => {
-	console.log(categories);
-
 	const filteredCategories = [
 		categories?.[0],
 		categories?.[1],

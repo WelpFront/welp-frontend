@@ -94,36 +94,36 @@ const Footer = ({ translation }: { translation: any }) => {
 				<div className="flex flex-col w-1/2 md:w-full mx-auto items-start justify-start gap-2 text-sm ">
 					<h1 className="text-lg">{translation.offices}</h1>
 					<div className=" flex flex-col items-start justify-center text-gray-500">
-						<p className="flex flex-1 gap-1 text-sm">
+						<div className="flex flex-1 gap-1 text-sm">
 							{translation.usa}:
-							<span className="text-xs flex-1">
+							<p className="text-xs flex-1">
 								{translation.losAngles}
-							</span>
-						</p>
-						<p className="flex gap-1 my-2 text-sm">
-							{translation.egypt}:<span>{translation.cairo}</span>
-						</p>
+							</p>
+						</div>
+						<div className="flex gap-1 my-2 text-sm">
+							{translation.egypt}:<p>{translation.cairo}</p>
+						</div>
 					</div>
 					<h1 className="text-lg">{translation.contactUs}</h1>
 					<div className=" flex flex-col items-start justify-center text-gray-500">
 						<p className="flex gap-1">
 							{translation.address}: California
 						</p>
-						<p className="flex gap-1 items-center ">
+						<div className="flex gap-1 items-center ">
 							{translation.phone}:
 							<div className="flex  justify-start items-start gap-1 ">
-								<span className="shrink-0" dir="ltr">
+								<p className="shrink-0" dir="ltr">
 									{" "}
 									+1(949) 993-8566
-								</span>
+								</p>
 								-
-								<span className="shrink-0" dir="ltr">
+								<p className="shrink-0" dir="ltr">
 									{" "}
 									+201229999268
-								</span>
+								</p>
 							</div>
-						</p>
-						<p className="flex gap-1 text-xs md:text-sm flex-1">
+						</div>
+						<div className="flex gap-1 text-xs md:text-sm flex-1">
 							{translation.email} :{" "}
 							<Link
 								href={"mailto:Info@welpstar.com"}
@@ -131,7 +131,7 @@ const Footer = ({ translation }: { translation: any }) => {
 								className="underline flex-1">
 								Info@welpstar.com
 							</Link>
-						</p>
+						</div>
 					</div>
 				</div>
 				<div className="flex flex-col w-1/2 mx-auto md:w-full items-start justify-start gap-3 ">

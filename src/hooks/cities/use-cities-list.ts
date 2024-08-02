@@ -19,7 +19,6 @@ const useCitiesList = () => {
 			getCitiesList()
 				.then((res) => {
 					setData(res?.data);
-					console.log(res?.data);
 
 					setCities(res?.data);
 				})

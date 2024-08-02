@@ -38,8 +38,6 @@ export const getBusinessesList = async (
 		}
 
 		if (searchKeyword) {
-			console.log(searchKeyword);
-
 			url += `&search=${searchKeyword}`;
 		}
 
