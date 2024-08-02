@@ -45,7 +45,6 @@ const MenuPage = async ({ params }: { params: any }) => {
 
 	return (
 		<div>
-			{isMobile && <OpenApp deviceType={deviceType} />}
 			<BusinessHeader business={business} />
 			<Menu slug={business.id} />
 		</div>

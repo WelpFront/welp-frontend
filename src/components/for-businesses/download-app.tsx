@@ -9,12 +9,20 @@ const DownloadBusinessApp = ({ translation }: { translation: any }) => {
 				background:
 					" linear-gradient(97.55deg, rgba(255, 0, 0, 0.3) -2.18%, rgba(243, 179, 1, 0.3) 94.39%)",
 			}}>
-			<div className="flex flex-1 flex-col gap-[50px] order-2 md:order-1">
-				<div className="font-bold text-[40px] text-nowrap  md:text-5xl">
+			<div className="font-bold text-[40px] md:text-nowrap text-2xl order-1 md:hidden md:text-5xl">
+				<h1 className="text-center">{translation.downloadNow}</h1>
+				<h1 className="mt-[10px] md:mt-[20px] text-center">
+					{translation.startWork}
+				</h1>
+			</div>
+			<div className="flex flex-1 flex-col gap-[30px] md:gap-[50px] order-3 md:order-1">
+				<div className="font-bold text-[40px] md:text-nowrap text-2xl hidden md:block  md:text-5xl">
 					<h1>{translation.downloadNow}</h1>
-					<h1 className="mt-[20px]">{translation.startWork}</h1>
+					<h1 className="mt-[10px] md:mt-[20px]">
+						{translation.startWork}
+					</h1>
 				</div>
-				<div className=" flex gap-10">
+				<div className=" flex items-center md:items-start gap-[23px] md:gap-10">
 					<Image
 						src={"/google-store.png"}
 						width={150}

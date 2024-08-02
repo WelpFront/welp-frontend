@@ -86,11 +86,16 @@ export const renderFormFieldByType = (
 				<div
 					dir={locale === "ar" ? "rtl" : "ltr"}
 					className="flex flex-col justify-start w-full gap-2">
+					<label
+						htmlFor={name}
+						className="block text-sm font-normal text-gray-700">
+						{label}
+					</label>
 					<div className="relative rounded-3xl overflow-hidden w-full border px-3 border-solid h-auto ps-1 border-gray-400">
 						<textarea
 							{...field}
 							name={name}
-							className={`shadow-none py-3 text-xs w-full outline-none ${className} ${
+							className={`shadow-none py-2 text-xs w-full outline-none ${className} ${
 								error ? "border-red-500" : ""
 							}`}
 							rows={5}

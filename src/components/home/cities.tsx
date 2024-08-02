@@ -27,9 +27,14 @@ const Cities = ({
 	return (
 		<div className="bg-gray-home py-4 min-h-screen">
 			<div>
-				<h1 className="text-center text-black text-3xl font-bold">
-					{translation.cities}
-				</h1>
+				<div className="my-[30px]">
+					<h1 className="text-center my-[5px] text-black text-3xl font-bold ">
+						{translation.cities}
+					</h1>
+					<p className="text-center text-gray-400 font-bold ">
+						{translation.exploreCities}
+					</p>
+				</div>
 
 				<CustomSwiper
 					className="citiesSwiper"

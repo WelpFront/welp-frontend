@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { Roboto, Tajawal } from "next/font/google";
+import { headers } from "next/headers";
 import ClientProviders from "providers/client-providers";
 import "styles/globals.css";
 
@@ -34,6 +35,18 @@ export default function RootLayout({
 	children: React.ReactNode;
 	params: any;
 }>) {
+	const headersList = headers();
+
+	const userAgent = headersList.get("user-agent");
+
+	const isMobile = new RegExp("Mobile|Android|iP(ad|od|hone)").test(
+		userAgent || ""
+	);
+
+	const isAndroid = /Android/i.test(userAgent || "");
+
+	const deviceType = isAndroid ? "android" : "ios";
+
 	unstable_setRequestLocale(params.locale);
 
 	const navbarT = useTranslations("navbar");
@@ -50,6 +63,8 @@ export default function RootLayout({
 				params.locale === "ar" ? tajawal.className : roboto.className
 			}>
 			<Navbar
+				isMobile={isMobile}
+				deviceType={deviceType}
 				translation={{
 					home: navbarT("home"),
 					forBusinesses: navbarT("forBusinesses"),

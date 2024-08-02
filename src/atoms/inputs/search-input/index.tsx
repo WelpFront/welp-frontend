@@ -201,7 +201,7 @@ const SearchInput = ({
 				<input
 					type="text"
 					placeholder={translation.ex}
-					className="text-gray-800 text-xs md:text-sm h-full w-full outline-none"
+					className="text-gray-800 text-xs md:text-sm h-full w-full outline-none placeholder:text-xs"
 					onChange={(e) => {
 						if (e.target.value) {
 							setKeyword(e.target.value);

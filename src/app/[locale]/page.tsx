@@ -53,6 +53,7 @@ const HomePage = async ({ params }: { params: any }) => {
 				cities={cities}
 				translation={{
 					cities: homeT("cities"),
+					exploreCities: homeT("exploreCities"),
 					cairo: homeT("cairo"),
 					alex: homeT("alex"),
 					hurghada: homeT("hurghada"),

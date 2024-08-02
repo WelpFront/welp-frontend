@@ -9,11 +9,22 @@ import { useCitiesList } from "hooks";
 import { Link, usePathname } from "navigation";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { FaSearch } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa6";
+import { SlMagnifier } from "react-icons/sl";
+import ClipLoader from "react-spinners/ClipLoader";
 
-const Navbar = ({ translation }: { translation: any }) => {
+const Navbar = ({
+	translation,
+	isMobile,
+	deviceType,
+}: {
+	translation: any;
+	isMobile: boolean;
+	deviceType: string;
+}) => {
 	const [opened, setOpened] = useState<boolean>(false);
+
+	const [isOpeningApp, setIsOpeningApp] = useState(false);
 
 	const [isModalOpened, setIsModalOpened] = useState(false);
 
@@ -40,8 +51,14 @@ const Navbar = ({ translation }: { translation: any }) => {
 		"/privacy",
 	];
 
+	const linksWithOpenAppButton = ["menu"];
+
 	const withWhiteBackground = !!linksWithWhiteBackground.find(
 		(link) => pathname === link || pathname.includes("menu")
+	);
+
+	const hasOpenAppButton = !!linksWithOpenAppButton.find((link) =>
+		pathname.includes(link)
 	);
 
 	const toggleOpenedHandler = () => {
@@ -87,6 +104,25 @@ const Navbar = ({ translation }: { translation: any }) => {
 		console.log("Unable to retrieve your location.");
 	}
 
+	const handleOpenApp = () => {
+		setIsOpeningApp(true);
+
+		window.location.href = "welp://home";
+
+		setTimeout(() => {
+			if (!document.hidden) {
+				setIsOpeningApp(false);
+				if (deviceType === "android") {
+					window.location.href =
+						"https://play.google.com/store/apps/details?id=com.welp.welp";
+				} else {
+					window.location.href =
+						"https://apps.apple.com/us/app/welp-rating-social-reviews/id6478454000";
+				}
+			}
+		}, 1000);
+	};
+
 	return (
 		<div
 			dir="ltr"
@@ -99,15 +135,45 @@ const Navbar = ({ translation }: { translation: any }) => {
 			  w-full `}>
 			<div
 				className={`flex items-center gap-2 md:gap-12 justify-between  px-5 md:px-10 h-14 lg:h-20`}>
-				<Link href={"/"}>
-					<Image
-						src="/logo.svg"
-						width={100}
-						height={100}
-						alt="logo"
-						className="h-20 w-20 lg:w-52 lg:h-52"
-					/>
-				</Link>
+				{!isMobile && (
+					<Link href={"/"}>
+						<Image
+							src="/logo.svg"
+							width={100}
+							height={100}
+							alt="logo"
+							className="h-20 w-20 lg:w-52 lg:h-52"
+						/>
+					</Link>
+				)}
+				{isMobile && hasOpenAppButton && (
+					<div className="w-full flex items-center gap-8">
+						<button
+							onClick={handleOpenApp}
+							className="bg-secondary w-[118px] h-[32px] flex items-center text-sm justify-center text-white rounded-full ">
+							{isOpeningApp ? (
+								<ClipLoader
+									className="animate-spin"
+									color="#fff"
+									loading={true}
+									size={25}
+								/>
+							) : (
+								"فتح الأبليكيشن"
+							)}
+						</button>
+
+						<Link href={"/"}>
+							<Image
+								src="/logo.svg"
+								width={100}
+								height={100}
+								alt="logo"
+								className="h-14 w-14 lg:w-52 lg:h-52"
+							/>
+						</Link>
+					</div>
+				)}
 				<SearchInput
 					data={data}
 					loading={loading}
@@ -186,7 +252,7 @@ const Navbar = ({ translation }: { translation: any }) => {
 							(searchOpened || opened) && "hidden"
 						} `}
 						onClick={toggleSearchOpenedHandler}>
-						<FaSearch className="w-6 h-6" />
+						<SlMagnifier className="w-6 h-6 text-gray-400" />
 					</button>
 					<button
 						onClick={toggleOpenedHandler}
@@ -194,7 +260,7 @@ const Navbar = ({ translation }: { translation: any }) => {
 						<div
 							className={`w-6 h-0.5 ease-in-out duration-100 ${
 								withWhiteBackground || opened || searchOpened
-									? "bg-black"
+									? "bg-gray-400"
 									: "bg-white"
 							} ${
 								(opened || searchOpened) &&
@@ -204,14 +270,14 @@ const Navbar = ({ translation }: { translation: any }) => {
 						<div
 							className={`w-6 h-0.5 ease-in-out duration-100 ${
 								withWhiteBackground || opened || searchOpened
-									? "bg-black"
+									? "bg-gray-400"
 									: "bg-white"
 							} ${(opened || searchOpened) && "opacity-0 "}`}
 						/>
 						<div
 							className={`w-6 h-0.5 ease-in-out duration-100 ${
 								withWhiteBackground || opened || searchOpened
-									? "bg-black"
+									? "bg-gray-400"
 									: "bg-white"
 							} ${
 								(opened || searchOpened) &&

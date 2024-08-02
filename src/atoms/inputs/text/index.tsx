@@ -22,7 +22,7 @@ const TextInputWithIcon = ({
 			className={`relative w-full max-w-sm mx-auto `}>
 			<label
 				htmlFor={name}
-				className="block text-sm font-medium text-gray-700">
+				className="block text-sm font-normal text-gray-700">
 				{label}
 			</label>
 			<div className="mt-1 relative rounded-full shadow-sm">

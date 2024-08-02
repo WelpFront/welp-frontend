@@ -4,6 +4,10 @@ import { getCookie } from "cookies-next";
 import { useState } from "react";
 import { IoChevronDown } from "react-icons/io5";
 
+interface Option {
+	label: string;
+}
+
 const Autocomplete = ({
 	field,
 	label,
@@ -15,20 +19,20 @@ const Autocomplete = ({
 	label: string;
 	name: string;
 	error: any;
-	options?: Array<any>;
+	options?: Array<Option>;
 }) => {
-	const [query, setQuery] = useState("");
-	const [filteredOptions, setFilteredOptions] = useState<Array<any>>([]);
+	const [query, setQuery] = useState<string>("");
+	const [filteredOptions, setFilteredOptions] = useState<Array<Option>>([]);
 	const [isFocused, setIsFocused] = useState(false);
 
 	const locale = getCookie("NEXT_LOCALE");
 
-	const handleInputChange = (e: any) => {
+	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const value = e.target.value;
 		setQuery(value);
 		setFilteredOptions(
 			options.filter((city) =>
-				city.toLowerCase().includes(value.toLowerCase())
+				city.label.toLowerCase().includes(value.toLowerCase())
 			)
 		);
 	};
@@ -43,8 +47,8 @@ const Autocomplete = ({
 		// setFilteredOptions([]); // Optionally clear the list on blur
 	};
 
-	const handleSelect = (city: string) => {
-		setQuery(city);
+	const handleSelect = (city: Option) => {
+		setQuery(city.label);
 		setFilteredOptions([]);
 		setIsFocused(false);
 	};
@@ -55,7 +59,7 @@ const Autocomplete = ({
 			className="relative w-full max-w-sm mx-auto">
 			<label
 				htmlFor="city"
-				className="block text-sm font-medium text-gray-700">
+				className="block text-sm font-normal text-gray-700">
 				{label}
 			</label>
 			<div className="mt-1 relative rounded-full shadow-sm">
@@ -81,7 +85,7 @@ const Autocomplete = ({
 				<ul className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-y-auto">
 					{filteredOptions.map((city) => (
 						<li
-							key={city.id}
+							key={city.label}
 							className="cursor-pointer px-4 py-2 hover:bg-gray-100"
 							onMouseDown={() => handleSelect(city)} // Use onMouseDown to prevent blur event
 						>
