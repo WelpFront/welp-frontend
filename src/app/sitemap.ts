@@ -1,5 +1,5 @@
-import { MetadataRoute } from "next";
-import { getBusinessesSlugs } from "services/businesses";
+const defaultLocale = "ar";
+const locales = ["en", "ar"];
 
 const pathnames = [
 	"/",
@@ -7,43 +7,25 @@ const pathnames = [
 	"/categories",
 	"/businesses",
 	"/biz/businesses",
+	"/download",
+	"/contact",
+	"/privacy",
+	"/terms",
 ];
 
 const host = process.env.NEXT_PUBLIC_FRONTEND_URL;
 
-export async function generateStaticParams() {
-	const products = await getBusinessesSlugs(1);
-	const sitemapsNeeded = Math.ceil(products.count / 1000);
-
-	return Array.from({ length: sitemapsNeeded }, (_, index) => ({
-		id: (index + 1).toString(),
-	}));
+export default function sitemap() {
+	return [
+		...pathnames
+			.map((pathname) => ({
+				url: getUrl(pathname),
+				lastModified: new Date(),
+			}))
+			.flat(),
+	];
 }
 
 function getUrl(pathname: string) {
 	return `${host}${pathname === "/" ? "" : pathname}`;
-}
-
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-	const staticEntries = pathnames.map((pathname) => ({
-		url: getUrl(pathname),
-		lastModified: new Date().toISOString(),
-		alternates: {
-			languages: {
-				ar: getUrl(`/ar${pathname}`),
-				en: getUrl(`/en${pathname}`),
-			},
-		},
-	}));
-
-	// Generate dynamic sitemap entries
-	const sitemaps = await generateStaticParams();
-
-	const dynamicSitemapEntries = sitemaps.map((sitemap: any) => ({
-		url: `${host}/sitemaps/businesses/sitemap/${sitemap.id}.xml`,
-		lastModified: new Date().toISOString(),
-	}));
-
-	// Combine static and dynamic entries
-	return [...staticEntries, ...dynamicSitemapEntries];
 }
