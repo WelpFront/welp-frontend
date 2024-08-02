@@ -11,6 +11,7 @@ const nextConfig = {
           pathname: '/media/**'
         }]
       },
+      output: "standalone",
       reactStrictMode: false,
 };
 
