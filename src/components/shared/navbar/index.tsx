@@ -135,7 +135,7 @@ const Navbar = ({
 			  w-full `}>
 			<div
 				className={`flex items-center gap-2 md:gap-12 justify-between  px-5 md:px-10 h-14 lg:h-20`}>
-				{!isMobile && (
+				{(!isMobile || (isMobile && !hasOpenAppButton)) && (
 					<Link href={"/"}>
 						<Image
 							src="/logo.svg"
@@ -147,7 +147,7 @@ const Navbar = ({
 					</Link>
 				)}
 				{isMobile && hasOpenAppButton && (
-					<div className="w-full flex items-center gap-8">
+					<div className="w-full flex items-center gap-10">
 						<button
 							onClick={handleOpenApp}
 							className="bg-secondary w-[118px] h-[32px] flex items-center text-sm justify-center text-white rounded-full ">

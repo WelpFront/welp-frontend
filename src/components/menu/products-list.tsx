@@ -24,7 +24,7 @@ const ProductsList = ({
 	}, []);
 
 	return (
-		<div className=" overflow-auto h-[50vh]">
+		<div className=" overflow-auto h-[50vh] md:h-auto ">
 			{loading
 				? loaders
 				: data?.results?.map((item: ProductType, index: number) => {
@@ -41,7 +41,7 @@ const ProductsList = ({
 						);
 				  })}
 			{pagesLoading && (
-				<div className="w-full flex items-center justify-center">
+				<div className="w-full flex items-center justify-center md:py-2">
 					<CircularLoader />
 				</div>
 			)}
