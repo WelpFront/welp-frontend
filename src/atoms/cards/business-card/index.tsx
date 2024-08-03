@@ -64,7 +64,7 @@ const BusinessCard = ({
 					<Chip
 						key={category?.id}
 						text={category.name}
-						className="bg-gray-400 py-1 px-2 text-white md:text-[10px] font-normal"
+						className="bg-gray-400 py-1 px-2 text-white !md:text-[10px] !text-[10px] font-normal"
 					/>
 				))}
 			</div>
