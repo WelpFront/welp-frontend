@@ -18,7 +18,7 @@ const BusinessHeader = ({ business }: any) => {
 	} = business;
 
 	return (
-		<div className="flex gap-2 bg-gray-50 p-3 my-4 md:px-10">
+		<div className="flex gap-2 bg-gray-50 p-3 my-4 md:px-10 ">
 			<Image
 				className="rounded-md object-cover w-32 h-36"
 				src={cover_image}
@@ -35,11 +35,18 @@ const BusinessHeader = ({ business }: any) => {
 					</Link>
 
 					{!!reviews_stats.rating_score && (
-						<Chip
-							text={reviews_stats.rating_score}
-							icon="/star-icon.png"
-							className="bg-secondary text-white min-w-[50px] px-2 h-[20px]"
-						/>
+						<div className="flex items-center justify-center gap-1 rounded-full h-[20px] w-[50px] px-[5px] bg-secondary text-white">
+							<h2 className="text-[12px] font-[400] md:text-[15px]">
+								{reviews_stats.rating_score}
+							</h2>
+							<Image
+								width={12}
+								height={12}
+								className="w-[12px] h-[12px] md:w-[16px] md:h-[16px]"
+								alt="star"
+								src="/star-icon.png"
+							/>
+						</div>
 					)}
 				</div>
 				<div>

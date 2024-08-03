@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { PublicEnvScript } from "next-runtime-env";
 import { Noto_Kufi_Arabic } from "next/font/google";
 import ClientProviders from "providers/client-providers";
 import "styles/globals.css";
@@ -31,6 +32,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html>
+			<head>
+				<PublicEnvScript />
+			</head>
 			<body className={kufi.className}>
 				<ClientProviders>{children}</ClientProviders>
 			</body>

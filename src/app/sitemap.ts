@@ -1,3 +1,5 @@
+import { env } from "next-runtime-env";
+
 const defaultLocale = "ar";
 const locales = ["en", "ar"];
 
@@ -13,7 +15,7 @@ const pathnames = [
 	"/terms",
 ];
 
-const host = process.env.NEXT_PUBLIC_FRONTEND_URL;
+const host = env("NEXT_PUBLIC_FRONTEND_URL");
 
 export default function sitemap() {
 	return [

@@ -58,35 +58,39 @@ const Menu = ({ slug }: { slug: number }) => {
 		}
 	};
 
-	console.log(isOverflowed);
-
 	return (
-		<div className="bg-gray-50 relative px-3 md:px-10 py-3">
-			{isOverflowed && (
-				<button
-					className="bg-white hidden md:flex items-center justify-center py-3 px-2 absolute right-0 top-5"
-					onClick={scrollRight}>
-					<IoIosArrowForward />
-				</button>
-			)}
-			<CategoriesSlider
-				sliderRef={sliderRef}
-				setActive={setActive}
-				data={categoriesData}
-				loading={categoriesLoading}
-				active={active}
-				createQueryString={createQueryString}
-				pathname={pathname}
-				productsLoading={productsLoading}
-				router={router}
-			/>
-			{isOverflowed && (
-				<button
-					className="bg-white hidden md:flex items-center justify-center py-3 px-2 absolute left-0 top-5"
-					onClick={scrollLeft}>
-					<IoIosArrowBack />
-				</button>
-			)}
+		<div className="bg-gray-50   py-3">
+			<div
+				className={`
+					${!(categoriesLoading && productsLoading) && " sticky top-0 "}
+					bg-gray-50 
+				`}>
+				{isOverflowed && (
+					<button
+						className="bg-white hidden md:flex items-center justify-center py-3 px-2 absolute right-0 top-4"
+						onClick={scrollRight}>
+						<IoIosArrowForward />
+					</button>
+				)}
+				<CategoriesSlider
+					sliderRef={sliderRef}
+					setActive={setActive}
+					data={categoriesData}
+					loading={categoriesLoading}
+					active={active}
+					createQueryString={createQueryString}
+					pathname={pathname}
+					productsLoading={productsLoading}
+					router={router}
+				/>
+				{isOverflowed && (
+					<button
+						className="bg-white hidden md:flex items-center justify-center py-3 px-2 absolute left-0 top-4"
+						onClick={scrollLeft}>
+						<IoIosArrowBack />
+					</button>
+				)}
+			</div>
 			<ProductsList
 				data={productsData}
 				pagesLoading={pagesLoading}

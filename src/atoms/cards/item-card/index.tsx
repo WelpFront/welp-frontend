@@ -44,20 +44,22 @@ const ItemCard = ({ item }: { item: ProductType }) => {
 				{item.description}
 			</Modal>
 			<button
-				className="flex justify-start gap-3 overflow-hidden rounded-md my-4 bg-white cursor-pointer w-full"
+				style={{ boxShadow: " 0px 6px 21px 0px #00000014" }}
+				className="flex  justify-start p-[8px] gap-3 overflow-hidden rounded-md my-4 shadow-[0px 6px 21px 0px #00000014] bg-white cursor-pointer w-full"
 				onClick={() => setIsOpened(true)}>
 				<Image
-					className="object-cover h-28"
+					className="rounded-md object-cover self-center h-full"
 					src={item.image}
-					width={100}
-					height={200}
+					width={102}
+					height={90}
+					style={{ borderRadius: 5 }}
 					alt="restaurant"
 				/>
 				<div className="flex flex-col items-start justify-between min-h-24 gap-1 my-2">
 					<h1 className="font-bold text-[12px] md:text-[18px]">
 						{item.name}
 					</h1>
-					<p className="text-gray-600 text-sm text-start text-[10px] md:text-[16px]">
+					<p className="text-gray-600 text-start text-[10px] md:text-[16px]">
 						{" "}
 						{item.description}
 					</p>
