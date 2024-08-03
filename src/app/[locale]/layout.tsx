@@ -2,7 +2,6 @@ import { Footer, Navbar } from "components";
 import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
-import { PublicEnvScript } from "next-runtime-env";
 import { Roboto, Tajawal } from "next/font/google";
 import { headers } from "next/headers";
 import ClientProviders from "providers/client-providers";
@@ -63,9 +62,6 @@ export default function RootLayout({
 			className={
 				params.locale === "ar" ? tajawal.className : roboto.className
 			}>
-			<head>
-				<PublicEnvScript />
-			</head>
 			<Navbar
 				isMobile={isMobile}
 				deviceType={deviceType}
