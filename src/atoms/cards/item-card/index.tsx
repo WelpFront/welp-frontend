@@ -54,8 +54,10 @@ const ItemCard = ({ item }: { item: ProductType }) => {
 					alt="restaurant"
 				/>
 				<div className="flex flex-col items-start justify-between min-h-24 gap-1 my-2">
-					<h1 className="font-bold">{item.name}</h1>
-					<p className="text-gray-600 text-sm text-start">
+					<h1 className="font-bold text-[12px] md:text-[18px]">
+						{item.name}
+					</h1>
+					<p className="text-gray-600 text-sm text-start text-[10px] md:text-[16px]">
 						{" "}
 						{item.description}
 					</p>

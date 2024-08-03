@@ -30,7 +30,7 @@ const BusinessHeader = ({ business }: any) => {
 				<div className="flex justify-between gap-1">
 					<Link
 						href={`/biz/businesses/${slug}`}
-						className="text-black font-extrabold">
+						className="text-black font-extrabold text-[16px]">
 						{name}
 					</Link>
 

@@ -43,7 +43,7 @@ const CategoriesSlider = ({
 	return (
 		<div
 			ref={sliderRef}
-			className="flex gap-4  mb-3  overflow-auto   no-scrollbar items-center md:sticky md:top-0 md:py-2 bg-gray-50 ">
+			className="flex gap-4  mb-3  overflow-auto   no-scrollbar items-center sticky top-0 py-2 bg-gray-50 ">
 			{loading && loaders}
 			{data?.map((item: ProductTypesType) => (
 				<button
