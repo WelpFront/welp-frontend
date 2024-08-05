@@ -98,7 +98,10 @@ export const get = async (
 	withAuth = false,
 	customHeaders?: HeadersInit
 ) => {
-	const headers: HeadersInit = { "app-id": appId as string };
+	const headers: HeadersInit = {
+		"app-id": appId as string,
+		"X-Country-Code": JSON.parse(getCookie("location") as string)?.country,
+	};
 
 	if (withAuth) {
 		Object.assign(headers, getAuthHeader());
