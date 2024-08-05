@@ -40,7 +40,7 @@ const AddPlacesForm = ({
 
 	const images = watch("images") || [];
 
-	const addPlaceHandler = (e: any) => console.log(e);
+	const addPlaceHandler = (e: any) => console.log(e, "data");
 
 	return (
 		<form
