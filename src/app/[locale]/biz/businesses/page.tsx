@@ -4,6 +4,7 @@ import React from "react";
 
 const BusinessesListPage = ({ params }: { params: any }) => {
 	const businessT = useTranslations("business");
+	const navbarT = useTranslations("navbar");
 	return (
 		<div className="grid grid-cols-4 gap-5 px-10 my-10">
 			<BusinessesFilters
@@ -31,6 +32,7 @@ const BusinessesListPage = ({ params }: { params: any }) => {
 					isOpened: businessT("isOpened"),
 					suggested: businessT("suggested"),
 					offersDelivery: businessT("offersDelivery"),
+					currentLocation: navbarT("currentLocation"),
 				}}
 				locale={params.locale}
 			/>

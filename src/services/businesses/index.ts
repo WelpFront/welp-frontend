@@ -1,7 +1,6 @@
-import { axiosClientBase } from "config/axios-instance";
-import { get as getClient } from "fetch/client";
+import * as client from "fetch/client";
+import * as server from "fetch/server";
 import { toast } from "react-toastify";
-import { get } from "utils/fetch";
 
 export const getBusinessesList = async (
 	page: number,
@@ -12,17 +11,18 @@ export const getBusinessesList = async (
 	searchKeyword: string | null,
 	city: any,
 	lat: string | null,
-	long: string | null
+	long: string | null,
+	nearest: boolean | null
 ) => {
 	try {
 		const validCategories = categories?.filter(
 			(category) => typeof category === "number" && !isNaN(category)
 		);
 
-		let url = `/businesses?page=${page}`;
+		let url = `businesses?page=${page}&page_size=9`;
 
 		if (validCategories?.length > 0) {
-			url += `&categories_in=${validCategories.join(",")}`;
+			url += `&categories__in=${validCategories.join(",")}`;
 		}
 
 		if (isOpened) {
@@ -53,36 +53,42 @@ export const getBusinessesList = async (
 			url += `&longitude=${long}`;
 		}
 
-		const { data: response } = await axiosClientBase.get(url);
+		if (nearest) {
+			url += `&nearest=true`;
+		}
 
-		return response.data;
+		const response = await client.get(url);
+
+		return response;
 	} catch (error: any) {
 		toast.error(error.message);
 	}
 };
 
 export const getFeaturedBusinesses = async () => {
-	const data = await get(`businesses?is_featured=${true}`);
+	const data = await server.get(`businesses?is_featured=${true}`);
 
 	return data.results;
 };
 export const getHomePageData = async () => {
-	const data = await get(`utilities/app-home-screen`);
+	const data = await server.get(`utilities/app-home-screen`);
 
 	return data;
 };
 
 export const getBusiness = async (slug: string) => {
-	const { data } = await get(`businesses/${slug}`);
+	const { data } = await server.get(`businesses/${slug}`);
 
 	return data;
 };
 
-export const getBusinessProductTypes = async (id: number) => {
+export const getBusinessProductTypes = async (businessSlug: string) => {
 	try {
-		const { data: response } = await axiosClientBase.get(
-			`/businesses/${id}/product-types`
+		const response = await client.get(
+			`businesses/${businessSlug}/products-types`
 		);
+
+		console.log(response);
 
 		return response.data;
 	} catch (error: any) {
@@ -96,7 +102,7 @@ export const getBusinessProducts = async (
 	page: number
 ) => {
 	try {
-		let url = `/businesses/${businessId}/products`;
+		let url = `businesses/${businessId}/products`;
 
 		if (type) {
 			url += `?product_type=${type}`;
@@ -110,9 +116,9 @@ export const getBusinessProducts = async (
 			}
 		}
 
-		const { data } = await axiosClientBase.get(url);
+		const response = await client.get(url);
 
-		return data.data;
+		return response;
 	} catch (error: any) {
 		toast.error(error.message);
 	}
@@ -120,10 +126,9 @@ export const getBusinessProducts = async (
 
 export const getBusinessesSlugs = async (page: any) => {
 	try {
-		const response = await getClient(
+		const response = await client.get(
 			`businesses/slugs?page=${page}`,
-			false,
-			{ "Content-Type": "application/xml" }
+			false
 		);
 
 		return response;

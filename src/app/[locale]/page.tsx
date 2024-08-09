@@ -1,11 +1,7 @@
 import { Categories, DownloadApp, Featured, Header, Cities } from "components";
 import { Metadata } from "next";
 import { unstable_setRequestLocale, getTranslations } from "next-intl/server";
-import {
-	getCategoriesList,
-	getFeaturedBusinesses,
-	getHomePageData,
-} from "services";
+import { getHomePageData } from "services";
 
 export const dynamic = "force-dynamic"; // defaults to auto
 

@@ -19,7 +19,9 @@ const BusinessesList = ({
 	locale: string;
 	translation: any;
 }) => {
-	const { businesses, page, setPage, count, loading } = useBusinessesList();
+	const { businesses, page, setPage, count, loading } = useBusinessesList(
+		translation.currentLocation
+	);
 	const [windowWidth, setWindowWidth] = useState<number>(
 		typeof window !== "undefined" ? window.innerWidth : 0
 	);

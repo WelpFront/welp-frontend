@@ -76,6 +76,8 @@ const SearchInput = ({
 		(state) => state.setSearchKeyword
 	);
 
+	const setNearest = useBusinessesFilterStore((state) => state.setNearest);
+
 	const setCity = useBusinessesFilterStore((state) => state.setCity);
 
 	const searchHandler = () => {
@@ -89,7 +91,7 @@ const SearchInput = ({
 			hasSearchParam = true;
 		}
 
-		if (cityValue && cityValue !== translation.currentLocation) {
+		if (cityValue) {
 			const cityMatch = data.find((city: CityType) =>
 				city?.name
 					?.toLowerCase()
@@ -190,6 +192,7 @@ const SearchInput = ({
 	function errorFunction() {
 		toast.info("Please enable location permission.");
 	}
+	console.log(cityValue);
 
 	if (!locale) return <div className="h-10 md:h-12 w-full"></div>;
 	return (
@@ -248,10 +251,10 @@ const SearchInput = ({
 						setCityValue(null);
 						removeQueryParam("city", pathname);
 						setFilteredCities(data);
+						setNearest(false);
 					}}>
 					{!!(
-						(cityValue &&
-							cityValue !== translation.currentLocation) ||
+						cityValue ||
 						parseInt(searchParams?.get("city") as string)
 					) && <GiCancel className="hover:text-red-500" />}
 				</button>
@@ -260,13 +263,14 @@ const SearchInput = ({
 						ref={listRef}
 						className="absolute -bottom-[16.5rem] z-50 mt-2 w-full h-64 shadow-md bg-white scroll-m-2 rounded-md py-3 px-2 overflow-auto">
 						<button
-							className="text-red-500 font-bold my-2 text-sm cursor-pointer bg-none text-start"
+							className="text-red-500 font-bold my-2 text-sm cursor-pointer bg-none text-start custom-scrollbar"
 							onClick={() => {
 								if (location) {
 									setShowCities(false);
 									setCityValue(translation.currentLocation);
 									removeQueryParam("city", pathname);
 									setCity(null);
+									setNearest(true);
 								} else {
 									navigator.geolocation.getCurrentPosition(
 										successFunction,

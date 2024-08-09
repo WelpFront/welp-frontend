@@ -5,7 +5,7 @@ import { useCategoriesList, useGetLastElement, useProductsList } from "hooks";
 import { useRef, useEffect, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-const Menu = ({ slug }: { slug: number }) => {
+const Menu = ({ slug }: { slug: string }) => {
 	const {
 		active,
 		data: categoriesData,

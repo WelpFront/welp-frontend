@@ -32,10 +32,6 @@ const BusinessesFiltersContent = ({
 		(state) => state.setCategoriesToFilterWith
 	);
 
-	const setChildrenCategories = useBusinessesFilterStore(
-		(state) => state.setChildrenCategories
-	);
-
 	const setPriceCategory = useBusinessesFilterStore(
 		(state) => state.setPriceCategory
 	);

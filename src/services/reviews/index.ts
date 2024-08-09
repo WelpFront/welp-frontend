@@ -1,14 +1,14 @@
-import { axiosClientBase } from "config/axios-instance";
+import * as client from "fetch/client";
 
 export const dynamic = "force-dynamic"; // defaults to auto
 
 export async function getBusinessReviews(businessSlug: string, page: number) {
 	try {
-		const { data: response } = await axiosClientBase.get(
-			`/businesses/${businessSlug}/reviews?page=${page}`
+		const response = await client.get(
+			`businesses/${businessSlug}/reviews?page=${page}`
 		);
 
-		return response.data;
+		return response;
 	} catch (error) {
 		return error;
 	}
