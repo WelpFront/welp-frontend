@@ -25,13 +25,13 @@ const Cities = ({
 	};
 
 	return (
-		<div className="bg-gray-home py-4 min-h-screen">
+		<div className="bg-gray-home py-[32px] md:py-4 md:min-h-screen">
 			<div>
 				<div className="my-[30px]">
-					<h1 className="text-center my-[5px] text-black text-3xl font-bold ">
+					<h1 className="text-center mt-[5px]  mb-[14px] text-black text-3xl font-bold ">
 						{translation.cities}
 					</h1>
-					<p className="text-center text-gray-400 font-bold ">
+					<p className="text-center text-gray-400 font-bold mb-[24px]">
 						{translation.exploreCities}
 					</p>
 				</div>

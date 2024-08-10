@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getMessages, getTranslations } from "next-intl/server";
 import { PublicEnvScript } from "next-runtime-env";
 import { Noto_Kufi_Arabic } from "next/font/google";
 import ClientProviders from "providers/client-providers";
@@ -25,18 +25,24 @@ export async function generateMetadata({
 	};
 }
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
+	params,
 }: Readonly<{
 	children: React.ReactNode;
+	params: any;
 }>) {
+	const messages = await getMessages();
+
 	return (
 		<html>
 			<head>
 				<PublicEnvScript />
 			</head>
 			<body className={kufi.className}>
-				<ClientProviders>{children}</ClientProviders>
+				<ClientProviders messages={messages}>
+					{children}
+				</ClientProviders>
 			</body>
 		</html>
 	);

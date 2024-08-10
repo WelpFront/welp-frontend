@@ -6,6 +6,7 @@ import { IoChevronDown } from "react-icons/io5";
 
 interface Option {
 	label: string;
+	value: any;
 }
 
 const Autocomplete = ({
@@ -14,14 +15,16 @@ const Autocomplete = ({
 	name,
 	options = [],
 	error,
+	onChange,
 }: {
 	field: any;
 	label: string;
 	name: string;
 	error: any;
+	onChange?: any;
 	options?: Array<Option>;
 }) => {
-	const [query, setQuery] = useState<string>("");
+	const [query, setQuery] = useState<string | null>(null);
 	const [filteredOptions, setFilteredOptions] = useState<Array<Option>>([]);
 	const [isFocused, setIsFocused] = useState(false);
 
@@ -29,6 +32,7 @@ const Autocomplete = ({
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const value = e.target.value;
+
 		setQuery(value);
 		setFilteredOptions(
 			options.filter((city) =>
@@ -51,6 +55,9 @@ const Autocomplete = ({
 		setQuery(city.label);
 		setFilteredOptions([]);
 		setIsFocused(false);
+		console.log(city);
+
+		onChange(city.value);
 	};
 
 	return (

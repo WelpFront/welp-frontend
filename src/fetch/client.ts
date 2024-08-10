@@ -35,7 +35,7 @@ export const post = async (
 
 	const res = await fetch(`${API_URL}/${path}`, {
 		method: "POST",
-		headers,
+		headers: { ...headers, ...sharedHeaders },
 		body,
 	});
 

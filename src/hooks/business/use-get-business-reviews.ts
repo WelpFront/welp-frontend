@@ -14,8 +14,6 @@ const useBusinessReviewsList = (businessSlug: string) => {
 		try {
 			const data = await getBusinessReviews(businessSlug, page);
 
-			console.log(data, "dt");
-
 			setCount(data.count);
 
 			setReviews(data.results);

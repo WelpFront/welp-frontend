@@ -54,6 +54,18 @@ export function formatDate(dateStr: string): string {
 	return formattedDate;
 }
 
+export const textLimitHandler = (text: string, maxLength: number) => {
+	let reformattedText;
+
+	if (text?.length > maxLength) {
+		reformattedText = `${text.substr(0, maxLength)}...`;
+	} else {
+		reformattedText = text;
+	}
+
+	return reformattedText;
+};
+
 export const renderFormFieldByType = (
 	type: string,
 	name: string,
@@ -62,7 +74,8 @@ export const renderFormFieldByType = (
 	field: any,
 	error?: string | boolean,
 	Icon?: ReactNode,
-	options?: Array<any>
+	options?: Array<any>,
+	additionalOnChange?: any
 ) => {
 	switch (type) {
 		case "text":
@@ -91,13 +104,14 @@ export const renderFormFieldByType = (
 						className="block text-sm font-normal text-gray-700">
 						{label}
 					</label>
-					<div className="relative rounded-3xl overflow-hidden w-full border px-3 border-solid h-auto ps-1 border-gray-400">
+					<div
+						className={`relative rounded-3xl overflow-hidden w-full border px-3 border-solid h-auto ps-1  ${
+							error ? " border-red-500" : "border-gray-400"
+						}`}>
 						<textarea
 							{...field}
 							name={name}
-							className={`shadow-none py-2 text-xs w-full outline-none ${className} ${
-								error ? "border-red-500" : ""
-							}`}
+							className={`shadow-none py-2 text-xs w-full outline-none ${className} `}
 							rows={5}
 							id="text"
 							placeholder={label}
@@ -117,6 +131,7 @@ export const renderFormFieldByType = (
 					dir={locale === "ar" ? "rtl" : "ltr"}
 					className="flex flex-col justify-start w-full gap-2">
 					<AutoComplete
+						onChange={additionalOnChange}
 						error={error}
 						options={options}
 						name={name}
@@ -140,7 +155,8 @@ export const renderField = (
 	control: any,
 	error?: string | boolean,
 	Icon?: ReactNode,
-	options?: Array<any>
+	options?: Array<any>,
+	additionalOnChange?: any
 ) => {
 	return (
 		<Controller
@@ -157,7 +173,8 @@ export const renderField = (
 					field,
 					error,
 					Icon,
-					options
+					options,
+					additionalOnChange
 				)
 			}
 		/>

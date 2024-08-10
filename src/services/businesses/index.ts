@@ -136,3 +136,25 @@ export const getBusinessesSlugs = async (page: any) => {
 		toast.error(error.message);
 	}
 };
+
+export const businessRequest = async (
+	name: string,
+	description: string,
+	location: string,
+	city: number,
+	image: File
+) => {
+	let data = new FormData();
+	data.append("name", name);
+	data.append("description", description);
+	data.append("city", city.toString());
+	data.append("location_name", location);
+	data.append("image", image);
+	try {
+		const response = await client.post(`businesses/`, data, false, true);
+
+		return response;
+	} catch (error: any) {
+		toast.error(error.message);
+	}
+};

@@ -1,12 +1,22 @@
+import { useTranslations } from "next-intl";
 import * as yup from "yup";
 
-const addBusinessFormSchema = () => {
+const useAddBusinessFormSchema = () => {
+	const validationT = useTranslations("validation");
+
 	return yup.object({
-		name: yup.string().required("Required").min(3, "name is too short"),
-		latitude: yup.number().required("Required"),
-		longitude: yup.number().required("Required"),
-		images: yup.array().required("Required"),
+		name: yup
+			.string()
+			.required(validationT("required"))
+			.min(3, validationT("minLength", { minLength: 3 })),
+		city: yup.string().required(validationT("required")),
+		address: yup
+			.string()
+			.required(validationT("required"))
+			.min(3, validationT("minLength", { minLength: 3 })),
+		description: yup.string().required(validationT("required")),
+		image: yup.mixed().required(validationT("required")),
 	});
 };
 
-export default addBusinessFormSchema;
+export default useAddBusinessFormSchema;
