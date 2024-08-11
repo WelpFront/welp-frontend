@@ -38,7 +38,7 @@ jobs:
                 key: ${{ secrets.SERVER_KEY }}
                 port: ${{ secrets.SERVER_PORT }}
                 script: |
-                  cd /srv/welp-frontend
+                  cd /srv/welp-frontend/.docker
                   docker compose down
                   docker compose pull
                   docker compose up prod -d
