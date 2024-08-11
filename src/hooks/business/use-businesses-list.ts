@@ -7,7 +7,7 @@ import { getBusinessesList } from "services";
 import { useBusinessesFilterStore } from "store/businesses-filters";
 import { useCitiesStore } from "store/cities";
 
-const useBusinessesList = () => {
+const useBusinessesList = (currentLocation: string) => {
 	const [businesses, setBusinesses] = useState<Array<BusinessType>>([]);
 
 	const [page, setPage] = useState<number>(1);
@@ -22,7 +22,7 @@ const useBusinessesList = () => {
 
 	const category = searchParams.get("category");
 
-	const location = JSON.parse(getCookie("location") as string);
+	const location = JSON?.parse(getCookie("location") as string);
 
 	const priceCategory = useBusinessesFilterStore(
 		(state) => state.priceCategory
@@ -35,6 +35,8 @@ const useBusinessesList = () => {
 	const isDeliveryAvailable = useBusinessesFilterStore(
 		(state) => state.isDeliveryAvailable
 	);
+
+	const nearest = useBusinessesFilterStore((state) => state.nearest);
 
 	const categoriesToFilterWith = useBusinessesFilterStore(
 		(state) => state.categoriesToFilterWith
@@ -74,7 +76,8 @@ const useBusinessesList = () => {
 				finalizedSearchKeyword,
 				finalizedCity,
 				location.lat,
-				location.long
+				location.long,
+				nearest || searchParams.get("city") === currentLocation
 			);
 
 			setBusinesses(data.results);
@@ -106,6 +109,7 @@ const useBusinessesList = () => {
 		categoriesToFilterWith,
 		searchKeyword,
 		finalizedCity,
+		nearest,
 	]);
 
 	useEffect(() => {
@@ -121,6 +125,7 @@ const useBusinessesList = () => {
 		page,
 		searchKeyword,
 		finalizedCity,
+		nearest,
 	]);
 
 	return {

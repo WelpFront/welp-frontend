@@ -1,11 +1,15 @@
-import axios from "axios";
+import * as client from "fetch/client";
 
 export const dynamic = "force-dynamic"; // defaults to auto
 
 export async function getBusinessReviews(businessSlug: string, page: number) {
-	const { data: response } = await axios.get(
-		`${process.env.NEXT_PUBLIC_CLIENT_URL}/businesses/${businessSlug}/reviews?page=${page}`
-	);
+	try {
+		const response = await client.get(
+			`businesses/${businessSlug}/reviews?page=${page}`
+		);
 
-	return response.data;
+		return response;
+	} catch (error) {
+		return error;
+	}
 }

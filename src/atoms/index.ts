@@ -1,5 +1,6 @@
 import BreadCrumbs from "./bread-crumbs";
 import BusinessCard from "./cards/business-card";
+import BusinessHorizontalCard from "./cards/business-horizontal-card";
 import CategoriesCard from "./cards/categories-card";
 import ForBusinessCard from "./cards/for-business-card";
 import ItemCard from "./cards/item-card/index";
@@ -39,6 +40,7 @@ const Modal = dynamic(() => import("./modal/index"), {
 
 export {
 	FileInput,
+	BusinessHorizontalCard,
 	FileLink,
 	TextInputWithIcon,
 	CitiesLoader,

@@ -252,7 +252,13 @@ const Navbar = ({
 							(searchOpened || opened) && "hidden"
 						} `}
 						onClick={toggleSearchOpenedHandler}>
-						<SlMagnifier className="w-6 h-6 text-gray-400" />
+						<SlMagnifier
+							className={`w-6 h-6 ${
+								withWhiteBackground || opened || searchOpened
+									? "text-gray-400"
+									: "text-white"
+							}`}
+						/>
 					</button>
 					<button
 						onClick={toggleOpenedHandler}

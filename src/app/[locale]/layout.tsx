@@ -81,7 +81,7 @@ export default function RootLayout({
 					cancel: businessT("cancel"),
 				}}
 			/>
-			<ClientProviders>{children}</ClientProviders>
+			{children}
 			<Footer
 				translation={{
 					importantLinks: footerT("importantLinks"),

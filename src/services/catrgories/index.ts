@@ -1,9 +1,9 @@
-import { axiosClientBase } from "config/axios-instance";
-import { get } from "utils/fetch";
+import * as client from "fetch/client";
+import * as server from "fetch/server";
 
 export const getCategoriesList = async (exclude_first_parent: boolean) => {
 	try {
-		const { data } = await get(`utilities/categories`);
+		const { data } = await server.get(`utilities/categories`);
 
 		return data;
 	} catch (error) {
@@ -13,7 +13,7 @@ export const getCategoriesList = async (exclude_first_parent: boolean) => {
 
 export const getCategory = async (id: string) => {
 	try {
-		const { data } = await axiosClientBase.get(`/categories/${id}`);
+		const { data } = await client.get(`utilities/categories/${id}`);
 
 		return data;
 	} catch (error) {

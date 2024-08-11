@@ -104,7 +104,7 @@ const BusinessPage = async ({ params }: { params: any }) => {
 					/>
 
 					<BusinessReviews
-						businessSlug={id.toString()}
+						businessSlug={slug}
 						translation={{
 							noReviews: businessT("noReviews"),
 							reviews: businessT("reviews"),

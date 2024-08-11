@@ -97,7 +97,10 @@
 		"placeName": "اسم المكان",
 		"city": "المدينة",
 		"address": "العنوان",
-		"description": "الوصف"
+		"description": "الوصف",
+		"thankyou": "شكرا لك لاضافة مكان جديد",
+		"weRecievedRequest": "لقد استلمنا طلبك",
+		"close": "اغلاق"
 	},
 	"categories": {
 		"allCategories": "جميع الفئات",
@@ -133,5 +136,9 @@
 		"email": "البريد الإلكتروني",
 		"callUs": "اتصل بنا",
 		"followUs": "تابعنا"
+	},
+	"validation": {
+		"required": "مطلوب",
+		"minLength": "يجب ان لا يقل هذا الحقل عن {minLength} احرف"
 	}
 }

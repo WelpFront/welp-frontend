@@ -22,11 +22,11 @@ const useGetCategory = (id: string) => {
 			setLoading(true);
 			getCategory(id)
 				.then((res) => {
-					setData(res.data);
+					setData(res);
 
-					setCategory(res.data);
+					setCategory(res);
 
-					setCategories(res.data.children);
+					setCategories(res?.children);
 				})
 				.finally(() => {
 					setLoading(false);

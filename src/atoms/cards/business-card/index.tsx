@@ -8,10 +8,12 @@ const BusinessCard = ({
 	item,
 	locale = "ar",
 	withBackground,
+	className,
 }: {
 	item: BusinessType;
 	locale: string;
 	withBackground?: boolean;
+	className?: string;
 }) => {
 	const ratingHandler = (rate: number) => {
 		const stars = [];
@@ -40,17 +42,15 @@ const BusinessCard = ({
 		<div
 			className={`${
 				withBackground && "bg-white shadow-md"
-			}  rounded-md w-full h-80 cursor-pointer overflow-hidden hover:scale-95 duration-200`}>
+			}  rounded-md w-full h-80 cursor-pointer overflow-hidden hover:scale-95 duration-200 ${className}`}>
 			<Image
 				alt={item.name}
 				src={item.cover_image || "/header.png"}
 				width={250}
 				height={150}
-				className={`object-cover w-full h-48 ${
-					!withBackground && "rounded-xl"
-				}`}
+				className={`object-cover w-full h-48 `}
 			/>
-			<div className="flex justify-between items-center px-2">
+			<div className="flex justify-between items-center px-2 mt-2">
 				<h1 className="text-sm font-bold w-60 overflow-hidden text-ellipsis whitespace-nowrap text-animation">
 					{item.name}
 				</h1>
@@ -64,11 +64,11 @@ const BusinessCard = ({
 					<Chip
 						key={category?.id}
 						text={category.name}
-						className="bg-gray-400 py-1 px-2 text-white text-xs"
+						className="bg-gray-400 py-1 px-2 text-white !md:text-[10px] !text-[10px] font-normal"
 					/>
 				))}
 			</div>
-			<div className="flex items-center  px-3 py-1">
+			<div className="flex items-center gap-1 px-3 py-1">
 				<SlLocationPin className="text-red-600" />
 				{item.city_name}
 			</div>

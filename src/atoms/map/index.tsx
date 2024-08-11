@@ -1,6 +1,7 @@
 "use client";
 
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { env } from "next-runtime-env";
 
 const CustomMap = ({
 	lng,
@@ -23,7 +24,7 @@ const CustomMap = ({
 
 	return (
 		<LoadScript
-			googleMapsApiKey={process.env.NEXT_PUBLIC_MAPS_API_KEY as string}>
+			googleMapsApiKey={env("NEXT_PUBLIC_MAPS_API_KEY") as string}>
 			<GoogleMap
 				mapContainerStyle={containerStyle}
 				center={center}

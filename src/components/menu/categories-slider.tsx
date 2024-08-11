@@ -43,7 +43,7 @@ const CategoriesSlider = ({
 	return (
 		<div
 			ref={sliderRef}
-			className="flex gap-4  mb-3  overflow-auto   no-scrollbar items-center md:sticky md:top-0 md:py-2 bg-gray-50 ">
+			className="flex gap-4 overflow-auto  no-scrollbar items-center  py-[16px]  mx-3 md:mx-10">
 			{loading && loaders}
 			{data?.map((item: ProductTypesType) => (
 				<button
@@ -54,8 +54,8 @@ const CategoriesSlider = ({
 						className={`${
 							active === item.id
 								? "bg-secondary  text-white"
-								: "bg-white"
-						} border-gray-200 border py-2 px-4`}
+								: "bg-white text-[#636363]"
+						} border-gray-200 border py-2 px-4 font-normal`}
 						text={item.name}
 					/>
 				</button>

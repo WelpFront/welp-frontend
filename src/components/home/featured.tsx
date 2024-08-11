@@ -28,7 +28,7 @@ const Featured = ({
 	};
 
 	return (
-		<div className="mb-10">
+		<div className="my-[24px] md:mb-10 md:min-h-[80vh]">
 			<h1 className="text-center text-black text-3xl font-bold">
 				{translation.featuredBusinesses}
 			</h1>

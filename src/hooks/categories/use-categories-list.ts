@@ -3,7 +3,7 @@ import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { getBusinessProductTypes } from "services";
 
-const useCategoriesList = (slug: number) => {
+const useCategoriesList = (slug: string) => {
 	const [loading, setLoading] = useState(true);
 
 	const [data, setData] = useState<Array<CategoryType>>([]);

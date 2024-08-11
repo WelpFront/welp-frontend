@@ -11,6 +11,14 @@ const getAuthHeader = () => {
 	return headers;
 };
 
+const sharedHeaders: any = {
+	"App-Id": appId as string,
+	"X-Country-Code": getCookie("location")
+		? JSON?.parse(getCookie("location") as string)?.country
+		: "EG",
+	"Accept-Language": "AR",
+};
+
 export const post = async (
 	path: string,
 	data: any,
@@ -27,7 +35,7 @@ export const post = async (
 
 	const res = await fetch(`${API_URL}/${path}`, {
 		method: "POST",
-		headers,
+		headers: { ...headers, ...sharedHeaders },
 		body,
 	});
 
@@ -93,24 +101,9 @@ export const del = async (path: string, withAuth = false) => {
 	return parsedRes;
 };
 
-export const get = async (
-	path: string,
-	withAuth = false,
-	customHeaders?: HeadersInit
-) => {
-	const headers: HeadersInit = { "app-id": appId as string };
-
-	if (withAuth) {
-		Object.assign(headers, getAuthHeader());
-	}
-
-	// If custom headers are provided, merge them with existing headers
-	if (customHeaders) {
-		Object.assign(headers, customHeaders);
-	}
-
+export const get = async (path: string, withAuth = false) => {
 	const res = await fetch(`${API_URL}/${path}`, {
-		headers,
+		headers: sharedHeaders,
 	});
 
 	const data = await res.json();

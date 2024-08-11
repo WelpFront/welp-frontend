@@ -1,10 +1,12 @@
-import { axiosClientBase } from "config/axios-instance";
+import * as client from "fetch/client";
 
 export const getCitiesList = async () => {
 	try {
-		const { data } = await axiosClientBase.get("/cities");
+		const response = await client.get("utilities/cities");
 
-		return data;
+		console.log(response.data);
+
+		return response;
 	} catch (error) {
 		return Response.json({ error });
 	}

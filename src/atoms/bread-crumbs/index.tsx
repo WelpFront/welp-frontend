@@ -7,7 +7,7 @@ const BreadCrumbs = ({
 	links: Array<{ href: string; name: string }>;
 }) => {
 	return (
-		<div className="flex gap-1 text-[18px] ">
+		<div className="flex flex-wrap gap-1 text-[18px] ">
 			{links?.map((link, index) => (
 				<div className="flex gap-1 items-center" key={link.name}>
 					<Link

@@ -13,6 +13,7 @@ interface BusinessesFilterState {
 	isLoading: boolean;
 	isDeliveryAvailable: boolean;
 	city: string | null;
+	nearest: boolean | null;
 	setCategory: (category: CategoryType | null) => void;
 	setChildrenCategories: (category: Array<CategoryChildType> | []) => void;
 	setCategoriesToFilterWith: (categoriesToFilterWith: Array<number>) => void;
@@ -22,6 +23,7 @@ interface BusinessesFilterState {
 	setIsLoading: (isLoading: boolean) => void;
 	setIsDeliveryAvailable: (isDeliveryAvailable: boolean) => void;
 	setCity: (city: string | null) => void;
+	setNearest: (nearest: boolean | null) => void;
 }
 
 export const useBusinessesFilterStore = create<BusinessesFilterState>(
@@ -35,6 +37,7 @@ export const useBusinessesFilterStore = create<BusinessesFilterState>(
 		isLoading: false,
 		isDeliveryAvailable: false,
 		city: null,
+		nearest: false,
 		setCategory: (category: CategoryType | null) => set({ category }),
 		setChildrenCategories: (categories: Array<CategoryChildType> | []) =>
 			set({ categories }),
@@ -49,5 +52,6 @@ export const useBusinessesFilterStore = create<BusinessesFilterState>(
 		setIsDeliveryAvailable: (isDeliveryAvailable = false) =>
 			set({ isDeliveryAvailable }),
 		setCity: (city: string | null) => set({ city }),
+		setNearest: (nearest: boolean | null) => set({ nearest }),
 	})
 );

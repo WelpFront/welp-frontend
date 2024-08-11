@@ -1,21 +1,27 @@
 import React from "react";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import { textLimitHandler } from "utils";
 
 const FileLink = ({
 	fileName,
 	withDelete,
 	deleteAction,
+	maxFileNameLength = 100,
 }: {
 	fileName: string;
+	maxFileNameLength: number;
 	withDelete?: boolean;
 	deleteAction?: () => void;
 }) => {
 	const fileInput = document.getElementById(
 		"fileInput"
 	) as HTMLInputElement | null;
+
 	return (
 		<div className="flex justify-between w-full mt-1">
-			<p className="text-sm ">{fileName}</p>
+			<p className="text-sm ">
+				{textLimitHandler(fileName, maxFileNameLength)}
+			</p>
 
 			{withDelete && (
 				<RiDeleteBin5Line
