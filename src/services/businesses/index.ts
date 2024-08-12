@@ -88,8 +88,6 @@ export const getBusinessProductTypes = async (businessSlug: string) => {
 			`businesses/${businessSlug}/products-types`
 		);
 
-		console.log(response);
-
 		return response.data;
 	} catch (error: any) {
 		toast.error(error.message);

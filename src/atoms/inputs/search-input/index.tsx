@@ -192,7 +192,6 @@ const SearchInput = ({
 	function errorFunction() {
 		toast.info("Please enable location permission.");
 	}
-	console.log(cityValue);
 
 	if (!locale) return <div className="h-10 md:h-12 w-full"></div>;
 	return (

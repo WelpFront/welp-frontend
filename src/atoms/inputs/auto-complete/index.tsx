@@ -55,7 +55,6 @@ const Autocomplete = ({
 		setQuery(city.label);
 		setFilteredOptions([]);
 		setIsFocused(false);
-		console.log(city);
 
 		onChange(city.value);
 	};
