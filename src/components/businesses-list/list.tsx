@@ -10,6 +10,7 @@ import {
 import { ResponsiveBusinessesFilters } from "components";
 import { useBusinessesList } from "hooks";
 import { Link } from "navigation";
+import { env } from "next-runtime-env";
 import React, { useEffect, useMemo, useState } from "react";
 
 const BusinessesList = ({
@@ -62,7 +63,7 @@ const BusinessesList = ({
 		}
 	};
 
-	console.log(process.env);
+	console.log(process.env, env("NEXT_PUBLIC_API_URL"));
 	return (
 		<div className="col-span-4 lg:col-span-3 w-full">
 			<ResponsiveBusinessesFilters
