@@ -47,7 +47,7 @@ const BusinessReviews = ({
 			) : (
 				<div
 					className={`flex flex-col  border-1 border-solid border-gray-100 p-3 rounded-3xl text-xs md:text-md min-h-[30vh]
-			${reviews.length === 0 && " flex items-center justify-center"}
+			${reviews?.length === 0 && " flex items-center justify-center"}
 			`}>
 					{reviews?.map((item, index) => (
 						<div key={item.id} className="flex flex-col gap-2">
@@ -55,7 +55,7 @@ const BusinessReviews = ({
 							{index !== count - 1 && <hr className="my-2" />}
 						</div>
 					))}
-					{count !== reviews.length && (
+					{count !== reviews?.length && (
 						<CustomPagination
 							page={page}
 							setPage={setPage}
