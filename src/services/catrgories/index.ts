@@ -1,12 +1,11 @@
 import * as client from "fetch/client";
-
-// import * as server from "fetch/server";
+import * as server from "fetch/server";
 
 export const getCategoriesList = async (exclude_first_parent: boolean) => {
 	try {
-		// const { data } = await server.get(`utilities/categories`);
+		const { data } = await server.get(`utilities/categories`);
 
-		return {};
+		return data;
 	} catch (error) {
 		return Response.json({ error });
 	}
