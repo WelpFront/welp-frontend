@@ -9,7 +9,7 @@ const CategoriesSearchInput = ({
 	fetchedCategories,
 	translation,
 }: {
-	fetchedCategories: Array<CategoryType>;
+	fetchedCategories: any;
 	translation: any;
 }) => {
 	const {
