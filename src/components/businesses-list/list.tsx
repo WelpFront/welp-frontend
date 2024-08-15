@@ -63,7 +63,6 @@ const BusinessesList = ({
 		}
 	};
 
-	console.log(process.env, env("NEXT_PUBLIC_API_URL"));
 	return (
 		<div className="col-span-4 lg:col-span-3 w-full">
 			<ResponsiveBusinessesFilters

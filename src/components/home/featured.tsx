@@ -27,8 +27,6 @@ const Featured = ({
 		},
 	};
 
-	console.log("featured");
-
 	return (
 		<div className="mb-[24px] md:mb-10 md:min-h-[80vh]">
 			<h1 className="text-center text-black text-3xl font-bold">
