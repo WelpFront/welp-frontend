@@ -62,6 +62,7 @@ const BusinessesList = ({
 		}
 	};
 
+	console.log(process.env);
 	return (
 		<div className="col-span-4 lg:col-span-3 w-full">
 			<ResponsiveBusinessesFilters
