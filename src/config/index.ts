@@ -1,3 +1,3 @@
-import { appId, API_URL, clientBaseURL } from "./api-configs";
+import { appId, apiBaseURL, clientBaseURL } from "./api-configs";
 
-export { appId, API_URL, clientBaseURL };
+export { appId, apiBaseURL, clientBaseURL };

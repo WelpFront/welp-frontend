@@ -1,4 +1,4 @@
-import { API_URL, appId } from "config";
+import { apiBaseURL, appId } from "config";
 import { getCookie } from "cookies-next";
 import { toast } from "react-toastify";
 
@@ -33,7 +33,7 @@ export const post = async (
 
 	const body = withFormData ? data : JSON.stringify(data);
 
-	const res = await fetch(`${API_URL}/${path}`, {
+	const res = await fetch(`${apiBaseURL}/${path}`, {
 		method: "POST",
 		headers: { ...headers, ...sharedHeaders },
 		body,
@@ -67,7 +67,7 @@ export const patch = async (
 		headers["Content-Type"] = "application/json";
 	}
 
-	const res = await fetch(`${API_URL}/${path}`, {
+	const res = await fetch(`${apiBaseURL}/${path}`, {
 		method: "PATCH",
 		headers,
 		body: withFormData ? data : JSON.stringify(data),
@@ -90,7 +90,7 @@ export const patch = async (
 };
 
 export const del = async (path: string, withAuth = false) => {
-	const res = await fetch(`${API_URL}/${path}`, {
+	const res = await fetch(`${apiBaseURL}/${path}`, {
 		method: "DELETE",
 		headers: { ...(withAuth && getAuthHeader()) },
 	});
@@ -102,7 +102,7 @@ export const del = async (path: string, withAuth = false) => {
 };
 
 export const get = async (path: string, withAuth = false) => {
-	const res = await fetch(`${API_URL}/${path}`, {
+	const res = await fetch(`${apiBaseURL}/${path}`, {
 		headers: sharedHeaders,
 	});
 

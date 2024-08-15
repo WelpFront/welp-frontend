@@ -1,6 +1,6 @@
 "use server";
 
-import { API_URL } from "config";
+import { apiBaseURL } from "config";
 import { cookies } from "next/headers";
 import { toast } from "react-toastify";
 
@@ -27,7 +27,7 @@ const getHeaders = () => {
 };
 
 export const post = async (path: string, formData: FormData) => {
-	const res = await fetch(`${API_URL}/${path}`, {
+	const res = await fetch(`${apiBaseURL}/${path}`, {
 		method: "POST",
 		headers: getHeaders(),
 		body: JSON.stringify(Object.fromEntries(formData)),
@@ -40,7 +40,7 @@ export const post = async (path: string, formData: FormData) => {
 };
 
 export const get = async (path: string) => {
-	const res = await fetch(`${API_URL}/${path}`, {
+	const res = await fetch(`${apiBaseURL}/${path}`, {
 		headers: getHeaders(),
 	});
 
