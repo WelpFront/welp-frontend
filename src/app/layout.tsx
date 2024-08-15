@@ -35,7 +35,7 @@ export default async function RootLayout({
 	const messages = await getMessages();
 
 	return (
-		<html>
+		<html lang={params.locale}>
 			<head>
 				<PublicEnvScript />
 			</head>
